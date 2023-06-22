@@ -1,1 +1,18 @@
+.footer{
+  height: 5.56rem;
+}
+.icon{
+  margin-left: 2rem;
+  /* height: .2rem; */
+}
+/* .fab{
+  height: .2rem;
+} */
+.social-media-icons{
+  padding-top: 2rem;
+}
+.logo{
+  height: 2rem;
+  width: 10rem;
+}
 
