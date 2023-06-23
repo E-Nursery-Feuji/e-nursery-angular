@@ -1,0 +1,87 @@
+<div class="container-fluid">
+  <div class="form-container">
+
+    <!-- registration form start -->
+    <h2>Registration Form</h2>
+
+    <form [formGroup]="registrationForm" (ngSubmit)="submitForm()" #form="ngForm">
+
+      <!-- first name filed start -->
+      <div>
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" formControlName="firstName">
+        <div *ngIf="registrationForm.get('firstName')?.touched && registrationForm.get('firstName')?.hasError('required')" class="error-message">
+          First name is required.
+        </div>
+        <div *ngIf="registrationForm.get('firstName')?.dirty && registrationForm.get('firstName')?.errors?.['pattern']" class="error-message">
+          Only alphabets are allowed in the first name.
+        </div>
+      </div>
+      <!-- first name filed end -->
+
+
+      <!-- second name filed start -->
+      <div>
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" formControlName="lastName">
+        <div *ngIf="registrationForm.get('lastName')?.touched && registrationForm.get('lastName')?.hasError('required')" class="error-message">
+          Last name is required.
+        </div>
+        <div *ngIf="registrationForm.get('lastName')?.dirty && registrationForm.get('lastName')?.errors?.['pattern']" class="error-message">
+          Only alphabets are allowed in the last name.
+        </div>
+      </div>
+      <!-- second name filed end -->
+
+      <!-- email filed start -->
+      <div>
+        <label for="email">Email ID:</label>
+        <input type="email" id="email" formControlName="email">
+        <div *ngIf="registrationForm.get('email')?.touched && registrationForm.get('email')?.errors?.['required']" class="error-message">
+          Email ID is required.
+        </div>
+        <div *ngIf="registrationForm.get('email')?.touched && registrationForm.get('email')?.errors?.['email']" class="error-message">
+          Invalid email format.
+        </div>
+      </div>
+      <!-- email filed end -->
+
+      <!-- password filed start -->
+      <div>
+        <label for="password">Password:</label>
+        <div class="input-container">
+          <input type="password" id="password" formControlName="password">
+        </div>
+        <div *ngIf="registrationForm.get('password')?.touched && registrationForm.get('password')?.errors?.['required']" class="error-message">
+          Password is required.
+        </div>
+        <div *ngIf="registrationForm.get('password')?.touched && registrationForm.get('password')?.errors?.['minlength']" class="error-message">
+          Password should be at least 8 characters long.
+        </div>
+        <div *ngIf="registrationForm.get('password')?.touched && registrationForm.get('password')?.errors?.['pattern']" class="error-message">
+          Password should contain at least one uppercase letter, one lowercase letter, one digit, and one special character.
+        </div>
+      </div>
+       <!-- password filed end -->
+
+      <!--confimr password filed start -->
+      <div>
+        <label for="confirmPassword">Confirm Password:</label>
+        <div class="input-container">
+          <input type="password" id="confirmPassword" formControlName="confirmPassword">
+
+        </div>
+        <div *ngIf="registrationForm.get('confirmPassword')?.touched && registrationForm.hasError('passwordMismatch')" class="error-message">
+          <div *ngIf="registrationForm.get('confirmPassword')?.errors?.['required']">Confirm password is required.</div>
+          <div *ngIf="registrationForm.hasError('passwordMismatch')">Passwords do not match.</div>
+        </div>
+      </div>
+      <!--confimr password filed end -->
+
+
+
+      <button type="submit" [disabled]="registrationForm.invalid">Register</button>
+    </form>
+  </div>
+</div>
+
