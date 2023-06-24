@@ -1,0 +1,26 @@
+
+/* for navbar */
+.logo{
+  height: 2rem;
+  width: 10rem;
+}
+
+/* for sidebar */
+.sidebar{
+  height: 100vh;
+  background-color:lightgreen;
+}
+
+.nav-link{
+  font-size: 1.2rem;
+}
+
+.nav-link:hover{
+  background-color: green;
+  color: white;
+}
+
+.active{
+  background-color: green;
+  color: white;
+}

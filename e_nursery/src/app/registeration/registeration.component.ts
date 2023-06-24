@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
+import { Customer } from '../model/customer';
+import { CustomerService } from '../services/customerservice.service';
 
 @Component({
   selector: 'app-registeration',
@@ -8,49 +10,35 @@ import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn } from
 })
 export class RegisterationComponent {
 
-  user = {
-    firstName: null,
-    lastName: null,
-    email: null,
-    password: null,
-    confirmPassword: null,
-  };
-
-
   registrationForm: FormGroup;
+  customer:Customer=new Customer();
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,private customerService:CustomerService)
+  {
     this.registrationForm = this.formBuilder.group({
-      firstName: ['', [Validators.required, Validators.pattern(/^[A-Za-z]+$/)]],
-      lastName: ['', [Validators.required, Validators.pattern(/^[A-Za-z]+$/)]],
+      first_name: ['', [Validators.required, Validators.pattern(/^[A-Za-z]+$/)]],
+      last_name: ['', [Validators.required, Validators.pattern(/^[A-Za-z]+$/)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/)]],
       confirmPassword: ['', Validators.required]
     }, { validators: this.passwordMatchValidator });
   }
 
-
-  submitForm() {
-    const formValues = this.registrationForm.value;
-    console.log(formValues);
+//on submit
+  submitForm()
+  {
     if (this.registrationForm.invalid) {
       return;
     }
+    if(this.registrationForm.valid)
+    {
+      this.customer=this.registrationForm.value;
+      this.customer.role="NORMAL";
+      this.customerService.saveCustomer(this.customer); //send to service
+    }
   }
 
-  onlyAlphabetsValidator(): ValidatorFn {
-    return (control: AbstractControl): { [key: string]: any } | null => {
-      const value = control.value;
-      const alphabetsOnlyRegex = /^[A-Za-z]+$/;
-
-      if (!alphabetsOnlyRegex.test(value)) {
-        return { 'onlyAlphabets': true };
-      }
-
-      return null;
-    };
-  }
-
+  // for password match
   passwordMatchValidator(control: AbstractControl): { [key: string]: boolean } | null {
     const password = control.get('password')?.value;
     const confirmPassword = control.get('confirmPassword')?.value;
@@ -61,8 +49,6 @@ export class RegisterationComponent {
 
     return null;
   }
-
-
 
 }
 
