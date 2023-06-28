@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   loginForm:FormGroup;
   submitted:boolean = false;
 
+
   constructor(private formBuilder:FormBuilder,private customerService:CustomerService)
   {
     this.loginForm = this.formBuilder.group({
@@ -34,7 +35,9 @@ export class LoginComponent implements OnInit {
     }
     else
     {
-      this.customerService.login(this.loginForm.value);
+      var password=btoa(this.loginForm.value.password);
+      var email=this.loginForm.value.email;
+      this.customerService.login(email,password);
     }
   }
 }

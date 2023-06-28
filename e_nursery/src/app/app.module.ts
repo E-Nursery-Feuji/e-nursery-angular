@@ -17,6 +17,10 @@ import { AdminComponent } from './admin/admin.component';
 import { BlogComponent } from './blog/blog.component';
 import { ProductComponent } from './product/product.component';
 import { OrdersComponent } from './orders/orders.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,11 @@ import { OrdersComponent } from './orders/orders.component';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

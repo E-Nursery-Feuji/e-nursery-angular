@@ -32,6 +32,9 @@ export class RegisterationComponent {
     }
     if(this.registrationForm.valid)
     {
+      //encode the password and confrimpassword
+      this.registrationForm.value.confirmPassword=btoa(this.registrationForm.value.confirmPassword);
+      this.registrationForm.value.password=btoa(this.registrationForm.value.password);
       this.customer=this.registrationForm.value;
       this.customer.role="NORMAL";
       this.customerService.saveCustomer(this.customer); //send to service

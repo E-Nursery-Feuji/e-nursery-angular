@@ -7,9 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductComponent implements OnInit {
 
+  show:boolean=true;
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  openDialog()
+  {
+    this.show=!(this.show);
+  }
+  editProduct()
+  {
+    this.openDialog();
+  }
+
+  deleteProduct()
+  {
+    confirm("Are You sure Want to Delete!");
+  }
 }

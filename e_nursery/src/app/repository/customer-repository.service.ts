@@ -22,9 +22,8 @@ export class CustomerRepository {
   }
 
   //for login
-  login(loginData:object) :Observable<object>
+  login(email:string,password:string) :Observable<object>
   {
-    console.log(loginData);
-    return this.http.post<object>(this.baseUrl+"signin/",loginData); //api call for login
+    return this.http.get<object>(this.baseUrl+"signin/"+email+"/"+password+"/"); //api call for login
   }
 }
