@@ -22,8 +22,8 @@ export class CustomerRepository {
   }
 
   //for login
-  login(email:string,password:string) :Observable<object>
+  login(login_data:object) :Observable<object>
   {
-    return this.http.get<object>(this.baseUrl+"signin/"+email+"/"+password+"/"); //api call for login
+    return this.http.post<object>(this.baseUrl+"signin/",login_data); //api call for login
   }
 }

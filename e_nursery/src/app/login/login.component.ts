@@ -35,9 +35,7 @@ export class LoginComponent implements OnInit {
     }
     else
     {
-      var password=btoa(this.loginForm.value.password);
-      var email=this.loginForm.value.email;
-      this.customerService.login(email,password);
+      this.customerService.login(this.loginForm.value);
     }
   }
 }
