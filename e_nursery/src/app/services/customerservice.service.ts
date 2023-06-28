@@ -48,10 +48,9 @@ export class CustomerService {
   }
 
   //for login validation
-  login(loginData:object)
+  login(email:string,password:string)
   {
-    this.customerRepository.login(loginData).subscribe(data=>{
-      console.log(data);
+    this.customerRepository.login(email,password).subscribe(data=>{
       if(typeof(data)=='string') //checking type of data
       {
         if(data=='Email not found') //checking email is present or not
@@ -89,6 +88,7 @@ export class CustomerService {
       }
       else if(typeof(data)=='object') //checking if data is object
       {
+        console.log(data);
         if(Object.values(data)[5]=='NORMAL') //it is user
         {
           this.router.navigateByUrl("/user"); //negigate to user home page
