@@ -4,6 +4,7 @@ import { Customer } from '../model/customer';
 import { CustomerRepository } from '../repository/customer-repository.service';
 import { Router } from '@angular/router';
 import { MatSnackBar  } from '@angular/material/snack-bar';
+import { log } from 'console';
 
 @Injectable({
   providedIn: 'root'
@@ -92,11 +93,12 @@ export class CustomerService {
         console.log(Object.values(data)[1])
         console.log(typeof(data) )
         localStorage.setItem('token',Object.values(data)[1])
-        if(Object.values(data)[5]=='NORMAL') //it is user
+        console.log(Object.values(data)[0].role)
+        if(Object.values(data)[0].role=='NORMAL') //it is user
         {
           this.router.navigateByUrl("/user"); //negigate to user home page
         }
-        else if(Object.values(data)[5]=='ADMIN')
+        else if(Object.values(data)[0].role=='ADMIN')
         {
           //for choose the role of admin while login
           Swal.fire({

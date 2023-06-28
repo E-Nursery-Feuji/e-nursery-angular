@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
     else
     {
       this.customerService.login(this.loginForm.value);
+
     }
   }
 }
