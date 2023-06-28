@@ -13,14 +13,37 @@
     <!-- Collapsible wrapper -->
     <!-- Right navbar elements -->
     <div class="d-flex align-items-center">
+      <!-- Avatar -->
       <div class="dropdown">
-        <a href="#" style="text-decoration: none;"><b class="text-light">Blog</b></a>
-        &nbsp;&nbsp;
-        <a href="#" style="text-decoration: none;"><b class="text-light">Log Out</b></a>
+        <a
+          class="dropdown-toggle d-flex align-items-center hidden-arrow"
+          href="#"
+          id="navbarDropdownMenuAvatar"
+          role="button"
+          data-mdb-toggle="dropdown"
+          aria-expanded="false"
+        >
+        <!-- --------- User Icon ---------------- -->
+        <a href="#" class="user" style="text-decoration: none;"><b class="text-light"><i class="fa-solid fa-user"></i></b></a>
+        </a>
+        <ul
+          class="dropdown-menu dropdown-menu-end"
+          aria-labelledby="navbarDropdownMenuAvatar"
+        >
+          <li>
+            <a class="dropdown-item" href="#">Hey,&nbsp;<b>Priya</b></a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="/changepassword">Change Password</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
+          </li>
+        </ul>
       </div>
     </div>
+    </div>
     <!-- Right elements -->
-  </div>
   <!-- Container wrapper -->
 </nav>
 <!-- Navbar -->
