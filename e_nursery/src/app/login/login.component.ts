@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
     }
     else
     {
+      this.loginForm.value.password=btoa(this.loginForm.value.password);
       this.customerService.login(this.loginForm.value);
 
     }

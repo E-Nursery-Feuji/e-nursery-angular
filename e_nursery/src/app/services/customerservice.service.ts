@@ -52,6 +52,7 @@ export class CustomerService {
   login(login_data:object)
   {
     this.customerRepository.login(login_data).subscribe(data=>{
+      console.log(data);
       if(typeof(data)=='string') //checking type of data
       {
         if(data=='Email not found') //checking email is present or not
