@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CustomerService } from '../services/customerservice.service';
 
 @Component({
   selector: 'app-forgotpassword',
@@ -14,7 +15,7 @@ export class ForgotpasswordComponent implements OnInit {
   emailSubmitted:boolean = false;
   otpSubmitted:boolean = false;
   show:boolean=false;
-  constructor(private formBuilder:FormBuilder,private router:Router)
+  constructor(private formBuilder:FormBuilder,private router:Router,private customerService:CustomerService)
   {
     this.emailSubmitForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -39,6 +40,7 @@ export class ForgotpasswordComponent implements OnInit {
     {
       console.log(this.emailSubmitForm.value.email);
       this.show=true;
+      this.customerService.sendEmail(this.emailSubmitForm.value);
     }
   }
 

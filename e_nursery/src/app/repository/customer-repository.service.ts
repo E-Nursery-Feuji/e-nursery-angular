@@ -26,4 +26,10 @@ export class CustomerRepository {
   {
     return this.http.post<object>(this.baseUrl+"signin/",login_data); //api call for login
   }
+
+  //for send mail
+  sendEmail(emailData:object):Observable<any>
+  {
+    return this.http.post<any>(this.baseUrl+"forgotpasswordotp/",emailData);
+  }
 }
