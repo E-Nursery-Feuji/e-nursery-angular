@@ -127,4 +127,10 @@ export class CustomerService {
       }
     });
   }
+
+  // for send mail
+  sendEmail(emaildata:object)
+  {
+    this.customerRepository.sendEmail(emaildata).subscribe(data=>console.log(data));
+  }
 }
