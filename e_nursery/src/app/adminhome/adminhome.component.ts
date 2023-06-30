@@ -8,15 +8,9 @@ import { Router } from '@angular/router';
 })
 export class AdminhomeComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  // for logout
-  logout()
-  {
-    localStorage.removeItem('token');
-    this.router.navigateByUrl("/home")
-  }
 }
