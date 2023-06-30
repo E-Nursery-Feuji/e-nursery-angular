@@ -22,6 +22,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 
@@ -39,7 +40,8 @@ import { ChangepasswordComponent } from './changepassword/changepassword.compone
     BlogComponent,
     ProductComponent,
     OrdersComponent,
-    ChangepasswordComponent
+    ChangepasswordComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

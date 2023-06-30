@@ -32,4 +32,10 @@ export class CustomerRepository {
   {
     return this.http.post<any>(this.baseUrl+"forgotpasswordotp/",emailData);
   }
+
+  // for change password
+  changePassword(changePasswordData:object):Observable<any>
+  {
+    return this.http.post<any>(this.baseUrl+"updatepassword/",changePasswordData);
+  }
 }
