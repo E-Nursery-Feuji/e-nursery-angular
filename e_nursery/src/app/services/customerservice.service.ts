@@ -4,7 +4,6 @@ import { Customer } from '../model/customer';
 import { CustomerRepository } from '../repository/customer-repository.service';
 import { Router } from '@angular/router';
 import { MatSnackBar  } from '@angular/material/snack-bar';
-import { log } from 'console';
 
 @Injectable({
   providedIn: 'root'

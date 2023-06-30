@@ -25,5 +25,5 @@ export class ProductComponent implements OnInit {
   deleteProduct()
   {
     confirm("Are You sure Want to Delete!");
-  }
+  }
 }
