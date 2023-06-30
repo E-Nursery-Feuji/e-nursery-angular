@@ -1,0 +1,141 @@
+/* CSS for the form container */
+.form-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+}
+
+/* CSS for form labels */
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* CSS for form inputs and select */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+/* CSS for form submit button */
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+button[type="submit"]:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* ---------------add product button---------------- */
+.add-button{
+  width: 100%;
+  /* background-color: aqua; */
+  padding-left: 83%;
+}
+
+.add{
+  width: 8rem;
+  height: 2.5rem;
+  font-size: 1.2rem;
+  color: green;
+  background-color: lightgreen;
+  box-shadow: none;
+}
+.fa-plus{
+  font-size: 1.5rem;
+}
+
+.add:hover{
+  color: white;
+  background-color: green;
+  box-shadow:1rem;
+}
+
+/* ---------- line ------------ */
+hr{
+  color: green;
+}
+
+/* -----------Product table details ------------ */
+.product-table{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.table{
+  width: 90%;
+}
+th{
+  background-color: lightgreen;
+}
+th,tr{
+  text-align: center;
+}
+.description{
+  width: 32%;
+  justify-content: center;
+}
+.fa-pen-to-square{
+  color: blue;
+}
+.fa-trash{
+color: red;
+}
+.product-button{
+  background-color: white;
+  border: white;
+}
+
+/* -----------product form ---------- */
+.container{
+  display: flex;
+  justify-content: center;
+}
+.card{
+  background-color: white;
+  /* box-shadow:  blue; */
+  width: 70%;
+}
+.title{
+  color: green;
+  text-align: center;
+}
+.form{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+form{
+  width: 90%;
+}
+
+.filed{
+  width: 100%;
+  border-color: green;
+}
+.button{
+  width: 100%;
+  text-align: center;
+}
+
+

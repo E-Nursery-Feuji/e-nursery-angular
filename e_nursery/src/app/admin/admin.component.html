@@ -1,1 +1,168 @@
-<p>admin works!</p>
+<div *ngIf=show>
+  <!-- ------------------- Add Product Button starts ------------------- -->
+<div class="add-button mt-3">
+  <button class="add" mat-raised-button (click)="openDialog()"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;Admin</button>
+</div>
+<!-- ------------------ Add Product Button starts --------------------- -->
+<hr>
+<!-- ------------------ Product details table starts ------------------ -->
+<div class="product-table">
+  <table class="table align-middle mb-0 bg-white">
+    <thead class="bg-light">
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th >Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let admin of admins">
+
+      <td>
+        <p class="fw-normal mb-1">{{admin.first_name}}</p>
+      </td>
+        <td>
+          <p class="fw-normal mb-1">{{admin.last_name}}</p>
+        </td>
+        <td>
+          <p class="fw-normal mb-1">{{admin.email}}</p>
+        </td>
+        <td>
+          <p class="fw-normal mb-1">{{admin.password}}</p>
+        </td>
+
+        <td>
+          <button type="button" class="product-button" (click)="status()"><i class="fa fa-toggle-on" aria-hidden="true"></i></button>
+        </td>
+        <td>
+          <button type="button" class="product-button" (click)="editAdmin()"><i class="fa-solid fa-pen-to-square"></i></button> &nbsp;&nbsp;
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- ------------------ Product details table starts ------------------ -->
+</div>
+
+<!-- ------------------ add Product form starts ----------------------- -->
+<div class="container"  *ngIf=!(show)>
+
+
+
+<div class="container-fluid">
+  <div class="form-container">
+    <!-- registration form start -->
+    <h2 class="text-primary text-center">ADD ADMIN</h2>
+    <form [formGroup]="registrationForm" (ngSubmit)="submitForm()" #form="ngForm">
+      <div class="row mb-2 mt-3">
+        <!-- first name filed start -->
+        <div class="col">
+          <label class="form-label text-primary" for="first_name">First Name:</label>
+          <input type="text" id="first_name" formControlName="first_name"  class="form-control">
+          <div *ngIf="registrationForm.get('first_name')?.touched && registrationForm.get('first_name')?.hasError('required')" class="error-message">
+            First name is required.
+          </div>
+          <div *ngIf="registrationForm.get('first_name')?.dirty && registrationForm.get('first_name')?.errors?.['pattern']" class="error-message">
+            Only alphabets are allowed in the first name.
+          </div>
+        </div>
+        <!-- first name filed end -->
+        <!-- second name filed start -->
+        <div class="col">
+          <label for="last_name" class="form-label text-primary">Last Name:</label>
+          <input type="text" id="last_name" formControlName="last_name" class="form-control">
+          <div *ngIf="registrationForm.get('last_name')?.touched && registrationForm.get('last_name')?.hasError('required')" class="error-message">
+            Last name is required.
+          </div>
+          <div *ngIf="registrationForm.get('last_name')?.dirty && registrationForm.get('last_name')?.errors?.['pattern']" class="error-message">
+            Only alphabets are allowed in the last name.
+          </div>
+        </div>
+        <!-- second name filed end -->
+      </div>
+      <!-- email filed start -->
+      <div class="mb-2 mt-3">
+        <label for="email" class="form-label text-primary">Email ID:</label>
+        <input type="email" id="email" formControlName="email" class="form-control">
+        <div *ngIf="registrationForm.get('email')?.touched && registrationForm.get('email')?.errors?.['required']" class="error-message">
+          Email ID is required.
+        </div>
+        <div *ngIf="registrationForm.get('email')?.touched && registrationForm.get('email')?.errors?.['email']" class="error-message">
+          Invalid email format.
+        </div>
+      </div>
+      <!-- email filed end -->
+      <div class="row mb-2 mt-3">
+        <!-- password filed start -->
+        <div class="col">
+          <label for="password" class="form-label text-primary">Password:</label>
+          <div class="input-container">
+            <input type="password" id="password" formControlName="password" class="form-control">
+          </div>
+          <div *ngIf="registrationForm.get('password')?.touched && registrationForm.get('password')?.errors?.['required']" class="error-message">
+            Password is required.
+          </div>
+          <div *ngIf="registrationForm.get('password')?.touched && registrationForm.get('password')?.errors?.['minlength']" class="error-message">
+            Password should be at least 8 characters long.
+          </div>
+          <div *ngIf="registrationForm.get('password')?.touched && registrationForm.get('password')?.errors?.['pattern']" class="error-message">
+            Password should contain at least one uppercase letter, one lowercase letter, one digit, and one special character.
+          </div>
+        </div>
+        <!-- password filed end -->
+        <!--confimr password filed start -->
+        <div class="col">
+          <label for="confirmPassword" class="form-label text-primary">Confirm Password:</label>
+          <div class="input-container">
+            <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-control">
+          </div>
+          <div *ngIf="registrationForm.get('confirmPassword')?.touched && registrationForm.hasError('passwordMismatch')" class="error-message">
+            <div *ngIf="registrationForm.get('confirmPassword')?.errors?.['required']">Confirm password is required.</div>
+            <div *ngIf="registrationForm.hasError('passwordMismatch')">Passwords do not match.</div>
+          </div>
+        </div>
+        <!--confimr password filed end -->
+      </div>
+        <hr>
+        <div class="button m-4">
+          <button type="button" class="btn btn-secondary m-3" (click)="openDialog()">Back</button>
+          <button type="submit" class="btn btn-success m-3">Save</button>
+          <button type="reset" class="btn btn-primary m-3">Reset</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- ------------------ add Product form ends ------------------------- -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
