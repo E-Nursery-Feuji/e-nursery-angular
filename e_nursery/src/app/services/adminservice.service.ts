@@ -42,15 +42,20 @@ export class AdminService {
         Swal.fire({
           icon: 'success',
           title: 'Registration Successful !',
-          text: 'You can login now !',
+          text: ' admin added!',
         });
-        this.router.navigateByUrl("/login"); //redirect to login page
+
+        this.router.navigateByUrl("/add"); //redirect to login page
       }
     });
   }
 
   getAdmin(){
   return this.adminRepository.getAdmin();
+  }
+
+  updateStatus(id:number,status:Admin){
+    return this.adminRepository.update(id,status);
   }
 
   //for login validation

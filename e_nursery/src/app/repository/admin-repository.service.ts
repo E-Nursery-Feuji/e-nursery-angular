@@ -24,6 +24,9 @@ export class AdminRepository {
   getAdmin():Observable<Admin[]>{
     return this.http.get<Admin[]>(this.baseUrl+"admin/");
   }
+  update(id:number,status:Admin):Observable<Admin>{
+    return this.http.put<Admin>(`${this.baseUrl}updateadmin/${id}/`, status);
+  }
 
 
 }
