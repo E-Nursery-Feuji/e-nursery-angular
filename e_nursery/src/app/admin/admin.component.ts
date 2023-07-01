@@ -19,6 +19,7 @@ export class AdminComponent implements OnInit {
   admins !: Admin[];
   editid!:number;
   heading!:string;
+  hide:boolean=true;
 
 
   constructor(private formBuilder: FormBuilder,private adminService:AdminService,router:Router)
@@ -67,9 +68,9 @@ export class AdminComponent implements OnInit {
 
       });
     }
-    
-    else{
 
+    else{
+      console.log("entered")
     if (this.registrationForm.invalid) {
       return;
     }
@@ -79,6 +80,7 @@ export class AdminComponent implements OnInit {
 
       this.registrationForm.value.confirmPassword=btoa(this.registrationForm.value.confirmPassword);
       this.registrationForm.value.password=btoa(this.registrationForm.value.password);
+      console.log(this.registrationForm.value.password)
       this.admin=this.registrationForm.value;
       this.admin.role="ADMIN";
       this.admin.status="active";
@@ -103,6 +105,7 @@ export class AdminComponent implements OnInit {
 
   openDialog()
   {
+    this.hide=true;
     this.heading="Add Admin";
     this.show=!(this.show);
     this.getAdmins();
@@ -123,6 +126,7 @@ export class AdminComponent implements OnInit {
 
   editAdmin(admin:Admin)
   {
+    this.hide=!(this.hide);
     this.heading="Edit Admin";
     this.editid=admin.id;
     this.show=!(this.show);

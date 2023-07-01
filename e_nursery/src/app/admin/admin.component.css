@@ -113,6 +113,7 @@ color: red;
 .container{
   display: flex;
   justify-content: center;
+  margin-top: 20px;
 }
 .card{
   background-color: white;
