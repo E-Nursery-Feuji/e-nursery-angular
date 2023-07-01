@@ -1,4 +1,5 @@
 <div *ngIf=show>
+
   <!-- ------------------- Add Product Button starts ------------------- -->
 <div class="add-button mt-3">
   <button class="add" mat-raised-button (click)="openDialog()"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;Admin</button>
@@ -38,10 +39,12 @@
         </td>
 
         <td>
-          <button type="button" class="product-button" (click)="status()"><i class="fa fa-toggle-on" aria-hidden="true"></i></button>
+          <button type="button"  class="product-button " (click)="updatestatus(admin)">
+            <i class="fa fa-lg  "   [ngClass]="{'fa-toggle-on': admin.status === 'active', 'fa-toggle-off': admin.status === 'inactive'}" aria-hidden="true"></i>
+          </button>
         </td>
         <td>
-          <button type="button" class="product-button" (click)="editAdmin()"><i class="fa-solid fa-pen-to-square"></i></button> &nbsp;&nbsp;
+          <button type="button" class="product-button" (click)="editAdmin(admin)"><i class="fa-solid fa-pen-to-square"></i></button> &nbsp;&nbsp;
         </td>
       </tr>
     </tbody>
@@ -51,6 +54,7 @@
 <!-- ------------------ Product details table starts ------------------ -->
 </div>
 
+
 <!-- ------------------ add Product form starts ----------------------- -->
 <div class="container"  *ngIf=!(show)>
 
@@ -59,7 +63,7 @@
 <div class="container-fluid">
   <div class="form-container">
     <!-- registration form start -->
-    <h2 class="text-primary text-center">ADD ADMIN</h2>
+    <h2 class="text-primary text-center">{{heading}}</h2>
     <form [formGroup]="registrationForm" (ngSubmit)="submitForm()" #form="ngForm">
       <div class="row mb-2 mt-3">
         <!-- first name filed start -->
@@ -142,7 +146,6 @@
   </div>
 </div>
 
-<!-- ------------------ add Product form ends ------------------------- -->
 
 
 
