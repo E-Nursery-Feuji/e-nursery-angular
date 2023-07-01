@@ -1,1 +1,88 @@
-<p>admin works!</p>
+<div *ngIf=show>
+  <!-- ------------------- Add Product Button starts ------------------- -->
+<div class="add-button mt-3">
+  <button class="add" mat-raised-button (click)="openDialog()"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;Admin</button>
+</div>
+<!-- ------------------ Add Product Button starts --------------------- -->
+<hr>
+<!-- ------------------ Product details table starts ------------------ -->
+<div class="product-table">
+  <table class="table align-middle mb-0 bg-white">
+    <thead class="bg-light">
+      <tr>
+        <th>First_Name</th>
+        <th>Last_Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i of [1,2,3,4,5,6,7]">
+        <td>
+          <div class="d-flex align-items-center">
+            <div class="ms-3">
+              <p class="fw-bold mb-1">John Doe</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <p class="fw-normal mb-1">450</p>
+        </td>
+        <td>
+          <p class="fw-normal mb-1">10</p>
+        </td>
+        <td>
+          <button type="button" class="product-button" (click)="editProduct()"><i class="fa-solid fa-pen-to-square"></i></button> &nbsp;&nbsp;
+          <button type="button" class="product-button" (click)="deleteProduct()"><i class="fa-solid fa-trash"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+<!-- ------------------ add Product form starts ----------------------- -->
+<div class="container"  *ngIf=!show>
+  <div class="card mt-5">
+    <h2 class="title mt-3 mb-2">Add Admin</h2>
+    <hr>
+    <div class="form">
+      <form action="" [formGroup]="addAdmin" (ngSubmit)="saveAdmin()">
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field appearance="outline" class="filed">
+              <mat-label>First_name</mat-label>
+              <input matInput formControlName="first_name">
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="outline" class="filed">
+              <mat-label>Last_name</mat-label>
+              <input matInput formControlName="last_name">
+            </mat-form-field>
+          </div>
+        </div>
+
+
+          <div class="col-md-6">
+            <mat-form-field appearance="outline" class="filed">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email">
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field appearance="outline" class="filed">
+              <mat-label>Password</mat-label>
+              <input matInput formControlName="password">
+            </mat-form-field>
+          </div>
+
+        <hr>
+        <div class="button m-4">
+          <button type="button" class="btn btn-secondary m-3" >Back</button>
+          <button type="submit" class="btn btn-success m-3" >Save</button>
+          <button type="reset" class="btn btn-primary m-3">Reset</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
