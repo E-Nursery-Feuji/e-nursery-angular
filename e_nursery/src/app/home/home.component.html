@@ -3,7 +3,7 @@
   <!-- Container wrapper -->
   <div class="container-fluid">
     <!-- Collapsible wrapper -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div id="navbarSupportedContent">
       <!-- Navbar brand -->
       <a class="navbar-brand mt-2 mt-lg-0" href="#">
         <!-- <b class="text-light">E-Nursery</b> -->
@@ -14,9 +14,9 @@
     <!-- Right navbar elements -->
     <div class="d-flex align-items-center">
       <div class="dropdown">
-        <a href="#" style="text-decoration: none;"><b class="text-light">Blog</b></a>
+        <a  style="text-decoration: none;"><b class="text-light">Blog</b></a>
         &nbsp;&nbsp;
-        <a href="login/" style="text-decoration: none;"><b class="text-light">Login</b></a>
+        <a [routerLink]="['/login']" style="text-decoration: none;"><b class="text-light">Login</b></a>
       </div>
     </div>
     <!-- Right elements -->

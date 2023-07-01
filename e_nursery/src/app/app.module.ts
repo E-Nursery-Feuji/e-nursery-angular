@@ -23,7 +23,43 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { NgxUiLoaderModule,
+  NgxUiLoaderConfig,
+  NgxUiLoaderHttpModule,
+  SPINNER,
+  POSITION,
+  PB_DIRECTION } from 'ngx-ui-loader';
 
+  const ngxUiLoaderConfig: NgxUiLoaderConfig={
+  "bgsColor": "#1fe909",
+  "bgsOpacity": 0.5,
+  "bgsPosition": "center-left",
+  "bgsSize": 100,
+  "bgsType": "three-strings",
+  "blur": 15,
+  "delay": 0,
+  "fastFadeOut": true,
+  "fgsColor": "#1fe909",
+  "fgsPosition": "center-center",
+  "fgsSize": 100,
+  "fgsType": "three-strings",
+  "gap": -80,
+  "logoPosition": "center-center",
+  "logoSize": 60,
+  "logoUrl": "assets/images/loader4.gif",
+  "masterLoaderId": "master",
+  "overlayBorderRadius": "0",
+  "overlayColor": "rgba(40, 40, 40, 0.8)",
+  "pbColor": "red",
+  "pbDirection": "ltr",
+  "pbThickness": 3,
+  "hasProgressBar": false,
+  "text": "",
+  "textColor": "#FFFFFF",
+  "textPosition": "center-center",
+  "maxTime": -1,
+  "minTime": 300
+  }
 
 
 
@@ -54,7 +90,11 @@ import { NavbarComponent } from './navbar/navbar.component';
     MatButtonModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatInputModule
+    MatInputModule,
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+    NgxUiLoaderHttpModule.forRoot({
+      showForeground:true,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

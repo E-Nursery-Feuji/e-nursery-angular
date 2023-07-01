@@ -10,11 +10,14 @@ import { JwttokenService } from '../services/jwttoken.service';
 export class NavbarComponent implements OnInit {
 
   username:string=""
+  role:string=''
 
   constructor(private router:Router,private jwttokenservice:JwttokenService) { }
 
   ngOnInit(): void {
     this.username=this.jwttokenservice.getFirstNameFromToken();
+    this.role=this.jwttokenservice.getRoleFromJwtToken();
+    console.log(this.role)
   }
 
   // for logout
