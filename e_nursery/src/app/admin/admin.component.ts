@@ -1,3 +1,4 @@
+
 import { Router } from '@angular/router';
 import { Admin } from './../model/admin';
 import { AdminService } from './../services/adminservice.service';
@@ -34,10 +35,12 @@ export class AdminComponent implements OnInit {
 
     }, { validators: this.passwordMatchValidator });
   }
+
   ngOnInit(): void {
     this.getAdmins();
 
   }
+
 
 
 //on submit
@@ -178,5 +181,6 @@ getAdmins(){
 
     })
 }
+
 
 }

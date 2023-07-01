@@ -51,10 +51,10 @@ export class ForgotpasswordComponent implements OnInit {
     {
       return;
     }
-    if(this.otpSubmitForm.valid)
+    if(this.otpSubmitForm.valid)6
     {
       console.log(this.otpSubmitForm.value.otp);
-      this.router.navigateByUrl("/changepassword")
+      this.customerService.checkOtp(this.otpSubmitForm.value.otp);
     }
   }
 
