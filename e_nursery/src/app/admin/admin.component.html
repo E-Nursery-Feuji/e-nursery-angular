@@ -15,7 +15,7 @@
         <th>First Name</th>
         <th>Last Name</th>
         <th>Email</th>
-        <th>Password</th>
+        <!-- <th>Password</th> -->
         <th >Status</th>
 
         <th>Actions</th>
@@ -34,9 +34,9 @@
         <td>
           <p class="fw-normal mb-1">{{admin.email}}</p>
         </td>
-        <td>
+        <!-- <td>
           <p class="fw-normal mb-1">{{admin.password}}</p>
-        </td>
+        </td> -->
 
         <td>
           <button type="button"  class="product-button " (click)="updatestatus(admin)">
@@ -103,8 +103,13 @@
         </div>
       </div>
       <!-- email filed end -->
+
+      <div  *ngIf=hide>
+
       <div class="row mb-2 mt-3">
         <!-- password filed start -->
+
+
         <div class="col">
           <label for="password" class="form-label text-primary">Password:</label>
           <div class="input-container">
@@ -134,6 +139,7 @@
         </div>
         <!--confimr password filed end -->
       </div>
+    </div>
         <hr>
         <div class="button m-4">
           <button type="button" class="btn btn-secondary m-3" (click)="openDialog()">Back</button>
