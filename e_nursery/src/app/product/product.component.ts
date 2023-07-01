@@ -166,6 +166,8 @@ export class ProductComponent implements OnInit {
 
   goToProduct()
   {
-    this.show = !this.show;
-  }
+
+    confirm("Are You sure Want to Delete!");
+  }
+
 }

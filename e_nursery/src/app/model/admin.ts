@@ -6,4 +6,7 @@ export class Admin
   public email!:string;
   public password!:string;
   public role!:string;
+
+  public status!:string;
+
 }

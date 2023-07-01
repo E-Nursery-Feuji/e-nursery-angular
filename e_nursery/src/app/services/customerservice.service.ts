@@ -5,6 +5,7 @@ import { CustomerRepository } from '../repository/customer-repository.service';
 import { Router } from '@angular/router';
 import { MatSnackBar  } from '@angular/material/snack-bar';
 import { log } from 'console';
+import { JwttokenService } from './jwttoken.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,9 @@ import { log } from 'console';
 export class CustomerService {
 
   user:Customer=new Customer;
+  email:string='';
   constructor(private customerRepository:CustomerRepository,private router:Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,private jwttokenserivce:JwttokenService
 )
  { }
 
@@ -52,6 +54,7 @@ export class CustomerService {
   login(login_data:object)
   {
     this.customerRepository.login(login_data).subscribe(data=>{
+      console.log(data);
       if(typeof(data)=='string') //checking type of data
       {
         if(data=='Email not found') //checking email is present or not
@@ -94,7 +97,7 @@ export class CustomerService {
         console.log(typeof(data) )
         localStorage.setItem('token',Object.values(data)[1])
         console.log(Object.values(data)[0].role)
-        if(Object.values(data)[0].role=='NORMAL') //it is user
+        if(Object.values(data)[0].role=='CUSTOMER') //it is user
         {
           this.router.navigateByUrl("/user"); //negigate to user home page
         }
@@ -125,5 +128,100 @@ export class CustomerService {
         }
       }
     });
+  }
+
+  // for send mail
+  sendEmail(emaildata:object)
+  {
+    this.email=Object.values(emaildata)[0];
+    this.customerRepository.sendEmail(emaildata).subscribe(data=>{
+      console.log(data);
+      console.log(typeof(data));
+      if(typeof(data)=='number')
+      {
+        const otp=""+data;
+        localStorage.setItem('otp',otp)
+      }
+      else if(typeof(data)=='string')
+      {
+        if(data=='Email invalid')
+        {
+          //sweetalert for email not present
+          Swal.fire({
+            title: 'Email is not register?',
+            text: "Please try again or register first!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Register', //for register
+            cancelButtonText: 'Try Again!', //for login
+          }).then((result) => {
+            if (result.isConfirmed)
+            {
+              this.router.navigateByUrl("/register"); //redirect to registerpage
+            }
+            else
+            {
+              this.router.navigateByUrl("/login"); //redirect to login page
+            }
+          });
+        }
+      }
+    });
+  }
+
+  checkOtp(otp:string)
+  {
+    if(otp==localStorage.getItem('otp'))
+    {
+      this.router.navigateByUrl("/changepassword")
+    }
+    else
+    {
+        //has to write snak baar
+        this.snackBar.open("Otp Incorrect", '', {
+          duration: 2000, // Set the duration in milliseconds
+          verticalPosition: 'top', // Position at the top
+          panelClass: 'snackbar-container' //for apply custome css
+        })
+    }
+  }
+
+  changePassword(changePasswordData:object)
+  {
+    if(this.email)
+    {
+      changePasswordData=Object.assign({},changePasswordData,{email:this.email});
+    }
+    else
+    {
+      this.email=this.jwttokenserivce.getEmailFromJwtToken();
+      changePasswordData=Object.assign({},changePasswordData,{email:this.email});
+    }
+    console.log(changePasswordData);
+    this.customerRepository.changePassword(changePasswordData).subscribe(data=>
+      {
+        if(data=='Success')
+        {
+          //sweetalert for successful registration
+          Swal.fire({
+            icon: 'success',
+            title: 'Password Chnaged Successful !',
+          });
+          if(this.jwttokenserivce.getRoleFromJwtToken()=='CUSTOMER')
+          {
+            this.router.navigateByUrl("/user");
+          }
+          else if(this.jwttokenserivce.getRoleFromJwtToken()=='ADMIN')
+          {
+            this.router.navigateByUrl("/admin");
+          }
+          else
+          {
+            this.router.navigateByUrl("/login");
+          }
+        }
+      });
   }
 }

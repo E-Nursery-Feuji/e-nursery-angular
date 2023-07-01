@@ -1,12 +1,16 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Injectable } from '@angular/core';
-import { Admin } from '../model/admin';
+import { Customer } from '../model/customer';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Admin } from '../model/admin';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class AdminRepository{
+
+export class AdminRepository {
 
   baseUrl:string='http://localhost:8000/admin/';
 
@@ -15,10 +19,18 @@ export class AdminRepository{
 
   }
 
-  //for save the admin
+
+  //for save the customer
+
   saveAdmin(admin:Admin):Observable<Admin>
   {
     return this.http.post<Admin>(this.baseUrl+"saveadmin/",admin); //api call for save
   }
+
+  getAdmin():Observable<Admin[]>{
+    return this.http.get<Admin[]>(this.baseUrl+"admin/");
+  }
+
+
 
 }

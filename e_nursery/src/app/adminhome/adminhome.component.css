@@ -1,9 +1,5 @@
 
-/* for navbar */
-.logo{
-  height: 2rem;
-  width: 10rem;
-}
+
 
 /* for sidebar */
 .sidebar{
@@ -27,5 +23,11 @@
 
 .router{
   background-color: beige;
+}
+
+
+/* user icon */
+.user{
+  font-size: 1.5rem;
 }
 

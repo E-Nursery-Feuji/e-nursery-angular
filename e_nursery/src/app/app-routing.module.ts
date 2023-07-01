@@ -10,12 +10,14 @@ import { AdminComponent } from './admin/admin.component';
 import { BlogComponent } from './blog/blog.component';
 import { ProductComponent } from './product/product.component';
 import { OrdersComponent } from './orders/orders.component';
+import { ChangepasswordComponent } from './changepassword/changepassword.component';
 
 const routes: Routes = [
   {path:'home',component:HomeComponent},
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterationComponent},
   {path:'forgotpassword',component:ForgotpasswordComponent},
+  {path:'changepassword',component:ChangepasswordComponent},
   {path:'user',component:UserhomeComponent},
   {path:'admin',component:AdminhomeComponent,
     children: [
