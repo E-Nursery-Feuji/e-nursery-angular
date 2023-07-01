@@ -167,6 +167,15 @@ export class CustomerService {
             }
           });
         }
+        else if(data=='Something Went Wrong')
+        {
+          //sweetalert for successful registration
+          Swal.fire({
+            icon: 'error',
+            title: 'Something Went Wrong !',
+            text: "Please Check your internet connection!",
+          });
+        }
       }
     });
   }

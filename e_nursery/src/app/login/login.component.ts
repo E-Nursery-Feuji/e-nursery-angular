@@ -12,7 +12,6 @@ export class LoginComponent implements OnInit {
   loginForm:FormGroup;
   submitted:boolean = false;
 
-
   constructor(private formBuilder:FormBuilder,private customerService:CustomerService)
   {
     this.loginForm = this.formBuilder.group({
