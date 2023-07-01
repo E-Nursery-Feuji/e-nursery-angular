@@ -1,3 +1,4 @@
+
 import { Admin } from './../model/admin';
 import { AdminService } from './../services/adminservice.service';
 import { Component, OnInit } from '@angular/core';
@@ -25,11 +26,13 @@ export class AdminComponent implements OnInit {
       confirmPassword: ['', Validators.required]
     }, { validators: this.passwordMatchValidator });
   }
+
   ngOnInit(): void {
     this.getAdmins();
     throw new Error('Method not implemented.');
 
   }
+
 
 
 //on submit
@@ -82,5 +85,6 @@ getAdmins(){
       this.admins=data;
     })
 }
+
 
 }
