@@ -29,6 +29,14 @@ import { NgxUiLoaderModule,
   SPINNER,
   POSITION,
   PB_DIRECTION } from 'ngx-ui-loader';
+import { PlantsComponent } from './plants/plants.component';
+import { SeedsComponent } from './seeds/seeds.component';
+import { AccessoriesComponent } from './accessories/accessories.component';
+import { FertilizerComponent } from './fertilizer/fertilizer.component';
+import { UserblogComponent } from './userblog/userblog.component';
+import { CustomerhomeComponent } from './customerhome/customerhome.component';
+import { FooterComponent } from './footer/footer.component';
+import { MatCardModule } from '@angular/material/card';
 
   const ngxUiLoaderConfig: NgxUiLoaderConfig={
   "bgsColor": "#1fe909",
@@ -77,8 +85,15 @@ import { NgxUiLoaderModule,
     ProductComponent,
     OrdersComponent,
     ChangepasswordComponent,
-    NavbarComponent
-  ],
+    NavbarComponent,
+    PlantsComponent,
+      SeedsComponent,
+      AccessoriesComponent,
+      FertilizerComponent,
+      UserblogComponent,
+      CustomerhomeComponent,
+      FooterComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -95,6 +110,7 @@ import { NgxUiLoaderModule,
     NgxUiLoaderHttpModule.forRoot({
       showForeground:true,
     }),
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

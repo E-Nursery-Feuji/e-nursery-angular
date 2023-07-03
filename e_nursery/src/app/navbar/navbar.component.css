@@ -1,5 +1,55 @@
+.navbar{
+  height: 4.5rem;
+}
 /* for navbar */
 .logo{
   height: 2rem;
   width: 10rem;
 }
+
+/* for menu */
+.menu {
+  width: 60%;
+  height: 100%;
+  margin-top: 1rem;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  list-style-type: none;
+  height: 100%;
+}
+
+.list .list-element {
+  position: relative;
+}
+
+.list .list-element a {
+  text-decoration: none;
+  color: white;
+  font-size: larger;
+}
+
+.list .list-element:hover a {
+  color: white;
+  zoom: 1.3;
+}
+
+.list .underline {
+  position: absolute;
+  bottom: -3px; /* Adjust this value based on your preference */
+  left: 0;
+  height: 2px;
+  background-color: white;
+  width: 0;
+  transition: width 0.3s ease;
+}
+
+.list .list-element:hover .underline {
+  width: 100%;
+}
+
+
+
