@@ -1,11 +1,21 @@
-import { Injectable } from '@angular/core';
-import { Component, OnInit } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class JwttokenService {
+
+  //checking that user is login or not
+  isLoginned(){
+    if(localStorage.getItem('token') != null){
+      return true;
+    }else{
+      return false;
+    }
+  }
 
   constructor() { }
 

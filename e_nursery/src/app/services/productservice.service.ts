@@ -1,5 +1,3 @@
-import { ProductComponent } from './../product/product.component';
-
 import { Router } from '@angular/router';
 import { Image } from '../model/image';
 import { Product } from '../model/product';

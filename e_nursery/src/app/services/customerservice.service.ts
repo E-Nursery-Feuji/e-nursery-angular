@@ -99,7 +99,7 @@ export class CustomerService {
         console.log(Object.values(data)[0].role)
         if(Object.values(data)[0].role=='CUSTOMER') //it is user
         {
-          this.router.navigateByUrl("/user"); //negigate to user home page
+          this.router.navigateByUrl("/customer"); //negigate to customer home page
         }
         else if(Object.values(data)[0].role=='ADMIN')
         {
@@ -119,7 +119,7 @@ export class CustomerService {
           }).then((result) => {
             if (result.isConfirmed) {
               // Login as User
-              this.router.navigateByUrl("/user");
+              this.router.navigateByUrl("/customer");
             } else if (result.dismiss === Swal.DismissReason.cancel) {
               // Login as Admin
               this.router.navigateByUrl("/admin");
@@ -220,7 +220,7 @@ export class CustomerService {
           });
           if(this.jwttokenserivce.getRoleFromJwtToken()=='CUSTOMER')
           {
-            this.router.navigateByUrl("/user");
+            this.router.navigateByUrl("/customer");
           }
           else if(this.jwttokenserivce.getRoleFromJwtToken()=='ADMIN')
           {
