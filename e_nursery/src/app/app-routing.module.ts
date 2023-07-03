@@ -13,6 +13,12 @@ import { ProductComponent } from './product/product.component';
 import { OrdersComponent } from './orders/orders.component';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { HasRoleGuard } from './has-role.guard';
+import { CustomerhomeComponent } from './customerhome/customerhome.component';
+import { PlantsComponent } from './plants/plants.component';
+import { FertilizerComponent } from './fertilizer/fertilizer.component';
+import { SeedsComponent } from './seeds/seeds.component';
+import { AccessoriesComponent } from './accessories/accessories.component';
+import { UserblogComponent } from './userblog/userblog.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -30,6 +36,15 @@ const routes: Routes = [
       role: 'CUSTOMER',
       role1: 'ADMIN',
     },
+    children:[
+      {path:'home',component:CustomerhomeComponent},
+      {path:'plant',component:PlantsComponent},
+      {path:'fertilizer',component:FertilizerComponent},
+      {path:'seeds',component:SeedsComponent},
+      {path:'accessories',component:AccessoriesComponent},
+      {path:'blog',component:UserblogComponent},
+      {path:'**',redirectTo:'home'}
+    ]
   },
   {
     path: 'admin',

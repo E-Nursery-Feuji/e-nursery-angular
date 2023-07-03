@@ -113,16 +113,16 @@ export class CustomerService {
             // buttonsStyling: false,
             showCancelButton: true,
             showCloseButton: true,
-            confirmButtonText: '<i class="fas fa-users"></i> User',
-            cancelButtonText: '<i class="fas fa-user"></i> Admin',
+            confirmButtonText: '<i class="fas fa-user"></i> Admin',
+            cancelButtonText: '<i class="fas fa-users"></i> User',
             reverseButtons: true,
           }).then((result) => {
             if (result.isConfirmed) {
-              // Login as User
-              this.router.navigateByUrl("/customer");
-            } else if (result.dismiss === Swal.DismissReason.cancel) {
               // Login as Admin
               this.router.navigateByUrl("/admin");
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+              // Login as User
+              this.router.navigateByUrl("/customer");
             }
           });
         }
