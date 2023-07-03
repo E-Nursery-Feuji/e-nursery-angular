@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { JwttokenService } from './../services/jwttoken.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  isLogin:boolean=false;
 
-  constructor() { }
+  constructor(private jwttokenService:JwttokenService,private router:Router) {
+
+   }
 
   ngOnInit(): void {
+
+    this.isLogin=this.jwttokenService.isLoginned();
+
+  }
+
+  toggleLogin(){
+    if(this.isLogin){
+      localStorage.removeItem('token');
+      this.router.navigateByUrl("home");
+      this.isLogin=false;
+    }else{
+      this.router.navigateByUrl("login");
+    }
   }
 
 }
