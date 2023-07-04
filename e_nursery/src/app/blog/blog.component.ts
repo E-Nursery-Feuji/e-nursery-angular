@@ -2,6 +2,7 @@ import { Image } from './../model/image';
 import { Blog } from './../model/Blog';
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../services/BlogService';
+import Swal from 'sweetalert2';
 // import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -13,14 +14,13 @@ export class BlogComponent implements OnInit {
   // blogForm!: FormGroup;
 
   show: boolean = true; // Variable to control form visibility
+  blog:Blog=new Blog()
+
+
+
+
   blogs?: Blog[];
-  newBlog: Blog = {
-    title: '',
-    uploaded_by: '',
-    description: '',
-    status: '',
-    image:undefined
-  };
+
 
   constructor(private blogService: BlogService){}
   // private formBuilder: FormBuilder) {
@@ -31,6 +31,41 @@ export class BlogComponent implements OnInit {
   //     status: ['', Validators.required],
   //     image: ['', Validators.required]
   //   });
+
+  saveBlog() {
+    console.log(this.blog);
+    let blog = {
+      "title": this.blog.title,
+      "uploaded_by": this.blog.uploaded_by,
+      "description": this.blog.description,
+      "status": "active",
+      "image": { "id": 0, "image": this.blog.image }
+    };
+
+    console.log("locAL BLOG "+blog);
+
+    this.blogService.saveBlog(blog).subscribe(savedBlog => {
+
+      console.log('Blog saved:', savedBlog);
+      // Clear the form and refresh the blog list
+      let message = savedBlog
+      Swal.fire({
+        title: 'Confirmation',
+        text: message,
+        icon: 'success'
+        // showCancelButton: true,
+        // confirmButtonText: 'Yes,  it!',
+        // cancelButtonText: 'No, keep it'
+      }).then((result) => {
+        if (!result.isConfirmed) {
+          // Delete operation
+          Swal.fire('Cancelled', 'The operation was cancelled', 'error');
+        }
+      });
+
+      this.getBlogs();
+    });
+  }
 
 
   ngOnInit() {
@@ -58,35 +93,4 @@ export class BlogComponent implements OnInit {
     console.log("click");
     this.show = !this.show; // Toggle the value of showForm variable
   }
-
-  // saveBlog() {
-  //   this.blogService.saveBlog(this.newBlog).subscribe(savedBlog => {
-  //     console.log('Blog saved:', savedBlog);
-  //     // Clear the form and refresh the blog list
-  //     this.newBlog = {
-  //       title: '',
-  //       uploaded_by: '',
-  //       description: '',
-  //       status: '',
-  //       // image: ''
-  //     };
-  //     this.getBlogs();
-  //   });
-  }
-
-
-
-  // onSubmit() {
-  //   if (this.blogForm.valid) {
-  //     // Access form values
-  //     const formData = this.blogForm.value;
-
-  //     // Perform further actions like saving the blog data
-  //     console.log(formData);
-
-  //     // Reset the form after saving the data
-  //     this.blogForm.reset();
-  //     this.showForm = false; // Hide the form
-  //   }
-  // }
-// }
+}
