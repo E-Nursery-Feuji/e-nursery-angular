@@ -1,1 +1,66 @@
-<p>blog works!</p>
+<div *ngIf=show>
+  <!-- ------------------- Add Blog Button starts --------------------->
+<div class="add-button mt-3">
+  <button class="add" mat-raised-button (click)="openDialog()"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;AddBlog</button>
+</div>
+
+  <div class="blog-list">
+    <h2>Blogs</h2>
+    <div class="rows">
+    <div *ngFor="let blog of blogs" class="col">
+      <mat-card>
+        <mat-card-header>
+          <img [src]=blog.image!.image alt="">
+        </mat-card-header>
+        <mat-card-content>
+          <mat-card-title>{{ blog.title }}</mat-card-title>
+          <p>{{ blog.description }} </p>
+          <p>Status:{{ blog.status }}</p>
+          <mat-card-subtitle>Uploaded By: {{ blog.uploaded_by }}</mat-card-subtitle>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  </div>
+  </div>
+  <div *ngIf="!show" class="d-flex justify-content-center mt-1  overflow-hidden ">
+    <div class="bgm border border-2 border-success rounded w-75 mt-5 mb-5 pt-5 pb-5 ">
+    <div class="row ">
+      <div class="col-9">
+        <form class="add-blog-form">
+          <div class="form-group mb-2"style="width: 600px" >
+            <label for="title" class="fw-bold">Title</label>
+            <input type="text" class="form-control w-100" id="title" placeholder="Title" required>
+          </div>
+          <div class="form-group mb-2" style="width: 600px">
+            <label for="uploadedBy" class="fw-bold">Uploaded By</label>
+            <input type="text" class="form-control w-100" id="uploadedBy" placeholder="Uploaded By" required>
+          </div>
+          <div class="form-group mb-2" style="width: 600px">
+            <label for="description"class="fw-bold">Description</label>
+            <textarea class="form-control w-100" id="description" rows="3" placeholder="Description" required></textarea>
+          </div>
+          <div class="form-group mb-2" style="width: 600px">
+            <label for="status" class="fw-bold">Status</label>
+            <input type="text" class="form-control w-100" id="status" placeholder="Status" required>
+          </div>
+          <div class="form-group">
+            <label for="image" class="fw-bold">Image</label>
+            <div class="custom-file mb-3">
+              <input type="file" class="custom-file-input" id="image" name="image" accept="image/*" required>
+
+            </div>
+          </div>
+          <button class="btn d-flex justify-content-center align-items-center " type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
+
+
+
+
