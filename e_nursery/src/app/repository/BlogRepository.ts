@@ -21,7 +21,11 @@ export class BlogRepository
    return this.http.get<Blog[]>(this.baseUrl+"blogs")
   }
 
-  saveBlog(blog: Blog): Observable<Blog> {
-    return this.http.post<Blog>(this.baseUrl+"saveblog")
+  // saveBlog(blog: Blog): Observable<Blog> {
+  //   return this.http.post<Blog>(this.baseUrl+"saveblog")
+  // }
+  saveBlog(blog: Blog): Observable<string> {
+    return this.http.post<string>(this.baseUrl + "saveblog/", blog);
   }
+
 }
