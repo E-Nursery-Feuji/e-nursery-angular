@@ -99,7 +99,7 @@ export class CustomerService {
         console.log(Object.values(data)[0].role)
         if(Object.values(data)[0].role=='CUSTOMER') //it is user
         {
-          this.router.navigateByUrl("/user"); //negigate to user home page
+          this.router.navigateByUrl("/customer"); //negigate to customer home page
         }
         else if(Object.values(data)[0].role=='ADMIN')
         {
@@ -113,16 +113,16 @@ export class CustomerService {
             // buttonsStyling: false,
             showCancelButton: true,
             showCloseButton: true,
-            confirmButtonText: '<i class="fas fa-users"></i> User',
-            cancelButtonText: '<i class="fas fa-user"></i> Admin',
+            confirmButtonText: '<i class="fas fa-user"></i> Admin',
+            cancelButtonText: '<i class="fas fa-users"></i> User',
             reverseButtons: true,
           }).then((result) => {
             if (result.isConfirmed) {
-              // Login as User
-              this.router.navigateByUrl("/user");
-            } else if (result.dismiss === Swal.DismissReason.cancel) {
               // Login as Admin
               this.router.navigateByUrl("/admin");
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+              // Login as User
+              this.router.navigateByUrl("/customer");
             }
           });
         }
@@ -165,6 +165,15 @@ export class CustomerService {
             {
               this.router.navigateByUrl("/login"); //redirect to login page
             }
+          });
+        }
+        else if(data=='Something Went Wrong')
+        {
+          //sweetalert for successful registration
+          Swal.fire({
+            icon: 'error',
+            title: 'Something Went Wrong !',
+            text: "Please Check your internet connection!",
           });
         }
       }
@@ -211,7 +220,7 @@ export class CustomerService {
           });
           if(this.jwttokenserivce.getRoleFromJwtToken()=='CUSTOMER')
           {
-            this.router.navigateByUrl("/user");
+            this.router.navigateByUrl("/customer");
           }
           else if(this.jwttokenserivce.getRoleFromJwtToken()=='ADMIN')
           {
