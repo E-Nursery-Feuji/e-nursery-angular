@@ -68,7 +68,7 @@
     <h2 class="title mt-3 mb-2">{{heading}}</h2>
     <hr>
     <div class="form">
-      <form action="" [formGroup]="saveProduct" (ngSubmit)="saveImageProduct()">
+      <form action="" [formGroup]="saveProduct" (ngSubmit)="saveImageProduct()" enctype="multipart/form-data">
         <div class="row">
           <div class="col-md-6">
             <mat-form-field appearance="outline" class="filed">
