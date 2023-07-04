@@ -23,6 +23,10 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { NavbarComponent } from './navbar/navbar.component';
+
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+
 import { NgxUiLoaderModule,
   NgxUiLoaderConfig,
   NgxUiLoaderHttpModule,
@@ -71,6 +75,7 @@ import { MatCardModule } from '@angular/material/card';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -106,11 +111,16 @@ import { MatCardModule } from '@angular/material/card';
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
+
+    MatCardModule,
+    MatIconModule,
+
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     NgxUiLoaderHttpModule.forRoot({
       showForeground:true,
     }),
     MatCardModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
