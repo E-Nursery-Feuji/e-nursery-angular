@@ -18,18 +18,21 @@
         <th class="description">Description</th>
         <th>Actions</th>
       </tr>
+
     </thead>
     <tbody>
       <tr *ngFor="let product of products">
+
+
         <td>
           <div class="d-flex align-items-center">
 
-            <img
-                src="{{product.image.image}}"
-                alt=""
-                style="width: 45px; height: 45px"
-                class="rounded-circle"
-                />
+        <img
+      [src]="product.image.image"
+      alt=""
+      style="width: 45px; height: 45px"
+      class="rounded-circle"
+    />
 
             <div class="ms-3">
               <p class="fw-bold mb-1">{{product.name}}</p>
