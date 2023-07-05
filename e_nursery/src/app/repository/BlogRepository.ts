@@ -22,6 +22,6 @@ export class BlogRepository
   }
 
   saveBlog(blog: Blog): Observable<Blog> {
-    return this.http.post<Blog>(this.baseUrl+"saveblog")
+    return this.http.post<Blog>(this.baseUrl+"saveblog/",blog);
   }
 }

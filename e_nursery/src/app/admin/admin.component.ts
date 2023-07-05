@@ -126,6 +126,7 @@ export class AdminComponent implements OnInit {
 
   editAdmin(admin:Admin)
   {
+    this.hide=true;
     this.hide=!(this.hide);
     this.heading="Edit Admin";
     this.editid=admin.id;

@@ -4,6 +4,7 @@ import { Product } from '../model/product';
 import { Image } from '../model/image';
 import { Type } from '../model/type';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { error } from 'console';
 
 @Component({
   selector: 'app-product',
@@ -43,6 +44,11 @@ export class ProductComponent implements OnInit {
       description: ['', Validators.required],
     });
   }
+
+
+
+
+
 
   ngOnInit(): void {
     this.show=true
@@ -128,7 +134,9 @@ export class ProductComponent implements OnInit {
   // getting the products
   getProducts() {
     this.productservice.getProducts().subscribe((data) => {
-      this.products = this.products.concat(data);
+      this.products = this.products.concat(data)
+      ;
+
     });
   }
 

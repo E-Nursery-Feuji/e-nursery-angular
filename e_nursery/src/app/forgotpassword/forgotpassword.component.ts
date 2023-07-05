@@ -51,7 +51,7 @@ export class ForgotpasswordComponent implements OnInit {
     {
       return;
     }
-    if(this.otpSubmitForm.valid)6
+    if(this.otpSubmitForm.valid)
     {
       console.log(this.otpSubmitForm.value.otp);
       this.customerService.checkOtp(this.otpSubmitForm.value.otp);
