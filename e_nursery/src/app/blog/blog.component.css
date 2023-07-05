@@ -56,7 +56,32 @@ h2 {
   background-color: #008000;
   color: white;
 }
-.bgm{
-  background-color: rgba(86, 189, 86, 0.693);
+/* CSS for form submit button */
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
 }
+
+button[type="submit"]:hover {
+  background-color:#008000;
+}
+
+ button[type="submit"]:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+
+.form-container{
+  background-image: url('https://cdn4.1800flowers.com/wcsstore/Flowers/images/2020/lp/virtual-backgrounds/Plants-macro-virtual-background.jpg');
+  background-position: center;
+  color:black;
+  padding: 50px;
+  padding-left: 200px;
+}
+
 

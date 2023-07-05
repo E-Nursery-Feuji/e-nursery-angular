@@ -1,5 +1,5 @@
+ <!-- ------------------- Add Blog Button starts --------------------->
 <div *ngIf=show>
-  <!-- ------------------- Add Blog Button starts --------------------->
       <div class="add-button mt-3">
         <button class="add" mat-raised-button (click)="openDialog()"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;AddBlog</button>
       </div>
@@ -9,56 +9,70 @@
             <div class="rows">
               <div *ngFor="let blog of blogs" class="col">
                     <mat-card>
-                        <mat-card-header>
-                          <img [src]=blog.image!.image alt="">
-                        </mat-card-header>
-                        <mat-card-content>
-                          <mat-card-title>{{ blog.title }}</mat-card-title>
-                          <p>{{ blog.description }} </p>
-                          <p>Status:{{ blog.status }}</p>
-                          <mat-card-subtitle>Uploaded By: {{ blog.uploaded_by }}</mat-card-subtitle>
-                        </mat-card-content>
-                      </mat-card>
+                      <mat-card-header>
+                        <img [src]=blog.image!.image alt="">
+                      </mat-card-header>
+                      <mat-card-content>
+                        <mat-card-title>{{ blog.title }}</mat-card-title>
+                        <p>{{ blog.description }} </p>
+                        <p>Status:{{ blog.status }}</p>
+                        <mat-card-subtitle>Uploaded By: {{ blog.uploaded_by }}</mat-card-subtitle>
+                      </mat-card-content>
+                    </mat-card>
               </div>
           </div>
       </div>
   </div>
-
-  <div *ngIf="!show" class="d-flex justify-content-center mt-1  overflow-hidden ">
-    <div class="bgm border border-2 border-success rounded w-75 mt-5 mb-5 pt-5 pb-5 ">
-    <div class="row ">
-      <div class="col-9">
-        <form class="add-blog-form" (ngSubmit)="saveBlog()">
-          <div class="form-group mb-2"style="width: 600px" >
-            <label for="title" class="fw-bold">Title</label>
-            <input type="text" class="form-control w-100" id="title" name="title" placeholder="Title" required [(ngModel)]="blog.title">
-          </div>
-          <div class="form-group mb-2" style="width: 600px">
-            <label for="uploadedBy" class="fw-bold">Uploaded By</label>
-            <input type="text" class="form-control w-100" id="uploadedBy" name="by" placeholder="Uploaded By" required [(ngModel)]="blog.uploaded_by">
-          </div>
-          <div class="form-group mb-2" style="width: 600px">
-            <label for="description"class="fw-bold">Description</label>
-            <textarea class="form-control w-100" id="description" rows="3" name="description" placeholder="Description" required [(ngModel)]="blog.description"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="image" class="fw-bold">Image</label>
-            <div class="custom-file mb-3">
-              <input type="file" class="custom-file-input" id="image" name="image" accept="image/*" required [(ngModel)]="blog.image">
-
+  <div *ngIf="!show" class="d-flex justify-content-center mt-1  overflow-hidden form-container" >
+    <div class="bgm rounded w-75 mt-5 mb-5 pt-5 pb-5 ">
+      <div class="row ">
+        <div class="col-9">
+          <form class="add-blog-form" (ngSubmit)="saveBlog()" #blogForm="ngForm">
+            <div class="form-group mb-2" style="width: 400px">
+              <label for="title" class="fw-bold">Title</label>
+              <input type="text" class="form-control w-100" id="title" name="title" placeholder="Title" required [(ngModel)]="blog.title" #title="ngModel"pattern="^[a-zA-Z\s]{1,50}$">
+              <div *ngIf="title.invalid && (title.dirty || title.touched)" class="text-danger">
+                <div *ngIf="title.errors?.['required']">Title is required.</div>
+                <div *ngIf="title.errors?.['pattern']">Title must be between 1 and 50 letters, and should not contain numbers or special characters.</div>
+              </div>
             </div>
-          </div>
-          <div class="btn-group">
-            <button type="button" class="btn btn-primary d-inline mr-2">Button 1</button>
-            <button type="button" class="btn btn-secondary d-inline">Button 2</button>
-          </div>
+            <div class="form-group mb-2" style="width: 400px">
+              <label for="uploadedBy" class="fw-bold">Uploaded By</label>
+              <input type="text" class="form-control w-100" id="uploadedBy" name="uploadedBy" placeholder="Uploaded By" required [(ngModel)]="blog.uploaded_by" #uploadedBy="ngModel"#title="ngModel"pattern="^[a-zA-Z\s]{1,50}$">
+              <div *ngIf="uploadedBy.invalid && (uploadedBy.dirty || uploadedBy.touched)" class="text-danger">
+                <div *ngIf="uploadedBy.errors?.['required']">Uploaded By is required.</div>
+                <div *ngIf="title.errors?.['pattern']">Title must be between 1 and 50 letters, and should not contain numbers or special characters.</div>
+              </div>
+            </div>
+            <div class="form-group mb-2" style="width: 400px">
+              <label for="description" class="fw-bold">Description</label>
+              <textarea class="form-control w-100" id="description" rows="3" name="description" placeholder="Description" required [(ngModel)]="blog.description" #description="ngModel"></textarea>
+              <div *ngIf="description.invalid && (description.dirty || description.touched)" class="text-danger">
+                <div *ngIf="description.errors?.['required']">Description is required.</div>
 
-        </form>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="image" class="fw-bold">Image</label>
+              <div class="custom-file mb-3">
+                <input type="file" class="custom-file-input" id="image" name="image" accept="image/*" required [(ngModel)]="blog.image" #image="ngModel">
+                <div *ngIf="image.invalid && (image.dirty || image.touched)" class="text-danger">
+                  <div *ngIf="image.errors?.['required']">Image is required.</div>
+                </div>
+              </div>
+            </div>
+            <div class="button m-4">
+              <button type="button" class="btn btn-secondary m-3" (click)="openDialog()">Back</button>
+              <button type="submit" class="btn btn-success m-3">Save</button>
+              <button type="reset" class="btn btn-secondary m-3">Reset</button>
+            </div>
+
+          </form>
+        </div>
       </div>
     </div>
   </div>
-  </div>
+
 
 
 
