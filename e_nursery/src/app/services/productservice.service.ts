@@ -1,20 +1,30 @@
+import { Product } from './../model/product';
 import { Router } from '@angular/router';
 import { Image } from '../model/image';
-import { Product } from '../model/product';
 import { ProductRepository } from './../repository/product-repository.service';
 import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
-import { stringify } from 'querystring';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class Productservice {
+  products:Product[]=[];
+  images:Image[]=[];
 
   image!:Image;
   productData!:Product
 
-  constructor(private productRepository:ProductRepository,private router:Router) { }
+  constructor(private productRepository:ProductRepository,private router:Router) {
+    this.productRepository.getProducts().subscribe(data =>{
+      console.log(data);
+      this.products=data;
+    console.log(this.products)});
+
+      this.productRepository.getImages().subscribe(data =>{this.images=data}
+        );
+   }
 
   //for get the types
   getTypes()
@@ -91,9 +101,9 @@ export class Productservice {
       // image.id=jsonResponse[0].pk;
       // image.image=jsonResponse[0].fields.image
       product.image_id=data.id
-      console.log("updating.........")
-      console.log(product.image_id)
-      console.log(data.id)
+      // console.log("updating.........")
+      // console.log(product.image_id)
+      // console.log(data.id)
       this.updateProduct(product)
     });
     }
@@ -130,12 +140,15 @@ export class Productservice {
    //for get the products
    getProducts()
    {
-     return this.productRepository.getProducts();
+    console.log(this.products)
+
+    return this.products;
+
    }
 
    getImages()
    {
-     return this.productRepository.getImages();
+     return this.images;
    }
 
    //delete Product
@@ -165,6 +178,14 @@ export class Productservice {
       }
 
     })
+   }
+
+   //getting plants only by using
+   getPlants(){
+    // console.log("getplants()")
+    // console.log(this.products)
+    // console.log(this.getProducts())
+    return this.products.filter( p => p.type.id==1);
    }
 }
 

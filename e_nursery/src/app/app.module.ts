@@ -40,6 +40,7 @@ import { FertilizerComponent } from './fertilizer/fertilizer.component';
 import { UserblogComponent } from './userblog/userblog.component';
 import { CustomerhomeComponent } from './customerhome/customerhome.component';
 import { FooterComponent } from './footer/footer.component';
+import { DiscountPipe } from './discount.pipe';
 
   const ngxUiLoaderConfig: NgxUiLoaderConfig={
   "bgsColor": "#1fe909",
@@ -96,7 +97,8 @@ import { FooterComponent } from './footer/footer.component';
       FertilizerComponent,
       UserblogComponent,
       CustomerhomeComponent,
-      FooterComponent
+      FooterComponent,
+      DiscountPipe
    ],
   imports: [
     BrowserModule,
