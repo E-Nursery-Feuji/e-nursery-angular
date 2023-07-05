@@ -10,5 +10,6 @@ export class Product
   public discount!:number;
   public quantity!:number;
   public type!:Type;
-  public image!:Image
+  public image_id!:number;
+ // image_url!:any;
 }

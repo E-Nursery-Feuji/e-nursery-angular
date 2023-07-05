@@ -22,10 +22,14 @@ export class BlogRepository
   getAllBlogs():Observable<Blog[]>{
    return this.http.get<Blog[]>(this.baseUrl+"blogs")
   }
-   saveBlog(blog: Blog): Observable<string> {
-    console.log(blog)
-    return this.http.post<string>(`http://127.0.0.1:8000/products/saveblog/`, blog);
-  }
 
 
+
+  saveBlog(blog: Blog): Observable<Blog> {
+    return this.http.post<Blog>(this.baseUrl+"saveblog/",blog);
+
+
+
+
+}
 }

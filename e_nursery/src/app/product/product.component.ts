@@ -4,6 +4,7 @@ import { Product } from '../model/product';
 import { Image } from '../model/image';
 import { Type } from '../model/type';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { error } from 'console';
 
 @Component({
   selector: 'app-product',
@@ -44,6 +45,11 @@ export class ProductComponent implements OnInit {
     });
   }
 
+
+
+
+
+
   ngOnInit(): void {
     this.show=true
     this.getImages();
@@ -55,6 +61,23 @@ export class ProductComponent implements OnInit {
   openDialog() {
     this.show = !this.show;
     this.heading="Add Product";
+    this.saveProduct.patchValue({
+      id:'',
+      typeName: '',
+      name:'',
+      price:'',
+      discount: '',
+      quantity: '',
+      description: '',
+      image:'',
+    });
+    this.getProducts();
+    this.getImages();
+  }
+
+  //for clearing the form
+  resetForm()
+  {
     this.saveProduct.patchValue({
       id:'',
       typeName: '',
@@ -134,14 +157,20 @@ export class ProductComponent implements OnInit {
   // getting the products
   getProducts() {
     this.productservice.getProducts().subscribe((data) => {
-      this.products = this.products.concat(data);
+      this.products = this.products.concat(data)
+      ;
+
     });
   }
-
+img1!:any
   //getting the images
   getImages() {
     this.productservice.getImages().subscribe((data) => {
+      //this.img1="http://localhost:8000/media/images/None/p.png"
       this.images = this.images.concat(data);
+      console.log(this.images)
+      this.images.forEach((o)=>this.img1=o.image_url)
+      //console.log(this.img1)
     });
   }
 
@@ -159,7 +188,7 @@ export class ProductComponent implements OnInit {
       discount: product.discount,
       quantity: product.quantity,
       description: product.description,
-      image : product.image.image
+      // image : product.image_id
     });
     this.show = !this.show;
   }

@@ -18,18 +18,24 @@
         <th class="description">Description</th>
         <th>Actions</th>
       </tr>
+
     </thead>
     <tbody>
-      <tr *ngFor="let product of products">
-        <td>
-          <div class="d-flex align-items-center">
 
-            <img
-                src="{{product.image.image}}"
+      <tr *ngFor="let product of products">
+
+        <td  >
+          <div class="d-flex align-items-center">
+            <div *ngFor="let image of images">
+            <img *ngIf="product.image_id==image.id"
+                src="{{image.image_url}}"
                 alt=""
                 style="width: 45px; height: 45px"
                 class="rounded-circle"
                 />
+              </div>
+
+
 
             <div class="ms-3">
               <p class="fw-bold mb-1">{{product.name}}</p>
@@ -128,10 +134,12 @@
         <div class="button m-4">
           <button type="button" class="btn btn-secondary m-3" (click)="openDialog()">Back</button>
           <button type="submit" class="btn btn-success m-3" >Save</button>
-          <button type="reset" class="btn btn-primary m-3">Reset</button>
+          <button type="reset" class="btn btn-primary m-3" (click)="resetForm()">Reset</button>
         </div>
       </form>
     </div>
   </div>
 </div>
 <!-- ------------------ add Product form ends ------------------------- -->
+
+

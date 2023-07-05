@@ -29,6 +29,7 @@ export class BlogComponent implements OnInit {
 
     console.log("locAL BLOG "+blog);
 
+
     this.blogService.saveBlog(blog).subscribe(savedBlog => {
       console.log('Blog saved:', savedBlog);
       // Clear the form and refresh the blog list
@@ -40,6 +41,7 @@ export class BlogComponent implements OnInit {
       })
       this.getBlogs();
     });
+
   }
 
   ngOnInit() {
