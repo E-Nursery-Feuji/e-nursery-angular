@@ -59,7 +59,7 @@ export class AdminComponent implements OnInit {
       this.admin=this.registrationForm.value
       console.log(this.admin)
       console.log(this.admin.id)
-       this.adminService.updateStatus(this.admin.id,this.admin).subscribe(() => {
+       this.adminService.update(this.admin.id,this.admin).subscribe(() => {
         console.log('Status updated successfully.');
         this.show=!(this.show);
         this.getAdmins();
@@ -83,7 +83,7 @@ export class AdminComponent implements OnInit {
       console.log(this.registrationForm.value.password)
       this.admin=this.registrationForm.value;
       this.admin.role="ADMIN";
-      this.admin.status="active";
+      this.admin.status="Active";
       this.adminService.saveAdmin(this.admin); //send to service
     }
   }
@@ -148,22 +148,22 @@ export class AdminComponent implements OnInit {
   activeStatus!: boolean;
 
 
-  updatestatus(admin: Admin) {
-    console.log(admin)
-    if(admin.status=="active"){
-      this.activeStatus = false;
-    }
-    else{
-      this.activeStatus=true;
-    }
+  updatestatus(id:number) {
+    console.log(id)
+    // if(i.status=="active"){
+    //   this.activeStatus = false;
+    // }
+    // else{
+    //   this.activeStatus=true;
+    // }
 
 
-    console.log(this.activeStatus)
-    admin.status= this.activeStatus ? 'active' : 'inactive';
-    console.log(admin)
+    // console.log(this.activeStatus)
+    // admin.status= this.activeStatus ? 'active' : 'inactive';
+    // console.log(admin)
 
     // Call the service method to update the status in the database
-    this.adminService.updateStatus(admin.id, admin).subscribe(() => {
+    this.adminService.updateStatus(id).subscribe(() => {
       console.log('Status updated successfully.');
       this.getAdmins();
 

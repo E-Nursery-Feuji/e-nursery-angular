@@ -39,7 +39,7 @@
         </td> -->
 
         <td>
-          <button type="button"  class="product-button " (click)="updatestatus(admin)">
+          <button type="button"  class="product-button " (click)="updatestatus(admin.id)">
             <i class="fa fa-lg "   [ngClass]="{'fa-toggle-on': admin.status === 'Active', 'fa-toggle-off': admin.status === 'InActive'}" aria-hidden="true"></i>
           </button>
         </td>
