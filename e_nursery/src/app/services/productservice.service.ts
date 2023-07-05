@@ -4,6 +4,7 @@ import { Product } from '../model/product';
 import { ProductRepository } from './../repository/product-repository.service';
 import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
+import { stringify } from 'querystring';
 
 @Injectable({
   providedIn: 'root'
@@ -30,14 +31,21 @@ export class Productservice {
     imageData.append('image',image,image.name); //put image in form data object
     //foe save the image
     console.log("image=data")
-    console.log(imageData)
+    //console.log(imageData)
     this.productRepository.saveImage(imageData).subscribe(data=>{
-      console.log(data);
+      console.log(data.id);
+      console.log(typeof(data.id))
+      // console.log(typeof(product.image.id))
       // const jsonResponse = JSON.parse(data);
       // image.id=jsonResponse[0].pk;
       // image.image_data=jsonResponse[0].fields.image_data
-      // product.image=image
-      // this.saveProduct(product)
+      product.image_id=data.id;
+      console.log("+++++++++++++")
+      //console.log(product.image)
+       //product.image=data.id
+
+       console.log(product)
+       this.saveProduct(product)
     });
 
   }
@@ -76,13 +84,16 @@ export class Productservice {
     {
       const imageData=new FormData();
       console.log(image)
-      imageData.append('image',image); //put image in form data object
+      imageData.append('image',image,image.name); //put image in form data object
       //foe save the image
       this.productRepository.saveImage(imageData).subscribe(data=>{
-      const jsonResponse = JSON.parse(data);
-      image.id=jsonResponse[0].pk;
-      image.image=jsonResponse[0].fields.image
-      product.image=image
+      // const jsonResponse = JSON.parse(data);
+      // image.id=jsonResponse[0].pk;
+      // image.image=jsonResponse[0].fields.image
+      product.image_id=data.id
+      console.log("updating.........")
+      console.log(product.image_id)
+      console.log(data.id)
       this.updateProduct(product)
     });
     }
