@@ -41,9 +41,9 @@ export class ProductRepository {
   }
 
   // for getting products
-  getProducts()
+  getProducts():Observable<Product[]>
   {
-    return this.http.get<Product>(this.baseUrl+"products/");
+    return this.http.get<Product[]>(this.baseUrl+"products/");
   }
 
   //deleting product
@@ -53,9 +53,9 @@ export class ProductRepository {
   }
 
   //for getting the images
-  getImages()
+  getImages():Observable<Image[]>
   {
-    return this.http.get<Image>(this.baseUrl+"images/");
+    return this.http.get<Image[]>(this.baseUrl+"images/");
   }
 
 }
