@@ -4,10 +4,12 @@
   color: red;
 }
 
+
 .gallery .image-container{
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+
 }
 .gallery .image-container .image{
   height: auto;

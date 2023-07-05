@@ -16,6 +16,22 @@ export class PlantsComponent implements OnInit {
   ngOnInit() {
 
 
+
+  }
+
+  //for getting plant only
+  getPlants(){
+    console.log(this.productservice.getPlants())
+    console.log(this.productservice.getProducts())
+    return this.productservice.getPlants();
+  }
+
+  //for getting images
+  getImages(){
+    console.log("images")
+    console.log(this.productservice.getImages())
+    return this.productservice.getImages();
+
   }
 
   //for getting plant only
@@ -31,5 +47,7 @@ export class PlantsComponent implements OnInit {
     console.log(this.productservice.getImages())
     return this.productservice.getImages();
   }
+
+  
 
 }

@@ -187,6 +187,12 @@ export class Productservice {
     // console.log(this.getProducts())
     return this.products.filter( p => p.type.id==1);
    }
+
+
+   getAccessories(){
+    return this.products.filter( p => p.type.id==2);
+   }
+
 }
 
 
