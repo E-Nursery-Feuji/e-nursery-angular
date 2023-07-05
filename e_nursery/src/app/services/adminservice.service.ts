@@ -54,10 +54,13 @@ export class AdminService {
   return this.adminRepository.getAdmin();
   }
 
-  updateStatus(id:number,status:Admin){
+  updateStatus(id:number){
+    return this.adminRepository.updateStatus(id);
+  }
+  update(id:number,status:Admin){
     return this.adminRepository.update(id,status);
   }
 
-  //for login validation
+  
 
 }

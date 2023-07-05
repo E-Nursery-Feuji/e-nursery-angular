@@ -24,7 +24,7 @@ import {MatInputModule} from '@angular/material/input';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
-// import { MatCardModule } from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 
 import { NgxUiLoaderModule,
@@ -40,7 +40,6 @@ import { FertilizerComponent } from './fertilizer/fertilizer.component';
 import { UserblogComponent } from './userblog/userblog.component';
 import { CustomerhomeComponent } from './customerhome/customerhome.component';
 import { FooterComponent } from './footer/footer.component';
-import { MatCardModule } from '@angular/material/card';
 
   const ngxUiLoaderConfig: NgxUiLoaderConfig={
   "bgsColor": "#1fe909",
@@ -112,7 +111,6 @@ import { MatCardModule } from '@angular/material/card';
     MatSelectModule,
     MatInputModule,
     MatIconModule,
-
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     NgxUiLoaderHttpModule.forRoot({
       showForeground:true,
