@@ -71,6 +71,23 @@ export class ProductComponent implements OnInit {
       description: '',
       image:'',
     });
+    this.getProducts();
+    this.getImages();
+  }
+
+  //for clearing the form
+  resetForm()
+  {
+    this.saveProduct.patchValue({
+      id:'',
+      typeName: '',
+      name:'',
+      price:'',
+      discount: '',
+      quantity: '',
+      description: '',
+      image:'',
+    });
   }
 
   //get the types
@@ -145,11 +162,15 @@ export class ProductComponent implements OnInit {
 
     });
   }
-
+img1!:any
   //getting the images
   getImages() {
     this.productservice.getImages().subscribe((data) => {
+      //this.img1="http://localhost:8000/media/images/None/p.png"
       this.images = this.images.concat(data);
+      console.log(this.images)
+      this.images.forEach((o)=>this.img1=o.image_url)
+      //console.log(this.img1)
     });
   }
 
@@ -167,7 +188,7 @@ export class ProductComponent implements OnInit {
       discount: product.discount,
       quantity: product.quantity,
       description: product.description,
-      image : product.image.image
+      // image : product.image_id
     });
     this.show = !this.show;
   }
