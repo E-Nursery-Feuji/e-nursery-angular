@@ -10,6 +10,8 @@ import { Observable } from "rxjs";
   providedIn:'root'
 })
 export class BlogRepository
+
+
 {
   constructor(private http:HttpClient){
 
@@ -21,7 +23,10 @@ export class BlogRepository
    return this.http.get<Blog[]>(this.baseUrl+"blogs")
   }
 
+
   saveBlog(blog: Blog): Observable<Blog> {
     return this.http.post<Blog>(this.baseUrl+"saveblog/",blog);
-  }
+
+
+
 }

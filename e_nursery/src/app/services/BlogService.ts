@@ -19,9 +19,9 @@ getAllBlogs():Observable<Blog[]>{
  return this.blogRepository.getAllBlogs()
 
   }
-  saveBlog(blog: Blog): Observable<Blog> {
-    // Implement the logic to save the blog to the API
-    return this.http.post<Blog>(this.apiUrl, blog);
-  }
 
+  saveBlog(blog: Blog) {
+    // Implement the logic to save the blog to the API
+    return this.blogRepository.saveBlog(blog)
+  }
 }

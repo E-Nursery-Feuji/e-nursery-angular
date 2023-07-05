@@ -88,6 +88,7 @@ export class ProductComponent implements OnInit {
   // save the image & product
   saveImageProduct() {
     this.submitted = true;
+    // alert(1)
     if (this.saveProduct.invalid) {
       return;
     }
@@ -115,7 +116,9 @@ export class ProductComponent implements OnInit {
       }
       else
       {
+        // alert(2)
         if (this.saveProduct.valid) {
+          // alert(3)
           this.product = this.saveProduct.value; //setting values of product
           this.types.forEach((type) => {         //setting type to product object
             if (type.name == this.saveProduct.value.typeName) {
@@ -125,6 +128,9 @@ export class ProductComponent implements OnInit {
               };
             }
           });
+          // alert(4)
+          // console.log(this.file)
+          // console.log(this.product)
           this.productservice.saveProductImage(this.file, this.product);
         }
       }

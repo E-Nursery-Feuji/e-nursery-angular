@@ -26,14 +26,18 @@ export class Productservice {
   {
     const imageData=new FormData();
     console.log(image)
-    imageData.append('image',image); //put image in form data object
+    // imageData.append('id);
+    imageData.append('image',image,image.name); //put image in form data object
     //foe save the image
+    console.log("image=data")
+    console.log(imageData)
     this.productRepository.saveImage(imageData).subscribe(data=>{
-      const jsonResponse = JSON.parse(data);
-      image.id=jsonResponse[0].pk;
-      image.image_data=jsonResponse[0].fields.image_data
-      product.image=image
-      this.saveProduct(product)
+      console.log(data);
+      // const jsonResponse = JSON.parse(data);
+      // image.id=jsonResponse[0].pk;
+      // image.image_data=jsonResponse[0].fields.image_data
+      // product.image=image
+      // this.saveProduct(product)
     });
 
   }

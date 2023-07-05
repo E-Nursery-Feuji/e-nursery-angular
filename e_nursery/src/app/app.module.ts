@@ -24,7 +24,7 @@ import {MatInputModule} from '@angular/material/input';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
-import { MatCardModule } from '@angular/material/card';
+// import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 
 import { NgxUiLoaderModule,
@@ -110,8 +110,6 @@ import { FooterComponent } from './footer/footer.component';
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
-
-    MatCardModule,
     MatIconModule,
 
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),

@@ -24,9 +24,9 @@ export class ProductRepository {
   }
 
   //for save Image
-  saveImage(imageDate:any):Observable<any>
+  saveImage(imageData:any):Observable<any>
   {
-    return this.http.post<any>(this.baseUrl+"saveimage/",imageDate);
+    return this.http.post<any>(this.baseUrl+"saveImage/",imageData);
   }
   //for save the product
   saveProduct(product:Product):Observable<Product>
