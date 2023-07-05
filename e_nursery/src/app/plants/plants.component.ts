@@ -32,4 +32,6 @@ export class PlantsComponent implements OnInit {
     return this.productservice.getImages();
   }
 
+  
+
 }

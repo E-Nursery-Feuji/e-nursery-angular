@@ -1,3 +1,9 @@
+/* ---------------for price ------------ */
+/* ---------- for cut the price ----------- */
+.text-cut{
+  text-decoration: line-through;
+  color: red;
+}
 .sydney-block{
   position: absolute;
   top: 0;
@@ -8,6 +14,7 @@
   width: 100%;
   height: auto;
   text-align: right;
+  /* color:white; */
 }
 .sydney-info p{
    color: #fff;
@@ -17,7 +24,7 @@
    margin: 0;
 }
 .sydney-info h4{
-   color: white;
+   color:black;
    padding: 0 10px 10px;
    font-size: 22px;
    margin: 0;
@@ -49,7 +56,7 @@
    justify-content: space-around;
    width: 100%;
    color: white;
-   border-top: 1px solid white;
+   border-top: 2px solid white;
    align-items: center;
    padding: 5px 0;
 }
@@ -67,6 +74,7 @@
    overflow: hidden;
    backface-visibility: hidden;
    transform: translateZ(0);
+   /* border: 3px solid green; */
 }
 [class*=' imghvr-'] img,
 [class^=imghvr-] img {
@@ -198,6 +206,7 @@
 }
 .desti-bg {
    padding: 80px 0;
+   background-color: rgb(214, 213, 213);
 }
 
 /* ------------- for reponsive ----------- */
