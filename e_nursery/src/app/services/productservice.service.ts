@@ -188,9 +188,11 @@ export class Productservice {
     return this.products.filter( p => p.type.id==1);
    }
 
+
    getAccessories(){
     return this.products.filter( p => p.type.id==2);
    }
+
 }
 
 
