@@ -3,7 +3,7 @@ import { Blog } from './../model/Blog';
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../services/BlogService';
 import Swal from 'sweetalert2';
-// import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-blog',
@@ -11,26 +11,11 @@ import Swal from 'sweetalert2';
   styleUrls: ['./blog.component.css']
 })
 export class BlogComponent implements OnInit {
-  // blogForm!: FormGroup;
 
   show: boolean = true; // Variable to control form visibility
   blog:Blog=new Blog()
-
-
-
-
   blogs?: Blog[];
-
-
   constructor(private blogService: BlogService){}
-  // private formBuilder: FormBuilder) {
-  //   this.blogForm = this.formBuilder.group({
-  //     title: ['', Validators.required],
-  //     uploaded_by: ['', Validators.required],
-  //     description: ['', Validators.required],
-  //     status: ['', Validators.required],
-  //     image: ['', Validators.required]
-  //   });
 
   saveBlog() {
     console.log(this.blog);
@@ -45,7 +30,6 @@ export class BlogComponent implements OnInit {
     console.log("locAL BLOG "+blog);
 
     this.blogService.saveBlog(blog).subscribe(savedBlog => {
-
       console.log('Blog saved:', savedBlog);
       // Clear the form and refresh the blog list
       let message = savedBlog
@@ -53,24 +37,13 @@ export class BlogComponent implements OnInit {
         title: 'Confirmation',
         text: message,
         icon: 'success'
-        // showCancelButton: true,
-        // confirmButtonText: 'Yes,  it!',
-        // cancelButtonText: 'No, keep it'
-      }).then((result) => {
-        if (!result.isConfirmed) {
-          // Delete operation
-          Swal.fire('Cancelled', 'The operation was cancelled', 'error');
-        }
-      });
-
+      })
       this.getBlogs();
     });
   }
 
-
   ngOnInit() {
     this.getBlogs();
-
   }
 
   getBlogs() {

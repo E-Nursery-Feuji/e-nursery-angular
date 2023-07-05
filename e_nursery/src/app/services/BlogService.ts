@@ -10,7 +10,8 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class BlogService{
-  private apiUrl = 'your-api-url';
+  // private apiUrl = 'your-api-url';
+
 
 constructor(private blogRepository:BlogRepository,private http: HttpClient){}
 blogs?:Blog[]
