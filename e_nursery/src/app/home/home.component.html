@@ -14,7 +14,8 @@
     <!-- Right navbar elements -->
     <div class="d-flex align-items-center">
       <div class="dropdown">
-        <a  style="text-decoration: none;"><b class="text-light">Blog</b></a>
+        <a href="" style="text-decoration: none;" [routerLink]="['/customer/blog']"><b class="text-light">Blog</b></a>
+
         &nbsp;&nbsp;
         <button style="text-transform: none;" class="btn btn-success" (click)="toggleLogin()">
           {{ isLogin ? 'Logout' : 'Login' }}

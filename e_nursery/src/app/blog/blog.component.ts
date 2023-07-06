@@ -34,11 +34,11 @@ export class BlogComponent implements OnInit {
     // this.file=this.blog.image
 
     console.log(this.file);
- this.blogService.saveBlogImage(this.blog,this.file)
-
-
-
+    this.blogService.saveBlogImage(this.blog,this.file)
+    this.blog=new Blog()
+    this.file=null
   }
+
   onFileChange(event:any){
     this.file=event.target.files[0]
 
@@ -119,4 +119,18 @@ console.log(data)
       console.log(this.blogs)
     })
   }
+  // expandedBlogs: { [key: number]: boolean } = {};
+
+  // getLimitedDescription(description: string | undefined, blogId: number): string {
+  //   const limit = 10; // Set the desired word limit
+  //   const words = (description ?? '').split(' ');
+  //   if (words.length > limit) {
+  //     return words.slice(0, limit).join(' ') + '...';
+  //   }
+  //   return description ?? '';
+  // }
+
+  // toggleFullDescription(blogId: number): void {
+  //   this.expandedBlogs[blogId] = !this.expandedBlogs[blogId];
+  // }
 }

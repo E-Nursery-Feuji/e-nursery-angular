@@ -1,3 +1,5 @@
+
+
 <div *ngIf="show">
   <!-- ------------------- Add Product Button starts ------------------- -->
 
@@ -71,6 +73,8 @@
     <button class="pagination-button" [disabled]="currentPage === totalPages" (click)="changePage(currentPage + 1)">>></button>
     <button class="pagination-button" [disabled]="currentPage === totalPages" (click)="changePage(totalPages)">{{totalPages}}</button>
   </div>
+
+<!-- ------------------ Product details table ends ------------------ -->
 
 </div>
 

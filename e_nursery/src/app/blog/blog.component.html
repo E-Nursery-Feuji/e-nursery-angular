@@ -6,36 +6,30 @@
 
       <div class="blog-list">
         <h2>Blogs</h2>
-            <div class="rows">
+            <div class="rows me-0" >
               <div class="col" *ngFor="let blog of blogs">
 
-                    <mat-card>
+                    <mat-card class="custom-card">
                       <div *ngFor="let image of images">
-                      <mat-card-header *ngIf="blog.image_id==image.id">
-                        <img [src]=image.image_url alt="">
-                        <!-- <div class="button-container">
-                          <button class="open-button" mat-icon-button (click)="openBlog(blog)">
-                            <mat-icon>open_in_new</mat-icon>
-                          </button>
-                          <button class="close-button" mat-icon-button (click)="closeBlog(blog)">
-                            <mat-icon>close</mat-icon>
-                          </button>
-                        </div> -->
+                      <mat-card-header *ngIf="blog.image_id==image.id" >
+                        <img [src]=image.image_url alt="" width="100%">
                       </mat-card-header>
                     </div>
                       <mat-card-content>
-
-
                         <div class="right" >
                           <button type="button" id="len"  class="product-button " (click)="updatestatus(blog.id)">
-                            <i class="fa fa-toggle-on fa-3x "   [ngClass]="{'fa-toggle-on': blog.status === 'Active', 'fa-toggle-off': blog.status === 'InActive'}" aria-hidden="true" style="color: green;"></i>
-                          </button>
-                  </div>
+                            <i class="fa fa-3x" [ngClass]="{'fa-toggle-on text-success': blog.status === 'Active', 'fa-toggle-off text-danger': blog.status === 'InActive'}" aria-hidden="true" [style.color]="blog.status === 'Active' ? 'green' : 'red'"></i>
+                                 </button>
+                        </div>
 
                         <mat-card-title>{{ blog.title }}</mat-card-title>
 
                         <p>{{ blog.description }} </p>
-                        <p>Status:{{ blog.status }}</p>
+                        <!-- <p>{{ getLimitedDescription(blog.description, blog.id) }}</p> -->
+                        <!-- <button mat-button (click)="toggleFullDescription(blog.id)">Read More</button>
+                        <div *ngIf="expandedBlogs[blog.id]">
+                          <p>{{ blog.description }}</p> -->
+                        <!-- <p [ngClass]="{'text-success': blog.status === 'Active', 'text-danger': blog.status === 'InActive'}">Status: {{ blog.status }}</p> -->
                         <mat-card-subtitle>Uploaded By: {{ blog.uploaded_by }}</mat-card-subtitle>
                       </mat-card-content>
                     </mat-card>
