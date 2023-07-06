@@ -150,19 +150,7 @@ export class AdminComponent implements OnInit {
 
   updatestatus(id:number) {
     console.log(id)
-    // if(i.status=="active"){
-    //   this.activeStatus = false;
-    // }
-    // else{
-    //   this.activeStatus=true;
-    // }
-
-
-    // console.log(this.activeStatus)
-    // admin.status= this.activeStatus ? 'active' : 'inactive';
-    // console.log(admin)
-
-    // Call the service method to update the status in the database
+    
     this.adminService.updateStatus(id).subscribe(() => {
       console.log('Status updated successfully.');
       this.getAdmins();
