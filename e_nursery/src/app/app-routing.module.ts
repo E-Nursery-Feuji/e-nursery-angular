@@ -60,7 +60,7 @@ const routes: Routes = [
       { path: 'blog', component: BlogComponent },
       { path: 'product', component: ProductComponent },
       { path: 'orders', component: OrdersComponent },
-      { path: '**', redirectTo: 'orders' },
+      { path: '**', redirectTo: 'add' },
     ],
   },
   // Default route, redirect to home

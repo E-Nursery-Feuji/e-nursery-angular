@@ -15,7 +15,7 @@ import Swal from 'sweetalert2';
 export class ProductComponent implements OnInit {
   //for pagination
   currentPage: number = 1;
-  pageSize: number = 5;
+  pageSize: number = 4;
   totalItems: number = 0;
   totalPages: number = 0;
 
