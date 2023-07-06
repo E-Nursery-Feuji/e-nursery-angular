@@ -124,3 +124,83 @@ opacity: 0;
   color: #132732;
   padding: 0 25px;
 }
+
+/* ----------------Responsive ------------------- */
+@media only screen and (min-width: 1024px) and (max-width: 1260px)
+{
+  .travel-bg {
+    padding: 60px 0;
+  }
+
+  .icon-img {
+    top: 83px;
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+  }
+
+  .overflow-shine {
+    height: 120px;;
+  }
+
+  .travel1 p {
+      padding: 0 20px;
+  }
+
+  .icon-img img {
+      width: 48%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px)
+{
+  .main-travel-block {
+    padding: 0 0 0px;
+    flex-wrap: wrap;
+  }
+  .travel1 {
+    width: 47%;
+    margin: 20px 10px;;
+  }
+
+  .test-shine {
+      display: block;
+  }
+}
+
+@media only screen and (max-width: 767px)
+{
+  .travel-bg {
+    padding: 30px 0;
+  }
+  .travel-title h1 {
+      font-size: 28px;
+      line-height: 30px;
+  }
+  .main-travel-block {
+      display: block;
+      padding: 0 0 0px;
+  }
+  .test-shine img {
+      width: 100%;
+  }
+}
+
+@media only screen and (max-width: 320px)
+{
+  .travel-title h1 {
+    font-size: 23px;
+    line-height: 0px;
+  }
+  .travel1 {
+    width: 100%;
+    margin: 20px 0;
+  }
+  .test-shine {
+      display: block;
+  }
+  .item-single img {
+      height: 270px;
+      object-fit: cover;
+  }
+}

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Productservice } from '../services/productservice.service';
-import { DiscountPipe } from '../discount.pipe';
-
 
 @Component({
   selector: 'app-plants',
@@ -10,31 +8,29 @@ import { DiscountPipe } from '../discount.pipe';
 })
 export class PlantsComponent implements OnInit {
 
-
-  constructor(private productservice: Productservice) { }
+constructor(private productservice: Productservice) { }
 
   ngOnInit() {
-
-
-
   }
 
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
   //for getting plant only
   getPlants(){
-    console.log(this.productservice.getPlants())
-    console.log(this.productservice.getProducts())
     return this.productservice.getPlants();
   }
-
+  
   //for getting images
   getImages(){
-    console.log("images")
-    console.log(this.productservice.getImages())
     return this.productservice.getImages();
   }
 
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
 }
