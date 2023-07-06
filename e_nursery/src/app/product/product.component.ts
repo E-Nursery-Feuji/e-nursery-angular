@@ -12,6 +12,11 @@ import { error } from 'console';
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
+  //for pagination
+  currentPage: number = 1;
+  pageSize: number = 5;
+  totalItems: number = 0;
+  totalPages: number = 0;
 
   heading!:string;
   submitted: boolean = false;
@@ -29,10 +34,9 @@ export class ProductComponent implements OnInit {
   editProductId!: number;
 
   show: boolean = true;
-  constructor(
-    private productservice: Productservice,
-    private formBuilder: FormBuilder
-  ) {
+
+  //constructor
+  constructor(private productservice: Productservice,private formBuilder: FormBuilder) {
     this.saveProduct = this.formBuilder.group({
       id :[''],
       typeName: ['', Validators.required],
@@ -52,10 +56,12 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("init")
-    this.show=true
-    // this.images=this.getImages();
+    this.show=true;
+    this.getProducts();
     this.getTypes(); //foe get the types fro dropdown
-    // this.products=this.getProducts(); //for get the products in table
+    this.getCurrentPageProducts();
+
+
   }
 
   // for open the add product box
@@ -150,6 +156,7 @@ export class ProductComponent implements OnInit {
           // console.log(this.file)
           // console.log(this.product)
           this.productservice.saveProductImage(this.file, this.product);
+          this.clearForm();
         }
       }
 
@@ -157,24 +164,32 @@ export class ProductComponent implements OnInit {
 
   // getting the products
   getProducts() {
-    // this.products=[]
-    // this.productservice.getProducts().subscribe((data) => {
-    //   this.products = this.products.concat(data)
-    //   ;
-
-    // });
-    console.log("component")
-    return this.productservice.getProducts();
+    this.products=this.productservice.getProducts().reverse();
+    return this.products;
   }
-img1!:any
+
+//for pagination methods start
+  changePage(pageNumber: number) {
+    // this.products=this.getProducts();
+    if (pageNumber >= 1 && pageNumber <= this.totalPages) {
+      this.currentPage = pageNumber;
+    }
+  }
+
+   getCurrentPageProducts(): Product[] {
+    this.getProducts();
+    this.totalItems = this.products.length;
+    this.totalPages = Math.ceil(this.totalItems / this.pageSize);
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    return this.products.slice(startIndex, endIndex);
+   }
+  //for oagination method ends
+
+  img1!:any
   //getting the images
   getImages() {
-    // this.images=[]
-    // this.productservice.getImages().subscribe((data) => {
-    //   this.images = this.images.concat(data);
-    //   console.log(this.images)
-    //   this.images.forEach((o)=>this.img1=o.image_url)
-    // });
+
    return this.productservice.getImages();
   }
 
@@ -209,4 +224,14 @@ img1!:any
     confirm("Are You sure Want to Delete!");
   }
 
+//clear form
+clearForm() {
+  this.saveProduct.reset();
+  this.saveProduct.markAsPristine();
+  this.saveProduct.markAsUntouched();
+  Object.keys(this.saveProduct.controls).forEach(key => {
+  this.saveProduct.controls[key].setErrors(null);
+  });
+
+}
 }
