@@ -7,4 +7,5 @@ export class Blog {
   description?: string;
   status?: string;
   image_id?: number;
+
 }

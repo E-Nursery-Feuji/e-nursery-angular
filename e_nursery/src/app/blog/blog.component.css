@@ -25,8 +25,15 @@ h2 {
 }
 
 .mat-card-header {
-  width: 180px;
-  height: 180px;
+  width: 373px;
+  margin-left: -48px;
+  margin-top: -16px;
+  height: 250px;
+  overflow: hidden;
+
+}
+.mat-card-content{
+  margin-top: 20px;
 }
 
 .add{
@@ -96,3 +103,10 @@ button[type="submit"]:hover {
 }
 
 
+.custom-card{
+  height: 500px;
+  width: 340px;
+}
+.right{
+  margin-top: 10px;
+}

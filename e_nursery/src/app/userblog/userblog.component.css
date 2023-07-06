@@ -1,0 +1,114 @@
+.blog-list{
+  width: 100%;
+  padding: 10px;
+
+}
+
+.rows {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+
+.col {
+  flex: 0 0 33.33%;
+  max-width: 33.33%;
+  padding: 10px;
+  box-sizing: border-box;
+  width: 300px;
+}
+
+h2 {
+  text-align: center;
+}
+
+.mat-card-header {
+  width: 373px;
+  margin-left: -48px;
+  margin-top: -16px;
+  height: 250px;
+  overflow: hidden;
+}
+/* .mat-card-header img{
+  transform: scale(1.0);
+} */
+
+.mat-card-content{
+  margin-top: 20px;
+}
+
+.add{
+  width: 8rem;
+  height: 2.5rem;
+  font-size: 1.2rem;
+  color: green;
+  background-color: lightgreen;
+  box-shadow: none;
+}
+.add-button{
+  width: 100%;
+  padding-left: 83%;
+}
+
+ .center-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.add-blog-form {
+  width: 100%;
+  max-width: 400px;
+  padding: 0px;
+  margin: 0 auto;
+}
+.btn{
+  background-color: #008000;
+  color: white;
+}
+/* CSS for form submit button */
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color:#008000;
+}
+
+ button[type="submit"]:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+
+.form-container{
+  background-image: url('https://cdn4.1800flowers.com/wcsstore/Flowers/images/2020/lp/virtual-backgrounds/Plants-macro-virtual-background.jpg');
+  background-position: center;
+  color:black;
+  padding: 50px;
+  padding-left: 200px;
+}
+.right{
+  float:right;
+}
+
+#len{
+  border: none;
+  background-color: white;
+}
+
+
+.custom-card{
+  height: 500px;
+  width: 340px;
+}
+.right{
+  margin-top: 10px;
+}

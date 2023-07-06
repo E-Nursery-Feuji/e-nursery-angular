@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { log } from 'console';
 import { Image } from '../model/image';
 import { Router } from '@angular/router';
-
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn:'root'
@@ -38,12 +38,18 @@ getAllBlogs():Observable<Blog[]>{
       this.saveBlog(blog)
       console.log("bbbbbbbbbbb")
       console.log(blog)
-       this.router.navigateByUrl("admin");
+       this.router.navigateByUrl("admin/blog");
     })
 
   }
   saveBlog(blog:Blog){
-    this.blogRepository.saveBlog(blog).subscribe(data=>console.log(data))
+    this.blogRepository.saveBlog(blog).subscribe(data=>{
+      console.log(data)
+      Swal.fire({
+        icon:'success',
+        text:'blog saved successfully..'
+      })
+     })
   }
 
   updateStatus(id:number){
