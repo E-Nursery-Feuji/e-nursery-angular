@@ -53,20 +53,15 @@ export class AdminComponent implements OnInit {
       this.editid=0;
       console.log(this.registrationForm.value.id)
       //encode the password and confrimpassword
-      this.registrationForm.value.confirmPassword=btoa(this.registrationForm.value.confirmPassword);
-      this.registrationForm.value.password=btoa(this.registrationForm.value.password);
+      // this.registrationForm.value.confirmPassword=btoa(this.registrationForm.value.confirmPassword);
+      // this.registrationForm.value.password=btoa(this.registrationForm.value.password);
       console.log(this.registrationForm.value)
       this.admin=this.registrationForm.value
       console.log(this.admin)
       console.log(this.admin.id)
-       this.adminService.update(this.admin.id,this.admin).subscribe(() => {
-        console.log('Status updated successfully.');
+       this.adminService.update(this.admin.id,this.admin)
         this.show=!(this.show);
-        this.getAdmins();
-      }, (error) => {
-        console.error('Failed to update status:', error);
 
-      });
     }
 
     else{
@@ -85,6 +80,9 @@ export class AdminComponent implements OnInit {
       this.admin.role="ADMIN";
       this.admin.status="Active";
       this.adminService.saveAdmin(this.admin); //send to service
+      this.show=!(this.show);
+
+
     }
   }
 
@@ -150,41 +148,14 @@ export class AdminComponent implements OnInit {
 
   updatestatus(id:number) {
     console.log(id)
-    // if(i.status=="active"){
-    //   this.activeStatus = false;
-    // }
-    // else{
-    //   this.activeStatus=true;
-    // }
 
-
-    // console.log(this.activeStatus)
-    // admin.status= this.activeStatus ? 'active' : 'inactive';
-    // console.log(admin)
-
-    // Call the service method to update the status in the database
-    this.adminService.updateStatus(id).subscribe(() => {
-      console.log('Status updated successfully.');
-      this.getAdmins();
-
-
-    }, (error) => {
-      console.error('Failed to update status:', error);
-
-    });
+    this.adminService.updateStatus(id);
   }
 
 
 
 getAdmins(){
-  this.adminService.getAdmin().subscribe(data=>
-    {
-
-
-        this.admins=data;
-
-
-    })
+  return this.adminService.getAdmin()
 }
 
 

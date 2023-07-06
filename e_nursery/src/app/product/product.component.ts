@@ -13,6 +13,11 @@ import Swal from 'sweetalert2';
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
+  //for pagination
+  currentPage: number = 1;
+  pageSize: number = 5;
+  totalItems: number = 0;
+  totalPages: number = 0;
 
   image_link!:any;
   heading!:string;
@@ -32,10 +37,9 @@ export class ProductComponent implements OnInit {
   editImageId!:number;
 
   show: boolean = true;
-  constructor(
-    private productservice: Productservice,
-    private formBuilder: FormBuilder
-  ) {
+
+  //constructor
+  constructor(private productservice: Productservice,private formBuilder: FormBuilder) {
     this.saveProduct = this.formBuilder.group({
       id :[''],
       typeName: ['', Validators.required],
@@ -51,10 +55,17 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("init")
+
     this.show=true
     this.images=this.getImages();
     this.getTypes(); //foe get the types fro dropdown
     this.products=this.getProducts(); //for get the products in table
+
+  
+ 
+    this.getCurrentPageProducts();
+
+
   }
 
   // for open the add product box
@@ -155,6 +166,7 @@ export class ProductComponent implements OnInit {
             }
           });
           this.productservice.saveProductImage(this.file, this.product);
+          this.clearForm();
         }
       }
 
@@ -162,11 +174,39 @@ export class ProductComponent implements OnInit {
 
   // getting the products
   getProducts() {
+
     console.log("component")
     return this.productservice.getProducts();
   }
 
   getImages() {
+
+    this.products=this.productservice.getProducts().reverse();
+    return this.products;
+  }
+
+//for pagination methods start
+  changePage(pageNumber: number) {
+    // this.products=this.getProducts();
+    if (pageNumber >= 1 && pageNumber <= this.totalPages) {
+      this.currentPage = pageNumber;
+    }
+  }
+
+   getCurrentPageProducts(): Product[] {
+    this.getProducts();
+    this.totalItems = this.products.length;
+    this.totalPages = Math.ceil(this.totalItems / this.pageSize);
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    return this.products.slice(startIndex, endIndex);
+   }
+  //for oagination method ends
+
+  img1!:any
+  //getting the images
+  getImages() {
+
    return this.productservice.getImages();
   }
 
@@ -210,4 +250,14 @@ export class ProductComponent implements OnInit {
     confirm("Are You sure Want to Delete!");
   }
 
+//clear form
+clearForm() {
+  this.saveProduct.reset();
+  this.saveProduct.markAsPristine();
+  this.saveProduct.markAsUntouched();
+  Object.keys(this.saveProduct.controls).forEach(key => {
+  this.saveProduct.controls[key].setErrors(null);
+  });
+
+}
 }
