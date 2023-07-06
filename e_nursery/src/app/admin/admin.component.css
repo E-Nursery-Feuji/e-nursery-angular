@@ -138,4 +138,10 @@ form{
   text-align: center;
 }
 
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top:1px;
+}
+
 

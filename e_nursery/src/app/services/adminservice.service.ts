@@ -1,3 +1,4 @@
+import { AdminComponent } from './../admin/admin.component';
 import { AdminRepository } from './../repository/admin-repository.service';
 import Swal from 'sweetalert2';
 import { Injectable } from '@angular/core';
@@ -45,7 +46,7 @@ export class AdminService {
           text: ' admin added!',
         });
 
-        this.router.navigateByUrl("/add"); //redirect to login page
+       this.router.navigateByUrl("/admin");  //redirect to login page
       }
     });
   }
@@ -58,6 +59,10 @@ export class AdminService {
     return this.adminRepository.update(id,status);
   }
 
+<<<<<<< Updated upstream
   //for login validation
+=======
+
+>>>>>>> Stashed changes
 
 }
