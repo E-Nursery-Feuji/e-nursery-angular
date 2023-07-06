@@ -35,19 +35,19 @@ export class PlantsComponent implements OnInit {
   }
 
   //for getting plant only
-  getPlants(){
-    console.log(this.productservice.getPlants())
-    console.log(this.productservice.getProducts())
-    return this.productservice.getPlants();
-  }
+  // getPlants(){
+  //   console.log(this.productservice.getPlants())
+  //   console.log(this.productservice.getProducts())
+  //   return this.productservice.getPlants();
+  // }
 
-  //for getting images
-  getImages(){
-    console.log("images")
-    console.log(this.productservice.getImages())
-    return this.productservice.getImages();
-  }
+  // //for getting images
+  // getImages(){
+  //   console.log("images")
+  //   console.log(this.productservice.getImages())
+  //   return this.productservice.getImages();
+  // }
 
-  
+
 
 }
