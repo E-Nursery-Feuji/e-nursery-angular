@@ -1,3 +1,4 @@
+import { Productservice } from './../services/productservice.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SeedsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private productService:Productservice) { }
 
   ngOnInit() {
+  }
+
+  getSeeds()
+  {
+    return this.productService.getSeeds();
+  }
+
+  getImages()
+  {
+    return this.productService.getImages();
   }
 
 }

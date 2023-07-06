@@ -5,7 +5,6 @@
         <div class="inner_product-1">
           <div class="product-img">
             <a *ngFor="let image of getImages()"><img *ngIf="image.id==plant.image_id" src="{{image.image_url}} "></a>
-
           </div>
           <div class="product-info">
             <h2>{{plant.name}}</h2>
@@ -13,14 +12,10 @@
             <ng-container *ngIf="plant.discount > 0; else elseBlock">
               <h6 class="price"><span class="text-cut">{{ plant.price | currency: 'INR' }}</span>&nbsp;&nbsp;{{ plant.price | discount: plant.discount | currency: 'INR' }}</h6>
             </ng-container>
-
             <ng-template #elseBlock>
               <h6 class="price">{{ plant.price | currency: 'INR' }}</h6>
             </ng-template>
-
-
             <div class="book-btn" data-toggle="modal" data-target="#myModal"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Add to Cart</div>
-
           </div>
         </div>
       </div>

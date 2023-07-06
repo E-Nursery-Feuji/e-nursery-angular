@@ -3,16 +3,13 @@
   text-decoration: line-through;
   color: red;
 }
-
-
 .gallery .image-container{
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-
 }
 .gallery .image-container .image{
-  height: auto;
+  height:auto;
   width: 25%;
   overflow: hidden;
   /*box-shadow: 0 0px 3px rgb(0 0 0 / 20%);*/

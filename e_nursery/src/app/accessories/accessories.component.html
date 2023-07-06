@@ -2,7 +2,7 @@
   <div class="container">
       <div class="row">
           <div class="col-lg-4 col-md-6 col-12 padding-1" *ngFor="let accessorie of getAccessories()">
-              <div class="d-block">
+              <div class="d-block mb-4">
                   <figure class="imghvr-zoom-out " *ngFor="let image of getImages()">
                       <img *ngIf="accessorie.image_id==image.id" src="{{image.image_url}}" alt="37">
                       <div class="sydney-block">
@@ -18,7 +18,6 @@
                               <ng-container *ngIf="accessorie.discount > 0; else elseBlock">
                                 <h6 class="price"><span class="text-cut">{{ accessorie.price | currency: 'INR' }}</span>&nbsp;&nbsp;{{ accessorie.price | discount: accessorie.discount | currency: 'INR' }}</h6>
                               </ng-container>
-
                               <ng-template #elseBlock>
                                 <h6 class="price">{{ accessorie.price | currency: 'INR' }}</h6>
                               </ng-template>
@@ -28,10 +27,15 @@
                           <div class="back-info">
                               <h3>{{accessorie.name}}</h3>
                               <p>{{accessorie.description}}</p>
-                              <a href="#"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Add to Cart</a>
-                              <!-- <div class="sydney-icon">
-                                 <i class="fa fa-globe"></i><i class="fa fa-road"></i><i class="fa fa-plane"></i><i class='fa fa-university'></i>
-                              </div> -->
+                              <div class="sydney-icon">
+                                <ng-container *ngIf="accessorie.discount > 0; else elseBlock">
+                                  <h6 class="price"><span class="text-cut">{{ accessorie.price | currency: 'INR' }}</span>&nbsp;&nbsp;{{ accessorie.price | discount: accessorie.discount | currency: 'INR' }}</h6>
+                                </ng-container>
+                                <ng-template #elseBlock>
+                                  <h6 class="price">{{ accessorie.price | currency: 'INR' }}</h6>
+                                </ng-template>
+                                <button class="addbutton"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;ADD TO CART</button>
+                              </div>
                           </div>
                       </figcaption>
                   </figure>

@@ -24,12 +24,13 @@
    margin: 0;
 }
 .sydney-info h4{
-   color:black;
+   color:green;
+   background-color: lightgreen;
    padding: 0 10px 10px;
    font-size: 22px;
    margin: 0;
 }
-.sydney-icon i{
+.sydney-icon>.addbutton{
    color: white;
    text-align: center;
    padding: 5px 5px 10px 10px;
@@ -38,12 +39,20 @@
    position: absolute;
    bottom: 8%;
    left: 30%;
+   width: fit-content;
 }
-.back-info .sydney-icon i{
-   color: #132732;
+.back-info .sydney-icon .price{
+  text-align: center;
+  color:green
+}
+.back-info .sydney-icon .addbutton{
+   /* color: #132732; */
    font-size: 14px;
    text-align: center;
-   padding: 5px 5px 10px 10px;
+   width: fit-content;
+   /* padding: 5px 5px 10px 10px; */
+   background-color: green;
+   color: white;
 }
 .sydney-disc {
    position: absolute;
@@ -56,9 +65,10 @@
    justify-content: space-around;
    width: 100%;
    color: white;
-   border-top: 2px solid white;
+   border-top: 3px solid green;
    align-items: center;
    padding: 5px 0;
+   background-color: lightgreen;
 }
 .sydney-info1 h5 {
    margin: 0;

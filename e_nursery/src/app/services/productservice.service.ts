@@ -188,7 +188,7 @@ export class Productservice {
     });
    }
 
-   //getting plants only by using
+   //getting plants only by using filter
    getPlants(){
     // console.log("getplants()")
     // console.log(this.products)
@@ -196,9 +196,21 @@ export class Productservice {
     return this.products.filter( p => p.type.id==1);
    }
 
-
+  //  getting accessories by using filter
    getAccessories(){
     return this.products.filter( p => p.type.id==2);
+   }
+
+   //getting fertilizers only by using filter
+   getFertilizers()
+   {
+    return this.products.filter(p => p.type.id==4);
+   }
+
+   //getting seeds only by using filter
+   getSeeds()
+   {
+    return this.products.filter(p=>p.type.id==3);
    }
 
 }
