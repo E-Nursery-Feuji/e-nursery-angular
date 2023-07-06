@@ -7,13 +7,33 @@
       <div class="blog-list">
         <h2>Blogs</h2>
             <div class="rows">
-              <div *ngFor="let blog of blogs" class="col">
+              <div class="col" *ngFor="let blog of blogs">
+
                     <mat-card>
-                      <mat-card-header>
-                        <img [src]=blog.image!.image alt="">
+                      <div *ngFor="let image of images">
+                      <mat-card-header *ngIf="blog.image_id==image.id">
+                        <img [src]=image.image_url alt="">
+                        <!-- <div class="button-container">
+                          <button class="open-button" mat-icon-button (click)="openBlog(blog)">
+                            <mat-icon>open_in_new</mat-icon>
+                          </button>
+                          <button class="close-button" mat-icon-button (click)="closeBlog(blog)">
+                            <mat-icon>close</mat-icon>
+                          </button>
+                        </div> -->
                       </mat-card-header>
+                    </div>
                       <mat-card-content>
+
+
+                        <div class="right" >
+                          <button type="button" id="len"  class="product-button " (click)="updatestatus(blog.id)">
+                            <i class="fa fa-toggle-on fa-3x "   [ngClass]="{'fa-toggle-on': blog.status === 'Active', 'fa-toggle-off': blog.status === 'InActive'}" aria-hidden="true" style="color: green;"></i>
+                          </button>
+                  </div>
+
                         <mat-card-title>{{ blog.title }}</mat-card-title>
+
                         <p>{{ blog.description }} </p>
                         <p>Status:{{ blog.status }}</p>
                         <mat-card-subtitle>Uploaded By: {{ blog.uploaded_by }}</mat-card-subtitle>
@@ -55,7 +75,7 @@
             <div class="form-group">
               <label for="image" class="fw-bold">Image</label>
               <div class="custom-file mb-3">
-                <input type="file" class="custom-file-input" id="image" name="image" accept="image/*" required [(ngModel)]="blog.image" #image="ngModel">
+                <input type="file" (change)="onFileChange($event)" class="custom-file-input" id="image" name="image" accept="image/*" required [(ngModel)]="picture" #image="ngModel">
                 <div *ngIf="image.invalid && (image.dirty || image.touched)" class="text-danger">
                   <div *ngIf="image.errors?.['required']">Image is required.</div>
                 </div>
