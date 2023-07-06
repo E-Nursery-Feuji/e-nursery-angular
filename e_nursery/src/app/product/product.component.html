@@ -1,71 +1,81 @@
-2<div *ngIf=show>
+
+
+<div *ngIf="show">
   <!-- ------------------- Add Product Button starts ------------------- -->
-<div class="add-button mt-3">
-  <button class="add" mat-raised-button (click)="openDialog()"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;Product</button>
-</div>
-<!-- ------------------ Add Product Button starts --------------------- -->
-<hr>
-<!-- ------------------ Product details table starts ------------------ -->
-<div class="product-table">
-  <table class="table align-middle mb-0 bg-white">
-    <thead class="bg-light">
-      <tr>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Discount</th>
-        <th>Quantity</th>
-        <th>Type</th>
-        <th class="description">Description</th>
-        <th>Actions</th>
-      </tr>
 
-    </thead>
-    <tbody>
-
-      <tr *ngFor="let product of getProducts()">
-
-        <td  >
-          <div class="d-flex align-items-center">
-            <div *ngFor="let image of getImages()">
-            <img *ngIf="product.image_id==image.id"
-                src="{{image.image_url}}"
-                alt=""
-                style="width: 45px; height: 45px"
-                class="rounded-circle"
+  <div class="add-button mt-3">
+    <button class="add" mat-raised-button (click)="openDialog()"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;Product</button>
+  </div>
+  <!-- ------------------ Add Product Button starts --------------------- -->
+  <hr>
+  <!-- ------------------ Product details table starts ------------------ -->
+  <div class="product-table">
+    <table class="table align-middle mb-0 bg-white">
+      <thead class="bg-light">
+        <tr>
+          <th class="name">Name</th>
+          <th>Price</th>
+          <th>Discount</th>
+          <th>Quantity</th>
+          <th>Type</th>
+          <th class="description">Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of getCurrentPageProducts()">
+          <td>
+            <div class="d-flex align-items-center">
+              <div *ngFor="let image of getImages()">
+                <img *ngIf="product.image_id==image.id"
+                  src="{{image.image_url}}"
+                  alt=""
+                  style="width: 45px; height: 45px"
+                  class="rounded-circle"
                 />
               </div>
-
-
-
-            <div class="ms-3">
-              <p class="fw-bold mb-1">{{product.name}}</p>
+              <div class="ms-3">
+                <p class="fw-bold mb-1 left">{{product.name}}</p>
+              </div>
             </div>
-          </div>
-        </td>
-        <td>
-          <p class="fw-normal mb-1">{{product.price}}</p>
-        </td>
-        <td>
-          <p class="fw-normal mb-1">{{product.discount}}</p>
-        </td>
-        <td>
-          <p class="fw-normal mb-1">{{product.quantity}}</p>
-        </td>
-        <td>
-          <span class="badge badge-success rounded-pill d-inline">{{product.type.name}}</span>
-        </td>
-        <td>
-          <p class="fw-normal mb-1">{{product.description}}</p>
-        </td>
-        <td>
-          <button type="button" class="product-button" (click)="editProduct(product)"><i class="fa-solid fa-pen-to-square"></i></button> &nbsp;&nbsp;
-          <button type="button" class="product-button" (click)="deleteProduct(product.id)"><i class="fa-solid fa-trash"></i></button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+          </td>
+          <td>
+            <p class="fw-normal mb-1">{{product.price | currency:'INR'}}</p>
+          </td>
+          <td>
+            <p class="fw-normal mb-1">{{product.discount/100 |  percent:'2.2' }}</p>
+          </td>
+          <td>
+            <p class="fw-normal mb-1">{{product.quantity}}</p>
+          </td>
+          <td>
+            <span class="badge-primary rounded-pill d-inline">{{product.type.name}}</span>
+          </td>
+          <td>
+            <p class="fw-normal mb-1 left">{{product.description}}</p>
+          </td>
+          <td>
+            <button type="button" class="product-button" (click)="editProduct(product)"><i class="fa-solid fa-pen-to-square"></i></button>
+            &nbsp;&nbsp;
+            <button type="button" class="product-button" (click)="deleteProduct(product.id)"><i class="fa-solid fa-trash"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- Pagination controls -->
+  <div class="pagination">
+    <button class="pagination-button" [disabled]="currentPage === 1" (click)="changePage(1)">1</button>
+    <button class="pagination-button" [disabled]="currentPage === 1" (click)="changePage(currentPage - 1)"> << </button>
+    <button class="btn btn-success">{{currentPage}} / {{totalPages}}</button>
+    <button class="pagination-button" [disabled]="currentPage === totalPages" (click)="changePage(currentPage + 1)">>></button>
+    <button class="pagination-button" [disabled]="currentPage === totalPages" (click)="changePage(totalPages)">{{totalPages}}</button>
+  </div>
+
 <!-- ------------------ Product details table ends ------------------ -->
+
 </div>
 
 <!-- ------------------ add Product form starts ----------------------- -->
@@ -111,7 +121,7 @@
             </mat-form-field>
           </div>
         </div>
-        <div class="row mb-4">
+        <div class="row mb-4" *ngIf="heading === 'Add Product'">
           <div class="col-12">
             <label class="form-label mb-1" for="customFile">Image</label>
             <input type="file" class="form-control mb-1" (change)="onFileChange($event)" formControlName="image" [ngClass]="{ 'is-invalid': submitted && saveProduct.controls['image'].errors }"/>
@@ -120,6 +130,13 @@
                 Image is required!
               </span>
             </div>
+          </div>
+        </div>
+        <div class="row mb-4" *ngIf="heading === 'Edit Product'">
+          <div class="col-12">
+            <label class="form-label mb-1" for="customFile">Image   <img src="{{image_link}}"></label>
+
+            <input type="file" class="form-control mb-1" (change)="onFileChange($event)" formControlName="image" />
           </div>
         </div>
         <div class="row">

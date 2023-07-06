@@ -18,12 +18,10 @@ export class Productservice {
 
   constructor(private productRepository:ProductRepository,private router:Router) {
     this.productRepository.getProducts().subscribe(data =>{
-      console.log(data);
       this.products=data;
-    console.log(this.products)});
+   });
 
-      this.productRepository.getImages().subscribe(data =>{this.images=data}
-        );
+      this.productRepository.getImages().subscribe(data =>{this.images=data});
    }
 
   //for get the types
@@ -37,7 +35,6 @@ export class Productservice {
   {
     const imageData=new FormData();
     console.log(image)
-    // imageData.append('id);
     imageData.append('image',image,image.name); //put image in form data object
     //foe save the image
     console.log("image=data")
@@ -50,11 +47,11 @@ export class Productservice {
       // image.id=jsonResponse[0].pk;
       // image.image_data=jsonResponse[0].fields.image_data
       product.image_id=data.id;
-      console.log("+++++++++++++")
+      //console.log("+++++++++++++")
       //console.log(product.image)
        //product.image=data.id
-
-       console.log(product)
+      this.images.push(data)
+       //console.log(product)
        this.saveProduct(product)
     });
 
@@ -64,28 +61,26 @@ export class Productservice {
     saveProduct(product:Product)
     {
         this.productRepository.saveProduct(product).subscribe((data)=>{
-        if(typeof(data)=='string') //checking data is in string
+        this.products.push(data)
+        if(typeof(data)=='object') //checking data is in string
         {
-          if(data=='not added') //checking email is present or not
-          {
-            //sweetalert for email present
-            Swal.fire({
-              icon: 'error',
-              title: 'Product not Added',
-              text: 'Try again!',
-            });
-          }
-          else(data=='product added')
-          {
             Swal.fire({
               icon: 'success',
               title: 'Product Added Succesfully!',
               text: '',
             });
-            this.router.navigateByUrl("admin/product");
+        }
+        if(typeof(data)=='string')
+        {
+          if(data==='not added' || data==='save product data ia not valid change')
+          {
+            Swal.fire({
+              icon: 'error',
+              title: 'Failed to add product !',
+              text: 'Try again !',
+            });
           }
         }
-
       })
     }
 
@@ -101,9 +96,6 @@ export class Productservice {
       // image.id=jsonResponse[0].pk;
       // image.image=jsonResponse[0].fields.image
       product.image_id=data.id
-      // console.log("updating.........")
-      // console.log(product.image_id)
-      // console.log(data.id)
       this.updateProduct(product)
     });
     }
@@ -114,36 +106,59 @@ export class Productservice {
       this.productRepository.updateProduct(product).subscribe((data)=>{
         if(typeof(data)=='string') //checking data is in string
         {
-          if(data=='not added') //checking email is present or not
+          if(data=='not updated') //checking email is present or not
           {
-            //sweetalert for email present
             Swal.fire({
               icon: 'error',
               title: 'Product not Updated',
               text: 'Try again!',
             });
           }
-          else(data=='product added')
+        }
+          if(typeof(data)=='object')
           {
-            Swal.fire({
-              icon: 'success',
-              title: 'Product Updated Succesfully!',
-              text: '',
-            });
-            this.router.navigateByUrl("admin/product");
-          }
+
+              Swal.fire({
+                icon: 'success',
+                title: 'Product Updated Successfully !',
+                text: '',
+              });
         }
 
       })
     }
 
+    // updateProductOnly(product : Product)
+    // {
+    //   this.productRepository.updateProduct(product).subscribe((data)=>{
+    //     if(typeof(data)=='string') //checking data is in string
+    //     {
+    //       if(data=='not updated') //checking email is present or not
+    //       {
+    //         Swal.fire({
+    //           icon: 'error',
+    //           title: 'Product not Updated',
+    //           text: 'Try again!',
+    //         });
+    //       }
+    //     }
+    //       if(typeof(data)=='object')
+    //       {
+
+    //           Swal.fire({
+    //             icon: 'success',
+    //             title: 'Product Updated Successfully !',
+    //             text: '',
+    //           });
+    //     }
+
+    //   })
+    // }
+
    //for get the products
    getProducts()
    {
-    console.log(this.products)
-
     return this.products;
-
    }
 
    getImages()
@@ -155,32 +170,25 @@ export class Productservice {
    deleteProduct(id : number)
    {
     return this.productRepository.deleteProduct(id).subscribe((data)=>{
-      if(typeof(data)=='string') //checking data is in string
+      console.log(data)
+      console.log("deleting product")
+      const productIndex=this.products.findIndex((product)=>product.id===data.id)
+      const imageIndex=this.images.findIndex((image)=>image.id===data.image_id)
+      this.products.splice(productIndex,1)
+      this.images.splice(imageIndex,1)
+
+      if(typeof(data)=='object') //checking data is in string
       {
-        if(data=='not added') //checking email is present or not
-        {
-          //sweetalert for email present
-          Swal.fire({
-            icon: 'error',
-            title: 'Product not Deleted',
-            text: 'Try again!',
-          });
-        }
-        else(data=='product added')
-        {
           Swal.fire({
             icon: 'success',
             title: 'Product Deleted Succesfully!',
             text: '',
           });
-          this.router.navigateByUrl("admin/product");
-        }
       }
-
-    })
+    });
    }
 
-   //getting plants only by using
+   //getting plants only by using filter
    getPlants(){
     // console.log("getplants()")
     // console.log(this.products)
@@ -188,9 +196,21 @@ export class Productservice {
     return this.products.filter( p => p.type.id==1);
    }
 
-
+  //  getting accessories by using filter
    getAccessories(){
     return this.products.filter( p => p.type.id==2);
+   }
+
+   //getting fertilizers only by using filter
+   getFertilizers()
+   {
+    return this.products.filter(p => p.type.id==4);
+   }
+
+   //getting seeds only by using filter
+   getSeeds()
+   {
+    return this.products.filter(p=>p.type.id==3);
    }
 
 }

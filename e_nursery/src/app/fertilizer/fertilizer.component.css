@@ -1,3 +1,16 @@
+
+/* ---------- for cut the price ----------- */
+.text-cut{
+  text-decoration: line-through;
+  color: red;
+}
+
+/* --------- for button ---------- */
+.btn{
+  background-color: green;
+  color: white;
+}
+
 .doctor {
   padding:80px 0;
   position: relative;
@@ -11,7 +24,7 @@
   display: block;
   position: relative;
   text-align: center;
-  border-bottom: 4px solid #d53537;
+  border-bottom: 4px solid green;
 }
 .single-doctor img{
   display: block;
@@ -19,7 +32,7 @@
   margin-bottom: 25px;
   transition: all 0.6s ease-in-out;
 }
-.single-doctor-info span {
+.single-doctor-info .span {
   margin-bottom:18px;
   font-size: 14px;
   display: block;
@@ -34,7 +47,7 @@
   left: 0;
 }
 .single-doctor-mask {
-  background:linear-gradient(200deg, #b2b2b2ba 0%,#d53537 100%);
+  background:linear-gradient(200deg, #b2b2b2ba 0%,green 100%);
   transform: translateY(-800px);
   filter: alpha(opacity=100);
   opacity: 1;
@@ -64,7 +77,7 @@
 .single-doctor-info h4 {
   font-size:15px;
   font-weight: 600;
-  color: #d53537;
+  color: black;
 }
 .single-doctor img {
   width: 250px;
@@ -89,7 +102,7 @@
   font-weight: 600;
   line-height: 24px;
   color:#d53537;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   margin-bottom: 27px;
   letter-spacing: 0.25px;
 }
