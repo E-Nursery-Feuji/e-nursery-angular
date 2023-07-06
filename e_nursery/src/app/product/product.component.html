@@ -1,5 +1,6 @@
 <div *ngIf="show">
   <!-- ------------------- Add Product Button starts ------------------- -->
+
   <div class="add-button mt-3">
     <button class="add" mat-raised-button (click)="openDialog()"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;Product</button>
   </div>
@@ -70,6 +71,7 @@
     <button class="pagination-button" [disabled]="currentPage === totalPages" (click)="changePage(currentPage + 1)">>></button>
     <button class="pagination-button" [disabled]="currentPage === totalPages" (click)="changePage(totalPages)">{{totalPages}}</button>
   </div>
+
 </div>
 
 <!-- ------------------ add Product form starts ----------------------- -->
@@ -115,7 +117,7 @@
             </mat-form-field>
           </div>
         </div>
-        <div class="row mb-4">
+        <div class="row mb-4" *ngIf="heading === 'Add Product'">
           <div class="col-12">
             <label class="form-label mb-1" for="customFile">Image</label>
             <input type="file" class="form-control mb-1" (change)="onFileChange($event)" formControlName="image" [ngClass]="{ 'is-invalid': submitted && saveProduct.controls['image'].errors }"/>
@@ -124,6 +126,13 @@
                 Image is required!
               </span>
             </div>
+          </div>
+        </div>
+        <div class="row mb-4" *ngIf="heading === 'Edit Product'">
+          <div class="col-12">
+            <label class="form-label mb-1" for="customFile">Image   <img src="{{image_link}}"></label>
+
+            <input type="file" class="form-control mb-1" (change)="onFileChange($event)" formControlName="image" />
           </div>
         </div>
         <div class="row">

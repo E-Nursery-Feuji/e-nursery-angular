@@ -12,13 +12,8 @@ constructor(private productservice: Productservice) { }
 
   ngOnInit() {
   }
-
-<<<<<<< Updated upstream
-
-
-=======
->>>>>>> Stashed changes
-  //for getting plant only
+  
+  // for getting plant only
   getPlants(){
     return this.productservice.getPlants();
   }
@@ -27,10 +22,4 @@ constructor(private productservice: Productservice) { }
   getImages(){
     return this.productservice.getImages();
   }
-
-<<<<<<< Updated upstream
-
-
-=======
->>>>>>> Stashed changes
 }
