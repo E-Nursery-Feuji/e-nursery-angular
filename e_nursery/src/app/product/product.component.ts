@@ -61,8 +61,8 @@ export class ProductComponent implements OnInit {
     this.getTypes(); //foe get the types fro dropdown
     this.products=this.getProducts(); //for get the products in table
 
-  
- 
+
+
     this.getCurrentPageProducts();
 
 
@@ -175,13 +175,8 @@ export class ProductComponent implements OnInit {
   // getting the products
   getProducts() {
 
-    console.log("component")
-    return this.productservice.getProducts();
-  }
-
-  getImages() {
-
     this.products=this.productservice.getProducts().reverse();
+
     return this.products;
   }
 
