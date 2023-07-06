@@ -1,178 +1,37 @@
 <div class="desti-bg">
-  <div class="desti_head">
-      <h3>Domestic Packages</h3>
-  </div>
   <div class="container">
       <div class="row">
-          <div class="col-lg-4 col-md-6 col-12 padding-1">
+          <div class="col-lg-4 col-md-6 col-12 padding-1" *ngFor="let accessorie of getAccessories()">
               <div class="d-block">
-                  <figure class="imghvr-zoom-out ">
-                      <img src="assets/images/Carousel_8.jpg" alt="37">
+                  <figure class="imghvr-zoom-out " *ngFor="let image of getImages()">
+                      <img *ngIf="accessorie.image_id==image.id" src="{{image.image_url}}" alt="37">
                       <div class="sydney-block">
                           <div class="sydney-info">
-                              <p>Sydney Opera House</p>
-                              <h4>Sydney</h4>
+                              <h4>{{accessorie.name}}</h4>
+                              <!-- <h4>Sydney</h4> -->
                           </div>
                       </div>
                       <div class="sydney-disc">
                           <div class="sydney-info1">
-                              <h5>Duration: <strong> 6 DAYS</strong></h5>
-                              <div class="price">Rs.10000</div>
+                              <!-- <h5>Duration: <strong> 6 DAYS</strong></h5>
+                              <div class="price">Rs.10000</div> -->
+                              <ng-container *ngIf="accessorie.discount > 0; else elseBlock">
+                                <h6 class="price"><span class="text-cut">{{ accessorie.price | currency: 'INR' }}</span>&nbsp;&nbsp;{{ accessorie.price | discount: accessorie.discount | currency: 'INR' }}</h6>
+                              </ng-container>
+
+                              <ng-template #elseBlock>
+                                <h6 class="price">{{ accessorie.price | currency: 'INR' }}</h6>
+                              </ng-template>
                           </div>
                       </div>
                       <figcaption>
                           <div class="back-info">
-                              <h3>Sydney</h3>
-                              <p>It is a long established fact that a reader will be distracted by the readable content.</p>
-                              <a href="#">Read More</a>
-                              <div class="sydney-icon">
+                              <h3>{{accessorie.name}}</h3>
+                              <p>{{accessorie.description}}</p>
+                              <a href="#"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Add to Cart</a>
+                              <!-- <div class="sydney-icon">
                                  <i class="fa fa-globe"></i><i class="fa fa-road"></i><i class="fa fa-plane"></i><i class='fa fa-university'></i>
-                              </div>
-                          </div>
-                      </figcaption>
-                  </figure>
-              </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-12 padding-1">
-              <div class="d-block">
-                  <figure class="imghvr-zoom-out">
-                      <img src="assets/images/Carousel_7.jpeg" alt="37">
-                      <div class="sydney-block">
-                          <div class="sydney-info">
-                              <p>Fernando De Noronha</p>
-                              <h4>Brazil</h4>
-                          </div>
-                      </div>
-                      <div class="sydney-disc">
-                          <div class="sydney-info1">
-                              <h5>Duration: <strong> 6 DAYS</strong></h5>
-                              <div class="price">Rs.10000</div>
-                          </div>
-                      </div>
-                      <figcaption>
-                          <div class="back-info">
-                              <h3>Brazil</h3>
-                              <p>It is a long established fact that a reader will be distracted by the readable content.</p>
-                              <a href="#">Read More</a>
-                              <div class="sydney-icon">
-                                 <i class="fa fa-globe"></i><i class="fa fa-road"></i><i class="fa fa-plane"></i><i class='fa fa-university'></i>
-                              </div>
-                          </div>
-                      </figcaption>
-                  </figure>
-              </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-12 padding-1">
-              <div class="d-block">
-                  <figure class="imghvr-zoom-out">
-                      <img src="assets/images/Carousel_8.jpg" alt="37">
-                      <div class="sydney-block">
-                           <div class="sydney-info">
-                              <p>Aya Sofya</p>
-                              <h4>Instanbul</h4>
-                           </div>
-                      </div>
-                      <div class="sydney-disc">
-                          <div class="sydney-info1">
-                              <h5>Duration: <strong> 6 DAYS</strong></h5>
-                              <div class="price">Rs.10000</div>
-                          </div>
-                      </div>
-                      <figcaption>
-                          <div class="back-info">
-                              <h3>Instanbul</h3>
-                              <p>It is a long established fact that a reader will be distracted by the readable content.</p>
-                              <a href="#">Read More</a>
-                              <div class="sydney-icon">
-                                 <i class="fa fa-globe"></i><i class="fa fa-road"></i><i class="fa fa-plane"></i><i class='fa fa-university'></i>
-                              </div>
-                          </div>
-                      </figcaption>
-                  </figure>
-              </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-12 padding-1">
-              <div class="d-block">
-                  <figure class="imghvr-zoom-out">
-                      <img src="assets/images/background_login.jpg" alt="37">
-                      <div class="sydney-block">
-                          <div class="sydney-info">
-                              <p>Taj Mahal</p>
-                              <h4>India</h4>
-                          </div>
-                      </div>
-                      <div class="sydney-disc">
-                          <div class="sydney-info1">
-                              <h5>Duration: <strong> 6 DAYS</strong></h5>
-                              <div class="price">Rs.10000</div>
-                          </div>
-                      </div>
-                      <figcaption>
-                          <div class="back-info">
-                              <h3>India</h3>
-                              <p>It is a long established fact that a reader will be distracted by the readable content.</p>
-                              <a href="#">Read More</a>
-                              <div class="sydney-icon">
-                                 <i class="fa fa-globe"></i><i class="fa fa-road"></i><i class="fa fa-plane"></i><i class='fa fa-university'></i>
-                              </div>
-                          </div>
-                      </figcaption>
-                  </figure>
-              </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-12 padding-1">
-              <div class="d-block">
-                  <figure class="imghvr-zoom-out">
-                      <img src="assets/images/background_login1.jpg" alt="37">
-                      <div class="sydney-block">
-                          <div class="sydney-info">
-                              <p>Hop on Hop off Bus Tour</p>
-                              <h4>London</h4>
-                          </div>
-                      </div>
-                      <div class="sydney-disc">
-                          <div class="sydney-info1">
-                              <h5>Duration: <strong> 6 DAYS</strong></h5>
-                              <div class="price">Rs.10000</div>
-                          </div>
-                      </div>
-                      <figcaption>
-                          <div class="back-info">
-                              <h3>London</h3>
-                              <p>It is a long established fact that a reader will be distracted by the readable content.</p>
-                              <a href="#">Read More</a>
-                              <div class="sydney-icon">
-                                 <i class="fa fa-globe"></i><i class="fa fa-road"></i><i class="fa fa-plane"></i><i class='fa fa-university'></i>
-                              </div>
-                          </div>
-                      </figcaption>
-                  </figure>
-              </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-12 padding-1">
-              <div class="d-block">
-                  <figure class="imghvr-zoom-out">
-                      <img src="assets/images/Carousel_7.jpeg" alt="37">
-                      <div class="sydney-block">
-                          <div class="sydney-info">
-                              <p>Sydney Opera House</p>
-                              <h4>Italy</h4>
-                          </div>
-                      </div>
-                      <div class="sydney-disc">
-                          <div class="sydney-info1">
-                              <h5>Duration: <strong> 6 DAYS</strong></h5>
-                              <div class="price">Rs.10000</div>
-                          </div>
-                      </div>
-                      <figcaption>
-                          <div class="back-info">
-                              <h3>Italy</h3>
-                              <p>It is a long established fact that a reader will be distracted by the readable conten.</p>
-                              <a href="#">Read More</a>
-                              <div class="sydney-icon">
-                                 <i class="fa fa-globe"></i><i class="fa fa-road"></i><i class="fa fa-plane"></i><i class='fa fa-university'></i>
-                              </div>
+                              </div> -->
                           </div>
                       </figcaption>
                   </figure>

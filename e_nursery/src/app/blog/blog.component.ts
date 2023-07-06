@@ -51,6 +51,7 @@ export class BlogComponent implements OnInit {
   }
   onFileChange(event:any){
     this.file=event.target.files[0]
+
   }
 
   ngOnInit() {

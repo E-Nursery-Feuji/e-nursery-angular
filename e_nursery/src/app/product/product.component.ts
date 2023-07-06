@@ -51,10 +51,11 @@ export class ProductComponent implements OnInit {
 
 
   ngOnInit(): void {
+    console.log("init")
     this.show=true
-    this.getImages();
+    // this.images=this.getImages();
     this.getTypes(); //foe get the types fro dropdown
-    this.getProducts(); //for get the products in table
+    // this.products=this.getProducts(); //for get the products in table
   }
 
   // for open the add product box
@@ -156,22 +157,25 @@ export class ProductComponent implements OnInit {
 
   // getting the products
   getProducts() {
-    this.productservice.getProducts().subscribe((data) => {
-      this.products = this.products.concat(data)
-      ;
+    // this.products=[]
+    // this.productservice.getProducts().subscribe((data) => {
+    //   this.products = this.products.concat(data)
+    //   ;
 
-    });
+    // });
+    console.log("component")
+    return this.productservice.getProducts();
   }
 img1!:any
   //getting the images
   getImages() {
-    this.productservice.getImages().subscribe((data) => {
-      //this.img1="http://localhost:8000/media/images/None/p.png"
-      this.images = this.images.concat(data);
-      console.log(this.images)
-      this.images.forEach((o)=>this.img1=o.image_url)
-      //console.log(this.img1)
-    });
+    // this.images=[]
+    // this.productservice.getImages().subscribe((data) => {
+    //   this.images = this.images.concat(data);
+    //   console.log(this.images)
+    //   this.images.forEach((o)=>this.img1=o.image_url)
+    // });
+   return this.productservice.getImages();
   }
 
   // edit the Product

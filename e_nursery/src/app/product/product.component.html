@@ -22,11 +22,11 @@
     </thead>
     <tbody>
 
-      <tr *ngFor="let product of products">
+      <tr *ngFor="let product of getProducts()">
 
         <td  >
           <div class="d-flex align-items-center">
-            <div *ngFor="let image of images">
+            <div *ngFor="let image of getImages()">
             <img *ngIf="product.image_id==image.id"
                 src="{{image.image_url}}"
                 alt=""
