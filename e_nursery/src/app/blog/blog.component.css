@@ -62,11 +62,11 @@ h2 {
   padding: 0px;
   margin: 0 auto;
 }
-.btn{
+/* .btn{
   background-color: #008000;
   color: white;
 }
-/* CSS for form submit button */
+
 button[type="submit"] {
   background-color: #4CAF50;
   color: #fff;
@@ -74,32 +74,78 @@ button[type="submit"] {
   border: none;
   border-radius: 3px;
   cursor: pointer;
-}
+} */
 
-button[type="submit"]:hover {
+/* button[type="submit"]:hover {
   background-color:#008000;
 }
 
  button[type="submit"]:disabled {
   background-color: #ccc;
   cursor: not-allowed;
-}
+} */
 
 
-.form-container{
+/* .form-container{
   background-image: url('https://cdn4.1800flowers.com/wcsstore/Flowers/images/2020/lp/virtual-backgrounds/Plants-macro-virtual-background.jpg');
   background-position: center;
   color:black;
   padding: 50px;
   padding-left: 200px;
-}
-.right{
+  width: 50%;
+  background-color: blue;
+} */
+/* .right{
   float:right;
 }
 
 #len{
   border: none;
   background-color: white;
+} */
+
+
+/* ---------------------Form css --------------------- */
+.blog-form{
+  background-color: beige;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-container{
+  width: 50%;
+  background-color: white;
+  height: auto;
+}
+
+.button{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container input[type="text"],
+.form-container input[type="password"],
+.form-container input[type="file"],
+.form-container textarea{
+  border: 1px solid rgb(0, 98, 255);
+  border-radius: 4px;
+  padding: 8px;
+  box-shadow: 0 0 0 0.2px rgb(0, 98, 255);
+  background-color:rgba(255, 255, 255, 0.315);
+  opacity: 90%;
+}
+
+.form-container input[type="text"]:focus,
+.form-container input[type="password"]:focus,
+.form-container input[type="email"]:focus {
+  outline: none;
+  border-color: blue;
+  box-shadow: 0 0 0 1px blue;
+  opacity: 90%;
 }
 
 

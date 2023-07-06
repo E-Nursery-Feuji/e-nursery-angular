@@ -1,4 +1,7 @@
-
+.logo{
+  height: 2rem;
+  width: 10rem;
+}
 .container-fluid {
   display: flex;
   justify-content: center;
