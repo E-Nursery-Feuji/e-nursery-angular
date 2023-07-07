@@ -5,31 +5,44 @@
   </div>
   <!-- ------------------ Add Product Button starts --------------------- -->
   <hr>
-  <div class="blog-list">
-    <!-- <h2>Blogs</h2> -->
-    <div class="rows">
-      <div class="col" *ngFor="let blog of blogs">
-        <mat-card>
-          <div *ngFor="let image of images">
-            <mat-card-header *ngIf="blog.image_id==image.id">
-              <img [src]=image.image_url alt="">
-            </mat-card-header>
-          </div>
-          <mat-card-content>
-            <div class="right" >
-              <button type="button" id="len"  class="product-button " (click)="updatestatus(blog.id)">
-                <i class="fa fa-toggle-on fa-3x "   [ngClass]="{'fa-toggle-on': blog.status === 'Active', 'fa-toggle-off': blog.status === 'InActive'}" aria-hidden="true" style="color: green;"></i>
-              </button>
+  <div class="container-flex">
+    <div class="blog-list">
+      <!-- <h2>Blogs</h2> -->
+      <div class="rows">
+        <div class="col" *ngFor="let blog of blogs">
+          <mat-card class="main-mat-card">
+            <div  *ngFor="let image of images">
+              <mat-card-header class="blog-image-header" *ngIf="blog.image_id==image.id">
+                <img class="blog-image" [src]=image.image_url alt="">
+              </mat-card-header>
             </div>
-            <mat-card-title>{{ blog.title }}</mat-card-title>
-            <p>{{ blog.description }} </p>
-            <p>Status:{{ blog.status }}</p>
-            <mat-card-subtitle>Uploaded By: {{ blog.uploaded_by }}</mat-card-subtitle>
-          </mat-card-content>
-        </mat-card>
+            <mat-card-content>
+              <div class="right" >
+                <button type="button" id="len"  class="blog-button" (click)="updatestatus(blog.id)">
+                  <i class="fa fa-toggle-on fa-3x "   [ngClass]="{'fa-toggle-on': blog.status === 'Active', 'fa-toggle-off': blog.status === 'InActive'}" aria-hidden="true" style="color: green;"></i>
+                </button>
+              </div>
+              <mat-card-title>{{ blog.title }}</mat-card-title>
+              <!-- <p>{{ blog.description }} </p> -->
+              <div class="readmorediv" [ngClass]="{'collapsed': !showReadMore}">
+                <p [class.collapsed]="!showReadMore">{{ blog.description }} </p>
+
+              </div>
+              <span class="read-more" *ngIf="blog.description!.length > 10">
+                <button class="readbutton" mat-button color="primary" (click)="showReadMore = !showReadMore">
+                  {{ showReadMore ? 'Read Less' : 'Read More' }}
+                </button>
+              </span>
+
+              <!-- <p>Status:{{ blog.status }}</p> -->
+              <mat-card-subtitle><b>Uploaded By: {{ blog.uploaded_by }}</b></mat-card-subtitle>
+            </mat-card-content>
+          </mat-card>
+        </div>
       </div>
     </div>
   </div>
+
 </div>
 <div class="blog-form">
   <div *ngIf="!show" class="d-flex justify-content-center mt-5  overflow-hidden form-container" >
@@ -38,7 +51,7 @@
         <div class="col-9">
           <form class="add-blog-form" (ngSubmit)="saveBlog()" #blogForm="ngForm">
             <div class="form-group mb-2 mt-2" style="width: 400px">
-              <label for="title" class="fw-bold">Title</label>
+              <label for="title" class="fw-bold">Title&nbsp;<span style="color: red;">*</span></label>
               <input type="text" class="form-control w-100" id="title" name="title" placeholder="Title" required [(ngModel)]="blog.title" #title="ngModel"pattern="^[a-zA-Z\s]{1,50}$">
               <div *ngIf="title.invalid && (title.dirty || title.touched)" class="text-danger">
                 <div *ngIf="title.errors?.['required']">Title is required.</div>
@@ -46,7 +59,7 @@
               </div>
             </div>
             <div class="form-group mb-2 mt-2" style="width: 400px">
-              <label for="uploadedBy" class="fw-bold">Uploaded By</label>
+              <label for="uploadedBy" class="fw-bold">Uploaded By&nbsp;<span style="color: red;">*</span></label>
               <input type="text" class="form-control w-100" id="uploadedBy" name="uploadedBy" placeholder="Uploaded By" required [(ngModel)]="blog.uploaded_by" #uploadedBy="ngModel"#title="ngModel"pattern="^[a-zA-Z\s]{1,50}$">
               <div *ngIf="uploadedBy.invalid && (uploadedBy.dirty || uploadedBy.touched)" class="text-danger">
                 <div *ngIf="uploadedBy.errors?.['required']">Uploaded By is required.</div>
@@ -54,7 +67,7 @@
               </div>
             </div>
             <div class="form-group mb-2 mt-2" style="width: 400px">
-              <label for="description" class="fw-bold">Description</label>
+              <label for="description" class="fw-bold">Description&nbsp;<span style="color: red;">*</span></label>
               <textarea class="form-control w-100" id="description" rows="3" name="description" placeholder="Description" required [(ngModel)]="blog.description" #description="ngModel"></textarea>
               <div *ngIf="description.invalid && (description.dirty || description.touched)" class="text-danger">
                 <div *ngIf="description.errors?.['required']">Description is required.</div>
@@ -62,7 +75,7 @@
               </div>
             </div>
             <div class="form-group mb-2 mt-2" style="width: 400px">
-              <label for="image" class="fw-bold">Image</label>
+              <label for="image" class="fw-bold">Image&nbsp;<span style="color: red;">*</span></label>
               <div class="custom-file mb-3">
                 <input type="file" (change)="onFileChange($event)" class="custom-file-input w-100" id="image" name="image" accept="image/*" required [(ngModel)]="picture" #image="ngModel">
                 <div *ngIf="image.invalid && (image.dirty || image.touched)" class="text-danger">

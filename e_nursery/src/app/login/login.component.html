@@ -9,7 +9,7 @@
       <form [formGroup]="loginForm" novalidate (ngSubmit)="loginSubmit()">
         <!-- Email input -->
         <div class=" mb-2 mt-3">
-          <label class="form-label text-primary" for="email">Email</label>
+          <label class="form-label text-primary" for="email">Email&nbsp;<span style="color: red;">*</span></label>
           <input type="email" id="email" class="form-control" formControlName="email"  [ngClass]="{ 'is-invalid': submitted && loginForm.controls['email'].errors }"/>
         </div>
         <!-- Error message starts-->
@@ -24,7 +24,7 @@
         <!-- Error message ends-->
         <!-- Password input -->
         <div class=" mb-2 mt-3">
-          <label class="form-label text-primary" for="password">Password</label>
+          <label class="form-label text-primary" for="password">Password&nbsp;<span style="color: red;">*</span></label>
           <input type="password" id="password" class="form-control" formControlName="password" [ngClass]="{ 'is-invalid': submitted && loginForm.controls['password'].errors }"/>
         </div>
         <!-- Error message starts-->

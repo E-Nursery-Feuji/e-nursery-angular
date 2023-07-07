@@ -32,7 +32,7 @@ export class AdminRepository {
   }
 
   update(id:number,status:Admin):Observable<Admin>{
-    return this.http.put<Admin>(`${this.baseUrl}updateadmin/${id}/`,status);
+    return this.http.patch<Admin>(`${this.baseUrl}updateadmin/${id}/`,status);
   }
 
   updateStatus(id:number):Observable<Admin>{

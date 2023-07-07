@@ -39,8 +39,12 @@
         </td> -->
 
         <td>
-          <button type="button"  class="product-button " (click)="updatestatus(admin.id)">
-            <i class="fa fa-lg "   [ngClass]="{'fa-toggle-on': admin.status === 'Active', 'fa-toggle-off': admin.status === 'InActive'}" aria-hidden="true"></i>
+          <!-- <mat-slide-toggle [(ngModel)]="admin.status" (change)="updatestatus(admin.id)">
+            <i class="fa" [ngClass]="{'fa-toggle-on': admin.status === 'Active', 'fa-toggle-off': admin.status === 'InActive'}" aria-hidden="true"></i>
+          </mat-slide-toggle> -->
+
+          <button type="toggle"  class="product-button " (click)="updatestatus(admin.id)">
+            <i class="fa fa-xl" style="color: #0008fa"  [ngClass]="{'fa-toggle-on': admin.status === 'Active', 'fa-toggle-off': admin.status === 'InActive'}" aria-hidden="true"></i>
           </button>
         </td>
         <td>
