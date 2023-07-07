@@ -31,6 +31,7 @@ export class ProductComponent implements OnInit {
   images: Image[] = [];
 
   file: any;
+  fileData: any;
 
   saveProduct: FormGroup;
   editProductId!: number;
@@ -113,15 +114,10 @@ export class ProductComponent implements OnInit {
     this.submitted = true;
     // alert(1)
 
-    if (this.saveProduct.invalid) {
-      console.log("exit")
-      return;
-    }
       if (this.editProductId)//for updating the product
       {
         if(this.image_link===''){   //updating product and image
 
-          if (this.saveProduct.valid) {
             this.product = this.saveProduct.value; //setting values of product
             this.types.forEach((type) => {         //setting type to product object
               if (type.name == this.saveProduct.value.typeName) {
@@ -133,10 +129,10 @@ export class ProductComponent implements OnInit {
             });
             this.productservice.updateProductImage(this.file, this.product);
             this.editProductId = 0;
-          }
+            this.show = !this.show;
         }
         else{    //updating product only
-          if (this.saveProduct.valid) {
+
             this.product = this.saveProduct.value; //setting values of product
             this.types.forEach((type) => {         //setting type to product object
               if (type.name == this.saveProduct.value.typeName) {
@@ -148,7 +144,8 @@ export class ProductComponent implements OnInit {
             });
             this.productservice.updateProduct(this.product);
             this.editProductId = 0;
-          }
+            this.show = !this.show;
+
         }
 
 
@@ -167,6 +164,9 @@ export class ProductComponent implements OnInit {
           });
           this.productservice.saveProductImage(this.file, this.product);
           this.clearForm();
+        }
+        else{
+          return
         }
       }
 
@@ -198,7 +198,6 @@ export class ProductComponent implements OnInit {
    }
   //for oagination method ends
 
-  img1!:any
   //getting the images
   getImages() {
 
@@ -208,7 +207,7 @@ export class ProductComponent implements OnInit {
   // edit the Product
   editProduct(product: Product) {
 
-    this.saveProduct.get('image')?.setValue('aa')
+
     this.heading="Edit Product"
     this.editProductId = product.id;
     this.saveProduct.patchValue({
@@ -220,7 +219,6 @@ export class ProductComponent implements OnInit {
       quantity: product.quantity,
       description: product.description,
       image_id: product.image_id,
-      // image : product.image_id
     });
     this.images=this.getImages();
     this.images.forEach((image)=>{
