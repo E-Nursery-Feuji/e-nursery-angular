@@ -19,6 +19,8 @@ export class BlogComponent implements OnInit {
   file?:any
   picture:any
   openedBlogId: number | null = null;
+  showReadMore = false;
+
   constructor(private blogService: BlogService){}
 
   saveBlog() {
@@ -48,12 +50,15 @@ export class BlogComponent implements OnInit {
      this.getAllBlogs();
      this.getImages();
   }
+
   openBlog(blog: any) {
     this.openedBlogId = blog.id;
   }
+
   closeBlog(blog: any) {
     this.openedBlogId = null;
   }
+
   toggleBlog(blog: any) {
     if (this.openedBlogId === blog.id) {
       this.openedBlogId = null;
@@ -114,7 +119,7 @@ console.log(data)
   getAllBlogs(){
     this.blogs=[];
     this.blogService.getAllBlogs().subscribe(data=>{
-      this.blogs=this.blogs?.concat(data)
+      this.blogs=this.blogs?.concat(data).reverse()
       console.log(data)
       console.log(this.blogs)
     })

@@ -1,7 +1,24 @@
 .blog-list{
   width: 100%;
   padding: 10px;
+  height: 85vh;
+  /* background-color: white; */
+}
 
+.container-flex{
+  background-color:white;
+}
+
+.blog-image{
+  height: auto;
+  width: 86.32%;
+  /* border-color: aqua; */
+
+}
+
+.blog-image-header{
+  height: 20%;
+  /* background-color: aqua; */
 }
 
 .rows {
@@ -9,15 +26,17 @@
   flex-wrap: wrap;
   justify-content: center;
 
+
 }
 
 .col {
   flex: 0 0 33.33%;
   max-width: 33.33%;
-
+  height: 100px;
   padding: 10px;
   box-sizing: border-box;
   width: 300px;
+  /* background-color: aqua; */
 }
 
 h2 {
@@ -148,11 +167,51 @@ button[type="submit"] {
   opacity: 90%;
 }
 
+/* ---------------- form css ends ------------------- */
 
 .custom-card{
   height: 500px;
   width: 340px;
 }
+
 .right{
   margin-top: 10px;
 }
+
+.blog-button{
+  border: none;
+}
+
+
+.collapsed {
+  text-align: justify;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  /* justify-content: flex-end; */
+  -webkit-line-clamp: 2; /* Number of lines to show before collapsing */
+  -webkit-box-orient: vertical;
+  margin: 0%;
+  padding: 0%;
+}
+
+.read-more {
+  margin:0%;
+ text-align: left;
+}
+.readbutton{
+  padding: 0%;
+  margin: 0%;
+}
+
+.readmorediv{
+  margin: 0%;
+  padding: 0%;
+}
+
+.main-mat-card{
+  height:auto;
+  border: 2px solid green;
+  /* background-colo; */
+}
+
