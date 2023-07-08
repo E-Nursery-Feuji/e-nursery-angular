@@ -13,7 +13,7 @@
           <mat-card class="main-mat-card">
             <div  *ngFor="let image of images">
               <mat-card-header class="blog-image-header" *ngIf="blog.image_id==image.id">
-                <img class="blog-image" [src]=image.image_url alt="">
+                <img class="blog-image" [src]=image.image_url alt="" >
               </mat-card-header>
             </div>
             <mat-card-content>
