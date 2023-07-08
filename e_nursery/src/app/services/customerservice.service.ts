@@ -89,6 +89,16 @@ export class CustomerService {
               panelClass: 'snackbar-container' //for apply custome css
             })
         }
+        else if(data== "status inactive") //if password is incorrect
+        {
+            //has to write snak baar
+            this.snackBar.open("You are inactive,you can't login", '', {
+              duration: 2000, // Set the duration in milliseconds
+              verticalPosition: 'top', // Position at the top
+              panelClass: 'snackbar-container' //for apply custome css
+            })
+        }
+
       }
       else if(typeof(data)=='object') //checking if data is object
       {
