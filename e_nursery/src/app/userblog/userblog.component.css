@@ -1,114 +1,322 @@
-.blog-list{
+/* -------------------- blog add button starts ----------------- */
+.blog-heading{
   width: 100%;
-  padding: 10px;
-
-}
-
-.rows {
+  height: 3rem;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-
-}
-
-.col {
-  flex: 0 0 33.33%;
-  max-width: 33.33%;
-  padding: 10px;
-  box-sizing: border-box;
-  width: 300px;
-}
-
-h2 {
-  text-align: center;
-}
-
-.mat-card-header {
-  width: 373px;
-  margin-left: -48px;
-  margin-top: -16px;
-  height: 250px;
-  overflow: hidden;
-}
-/* .mat-card-header img{
-  transform: scale(1.0);
-} */
-
-.mat-card-content{
-  margin-top: 20px;
-}
-
-.add{
-  width: 8rem;
-  height: 2.5rem;
-  font-size: 1.2rem;
-  color: green;
-  background-color: lightgreen;
-  box-shadow: none;
-}
-.add-button{
-  width: 100%;
-  padding-left: 83%;
-}
-
- .center-form {
-  display: flex;
-  justify-content: center;
   align-items: center;
-  height: 100vh;
+  justify-content: center;
 }
-
-.add-blog-form {
-  width: 100%;
-  max-width: 400px;
-  padding: 0px;
-  margin: 0 auto;
+.blog-top{
+  width: 90%;
+  height: 90%;
+  display: flex;
+  justify-content: space-between;
 }
-.btn{
-  background-color: #008000;
-  color: white;
+.blog-search{
+  width: 50%;
+  /* background-color: red; */
 }
-/* CSS for form submit button */
-button[type="submit"] {
-  background-color: #4CAF50;
+.blog-add-btn{
+  width: 50%;
+  text-align: right;
+}
+/* -----------------search bar starts ------------------ */
+.blog-search input[type="text"]{
+  width: 50%;
+  height: 100%;
+  border: none;
+  border-bottom: 2px solid lightgreen;
+}
+.blog-search input[type="text"]:focus{
+  border: none;
+  outline: none;
+  border-bottom: 2px solid green;
+}
+.blog-search .search-icon{
+  font-size: 1.5rem;
+  color: green ;
+}
+/* ----------------- search bar ends ------------------- */
+/* ------------------- add button starts ------------ */
+.fa-plus{
+  font-size: 1rem;
+}
+.box-button a {
+  color: #FFF;
+  text-decoration: none;
+}
+.banner-btn{
+  position: relative;
+  font-size: 16px;
+  line-height: 30px;
+  color: #ffffff;
+  padding: 10px 30px;
+  font-weight: 600;
+  background: lightgreen;
+  overflow: hidden;
+  min-width: 150px;
+}
+.banner-btn:hover{
   color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.10);
 }
-
-button[type="submit"]:hover {
-  background-color:#008000;
+.theme-btn{
+  display:inline-block;
+  text-align: center;
+  border-radius: 5px;
+  position: relative;
+  z-index: 9;
+  color: inherit;
+  transition:all 0.5s ease;
+  text-transform: capitalize;
 }
-
- button[type="submit"]:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+.theme-btn span:not(.btn-title){
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 20%;
+  height: 100%;
+  border-radius: 50%;
+  transform: translateY(150%);
+  transition: all 500ms ease;
+  background-color: #ffffff;
+  z-index: 0;
 }
-
-
-.form-container{
-  background-image: url('https://cdn4.1800flowers.com/wcsstore/Flowers/images/2020/lp/virtual-backgrounds/Plants-macro-virtual-background.jpg');
-  background-position: center;
-  color:black;
-  padding: 50px;
-  padding-left: 200px;
+.theme-btn span:nth-child(2){
+  left: 20%;
+  transition-delay: 100ms;
 }
-.right{
-  float:right;
+.theme-btn span:nth-child(3){
+  left: 40%;
+  transition-delay: 200ms;
 }
+.theme-btn span:nth-child(4){
+  left: 60%;
+  transition-delay: 300ms;
+}
+.theme-btn span:nth-child(5){
+  left: 80%;
+  transition-delay: 400ms;
+}
+.theme-btn:hover span{
+  transform: translateY(0) scale(2);
+}
+.banner-btn:hover .btn-title {
+  color: lightgreen;
+  position: relative;
+  z-index: 9;
+}
+.banner-btn:hover{
+  color: lightgray;
+  text-decoration: none;
+}
+.animate-out {
+  animation-delay : 0ms  ;
+}
+/* ------------------- add button starts ------------ */
 
-#len{
-  border: none;
+/* -------------------- blog add button ends ----------------- */
+
+/* ----------------- blog card css starts ----------------- */
+
+/* ------------------------------------------------------------------------------- */
+
+.co_hs-service {
+  padding: 80px 0;
   background-color: white;
 }
-
-
-.custom-card{
-  height: 500px;
-  width: 550px;
+.hs_inner-service {
+  position: relative;
+  padding: 20px;
+  text-align: center;
+  border-radius: 15px 15px 0 0;
+  border-bottom: 3px solid transparent;
+  transition: all 500ms ease;
+  margin-bottom: 30px;
+  background-color: beige;
 }
-.right{
-  margin-top: 10px;
+.hs_icon {
+  width: 30%;
+  margin: auto;
+  /* height: 100px; */
+  line-height: 80px;
+  text-align: center;
+  /* border: 2px solid green; */
+  border-radius: 50%;
+  position: relative;
+  transition: all 300ms ease;
+  left: 0;
+  background-color: blue;
 }
+.hs_icon img{
+  width: 70%;
+  margin: auto;
+  position: absolute;
+  top: 49.5%;
+  left: 50.62%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 3px solid green;
+  height: 110px;
+}
+.hs_inner-service h2{
+  font-size: 23px;
+  font-weight: 700;
+  margin-top: 20px;
+}
+.hs_inner-service:hover .hs_icon {
+  border: 0;
+  /* background: rgba(0, 128, 0, 0.2); */
+  border-radius: 0;
+}
+/* for image round to square */
+.hs_inner-service:hover .hs_icon img{
+  border-radius: 0;
+  border: 3px solid green;
+  transition-duration: 1s;
+  transition-timing-function: ease;
+
+}
+
+.hs_inner-service:hover {
+  background-color: #fff;
+  box-shadow: 0 10px 20px rgb(0 0 0 / 10%);
+  transform: translateY(-20px);
+  border-bottom: 4px solid green;
+}
+
+/* ----------------------------------------------- */
+.blog{
+  width: 100%;
+}
+.blog-img-head{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.hs_inner-service p{
+  text-align: justify;
+}
+.blog-head{
+  text-align: left;
+  width: 70%;
+}
+.blog-head h6{
+  text-align: right;
+}
+
+/* ----for read more---- */
+.collapsed {
+  text-align: justify;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  /* justify-content: flex-end; */
+  -webkit-line-clamp: 2; /* Number of lines to show before collapsing */
+  -webkit-box-orient: vertical;
+  margin: 0%;
+  padding: 0%;
+}
+
+.read-more {
+  margin:0%;
+ text-align: left;
+}
+.readbutton{
+  padding: 0%;
+  margin: 0%;
+  color:green;
+}
+
+.readmorediv{
+  margin: 0%;
+  padding: 0%;
+}
+/* ---------------- */
+/* ----------------- blog card css ends ----------------- */
+
+/* -------------------- blog add blog form starts ----------------- */
+.form-container{
+  width: 100%;
+  height: 100%;
+  background-color: grey;
+  position: absolute;
+  top: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 90%;
+}
+.form-container>.card{
+  width: 60%;
+  background-color: white;
+}
+.form-title{
+  text-align: center;
+  color: green;
+}
+.form-container .form{
+  width: 70%;
+  margin-left: 15%;
+}
+.form-outline input[type="text"],
+.form-outline input[type="file"],
+.form-outline textarea{
+  border: none;
+  border-bottom: 2px solid green;
+}
+.form-outline input[type="text"]:focus,
+.form-outline input[type="file"]:focus,
+.form-outline textarea:focus{
+  outline: none;
+  border: none;
+  border-bottom: 2px solid blue;
+}
+.error-message{
+  color: red;
+}
+/* -------------------- blog add blog form ends ----------------- */
+/* ---------------------blog readmore modal starts------------- */
+.modal-header h3{
+  width: 100%;
+  text-align: right;
+}
+.modal-body{
+  height: auto;
+  width: 80%;
+  background-color:beige;  
+  margin: 2rem;
+}
+.modal-inner{
+  position: relative;
+  top: 5%;
+  left: 5%;
+  border: 2px solid green;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.blog-modal-image{
+  width:100%;
+  height: 15rem;
+  object-fit:fill;
+}
+.blog-modal-image img{
+  width: 100%;
+  height: 15rem;
+}
+.blog-modal-body p{
+  text-align: justify;
+}
+.blog-modal-title h3{
+  margin-left: 2rem;
+  text-align: center;
+}
+.blog-modal-title h6{
+  margin-right: 2rem;
+  text-align: right;
+}
+
+/* ---------------------blog readmore modal ends------------- */

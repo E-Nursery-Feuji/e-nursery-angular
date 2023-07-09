@@ -30,8 +30,9 @@
           <a [routerLink]="['fertilizer']">Fertilizers</a>
           <div class="underline"></div>
         </li>
+
         <li class="list-element">
-          <a >Blog</a>
+          <a [routerLink]="['blog']">Blog</a>
           <div class="underline"></div>
         </li>
 
@@ -73,11 +74,17 @@
           <li *ngIf="role=='CUSTOMER'">
             <a class="dropdown-item navbar-dropdown-item">Saved Address</a>
           </li>
-          <li>
-            <a class="dropdown-item navbar-dropdown-item" [routerLink]="['/changepassword']">Change Password</a>
+          <li *ngIf="(role=='ADMIN') && (urlRole=='admin')">
+            <a class="dropdown-item navbar-dropdown-item" [routerLink]="['/customer']"><i class="fa-solid fa-repeat fa-flip"></i>&nbsp;Switch to Customer</a>
+          </li>
+          <li *ngIf="(role=='ADMIN') && (urlRole=='customer')">
+            <a class="dropdown-item navbar-dropdown-item" [routerLink]="['/admin']"><i class="fa-solid fa-repeat fa-flip"></i>&nbsp;Switch to Admin</a>
           </li>
           <li>
-            <a class="dropdown-item navbar-dropdown-item" (click)="logout()">Logout</a>
+            <a class="dropdown-item navbar-dropdown-item" [routerLink]="['/changepassword']"><i class="fa-solid fa-lock fa-flip"></i>&nbsp;Change Password</a>
+          </li>
+          <li>
+            <a class="dropdown-item navbar-dropdown-item" (click)="logout()"><i class="fa-solid fa-power-off fa-flip"></i>&nbsp;Logout</a>
           </li>
         </ul>
       </div>
