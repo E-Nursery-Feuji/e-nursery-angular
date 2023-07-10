@@ -41,7 +41,11 @@
     <!-- Menu for user ends  -->
     <!-- cart start -->
 
-    <a *ngIf="role=='CUSTOMER'" class="cart-icon mr-6"><i class="fa-solid fa-cart-shopping fa-bounce"></i></a>
+    <a *ngIf="role=='CUSTOMER'" class="cart-icon mr-6">
+      <i class="fa-solid fa-cart-shopping fa-bounce"></i>
+      <span class="quantity-circle">{{totalQuantity()}}</span>
+    </a>
+
     <!-- cart end -->
 
     <!-- Right profile navbar elements starts-->
@@ -70,10 +74,10 @@
             <a class="dropdown-item" >Hey,&nbsp;<b>{{username}}</b></a>
           </li>
           <li *ngIf="role=='CUSTOMER'">
-            <a class="dropdown-item navbar-dropdown-item">My Orders</a>
+            <a class="dropdown-item navbar-dropdown-item"><i class="fa-solid fa-cart-shopping fa-flip"></i>&nbsp;My Orders</a>
           </li>
           <li *ngIf="role=='CUSTOMER'">
-            <a class="dropdown-item navbar-dropdown-item">Saved Address</a>
+            <a class="dropdown-item navbar-dropdown-item"><i class="fa-solid fa-location-dot fa-flip"></i>&nbsp;Saved Address</a>
           </li>
           <li *ngIf="(role=='ADMIN') && (urlRole=='admin')">
             <a class="dropdown-item navbar-dropdown-item" [routerLink]="['/customer']"><i class="fa-solid fa-repeat fa-flip"></i>&nbsp;Switch to Customer</a>

@@ -62,3 +62,34 @@
 
 
 
+.cart-icon {
+  position: relative;
+}
+
+.quantity-circle {
+  position: absolute;
+  top: -10px;
+  right: -14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  animation: jump 0.5s infinite;
+}
+
+@keyframes jump {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, -5px);
+  }
+}
+
+
