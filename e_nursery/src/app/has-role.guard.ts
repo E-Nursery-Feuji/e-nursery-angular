@@ -20,11 +20,9 @@ export class HasRoleGuard implements CanActivate {
     }else if(route.data['role1'] == "ADMIN"){
       //admin can also acess the customer routers
       return true;
-    }else {
-      if (this.jwttokenService.getRoleFromJwtToken() === 'ADMIN') {
-        // Redirect to the admin home page
-        return this.router.navigate(['admin']);
-      } else if (this.jwttokenService.getRoleFromJwtToken() === 'CUSTOMER') {
+    }
+    else {
+      if (this.jwttokenService.getRoleFromJwtToken() === 'CUSTOMER') {
         // Redirect to the customer home page
         return this.router.navigate(['customer']);
       } else {
