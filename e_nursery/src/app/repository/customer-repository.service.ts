@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class CustomerRepository {
 
+
   baseUrl:string='http://localhost:8000/customer/';
 
   constructor(private http:HttpClient)
@@ -37,5 +38,10 @@ export class CustomerRepository {
   changePassword(changePasswordData:object):Observable<any>
   {
     return this.http.post<any>(this.baseUrl+"updatepassword/",changePasswordData);
+  }
+
+  //get simgle customer by email
+  customerByEMail(email: string):Observable<object>{
+    return this.http.get<object>(this.baseUrl+"customerbyemail/"+email+"/");
   }
 }
