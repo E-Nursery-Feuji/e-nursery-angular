@@ -43,7 +43,7 @@
                 <p class="mt-4" [class.collapsed]="!showReadMore">{{ blog.description }} </p>
               </div>
               <span class="read-more" *ngIf="blog.description!.length > 10">
-                <button class="readbutton" mat-button  (click)="blogModal()">
+                <button class="readbutton" mat-button  (click)="blogModal(blog)">
                   {{ showReadMore ? 'Read Less' : 'Read More' }}
                 </button>
               </span>
@@ -71,27 +71,30 @@
       <form class="form" [formGroup]="blogForm" (ngSubmit)="submitForm()">
         <!-- -------title ------ -->
         <div class="form-outline mb-4">
-          <input type="text" id="title" class="form-control" formControlName="title" placeholder="title"/>
-          <!-- <label  >Title</label> -->
-          <!-- <div *ngIf="submitted || (blogForm.get('title')?.touched && blogForm.get('title')?.hasError('required'))" class="error-message">
-            Title is required.
-          </div> -->
+          <mat-form-field appearance="outline" class="filed">
+            <!-- <mat-label>Title</mat-label> -->
+            <input matInput formControlName="title">
+          </mat-form-field>
         </div>
         <!-- ---------Image ------ -->
         <div class="form-outline mb-4">
-          <label class="form-label" for="image" >Image&nbsp;<span >*</span></label>
-          <input type="file" class="form-control" id="image" formControlName="image"/>
-          <div *ngIf="submitted || (blogForm.get('image')?.touched && blogForm.get('image')?.hasError('required'))" class="error-message">
-            Image is required.
+          <!-- <label class="form-label mb-1" for="customFile">Image</label> -->
+          <input type="file" class="form-control mb-1" (change)="onFileChange($event)" formControlName="image" [ngClass]="{ 'is-invalid': submitted && blogForm.controls['image'].errors }"/>
+          <div class="mt-1" *ngIf="submitted || (blogForm.controls['image'].invalid && (blogForm.controls['image'].dirty || blogForm.controls['image'].touched))">
+            <span *ngIf="blogForm.controls['image'].errors?.['required']" class="text-danger mt-1">
+              Image is required!
+            </span>
           </div>
+          <!-- <div *ngIf="submitted || (blogForm.get('image')?.touched && blogForm.get('image')?.hasError('required'))" class="error-message">
+            Image is required.
+          </div> -->
         </div>
         <!-- -------description ------ -->
         <div class="form-outline mb-4">
-          <textarea class="form-control" id="description" rows="3" formControlName="description"></textarea>
-          <label class="form-label" for="description" >Description&nbsp;<span >*</span></label>
-          <div *ngIf="submitted || (blogForm.get('description')?.touched && blogForm.get('description')?.hasError('required'))" class="error-message">
-            Description is required.
-          </div>
+          <mat-form-field appearance="outline" class="filed">
+            <!-- <mat-label>Description</mat-label> -->
+            <textarea matInput formControlName="description"></textarea>
+          </mat-form-field>
         </div>
         <!-- -----------feilds ends --------- -->
         <hr>
@@ -119,19 +122,19 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h3><button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close" (click)="blogModal()"></button></h3>
+                <h3><button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close" (click)="blogModal(blog)"></button></h3>
               </div>
               <div class="modal-inner">
                 <div class="modal-body">
                   <div class="blog-modal-title">
-                    <h3 class="modal-title">Blog Title</h3>
-                    <h6>- Priya Patel</h6>
+                    <h3 class="modal-title">{{blog.title}}</h3>
+                    <h6>- {{blog.uploaded_by}}</h6>
                   </div>
-                  <div class="blog-modal-image mt-1 ml-2 mr-2 mb-3">
-                    <img src="assets/images/customer-home-seeds-2.jpg" alt="">
+                  <div class="blog-modal-image mt-1 ml-2 mr-2 mb-3" *ngFor="let image of getImages()">
+                    <img *ngIf="image.id==blog.image_id" src="{{image.image_url}}" alt="">
                   </div>
                   <div class="blog-modal-body">
-                    <p>{{description}}</p>
+                    <p>{{blog.description}}</p>
                   </div>
                 </div>
               </div>

@@ -51,6 +51,7 @@ constructor(private blogRepository:BlogRepository,private router:Router,
     const imageData= new FormData()
     imageData.append('image',image,image.name);
     // Implement the logic to save the blog to the API
+    
     return this.blogRepository.saveImage(imageData).subscribe(data=>{
       blog.image_id=data.id
 
@@ -58,7 +59,7 @@ constructor(private blogRepository:BlogRepository,private router:Router,
       this.saveBlog(blog)
       console.log("bbbbbbbbbbb")
       console.log(blog)
-       this.router.navigateByUrl("admin/blog");
+       //this.router.navigateByUrl("admin/blog");
     })
 
   }
