@@ -75,13 +75,13 @@ export class BlogComponent implements OnInit {
     updatestatus(id:number) {
       console.log(id)
 
-      this.blogService.updateStatus(id).subscribe((data) => {
-        console.log(data)
-        console.log('Status updated successfully.');
-        this.getAllBlogs();
-        this.getImages();
+      this.blogService.updateStatus(id)
+  //     .subscribe((data) => {
 
-      });
+  //       this.getAllBlogs();
+  //       this.getImages();
+
+  //     });
     }
 
 
@@ -109,20 +109,13 @@ export class BlogComponent implements OnInit {
   }
 
   getImages(){
-    this.images=[];
-    this.blogService.getImages().subscribe(data=>{
-this.images=this.images?.concat(data)
-console.log(data)
-    })
+    this.images=this.blogService.getImages();
+    return this.images;
   }
 
   getAllBlogs(){
-    this.blogs=[];
-    this.blogService.getAllBlogs().subscribe(data=>{
-      this.blogs=this.blogs?.concat(data).reverse()
-      console.log(data)
-      console.log(this.blogs)
-    })
+    this.blogs=this.blogService.getAllBlogs();
+    return this.blogs;
   }
   // expandedBlogs: { [key: number]: boolean } = {};
 

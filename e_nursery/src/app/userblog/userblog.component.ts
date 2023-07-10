@@ -40,18 +40,39 @@ export class UserblogComponent implements OnInit {
   }
 
 
+  ngOnInit() {
+ }
+
+
   // -----------------------------------------------------------------
+  // for open the form modal
   formModal()
   {
     this.submitted=false;
     this.formShow=!(this.formShow);
   }
 
+  //for open the blog modal
   blogModal()
   {
     this.blogShow=!(this.blogShow);
   }
 
+  //for gett all images
+  getImages(){
+    this.images=this.blogService.getImages();
+    return this.images;
+  }
+
+  //for get the active blogs only
+  getActiveBlogs()
+  {
+    this.blogs=this.blogService.getActiveBlogs();
+    return this.blogs;
+  }
+
+
+  //for save the blog
   submitForm()
   {
     this.submitted=true;
@@ -60,54 +81,36 @@ export class UserblogComponent implements OnInit {
     }
     if(this.blogForm.valid)
     {
+      this.blog=this.blogForm.value()
+      this.blog.status=="Inactive"
+      this.blogService.saveBlogImage(this.blog,this.file)
+
+      //console.log(this.blog)
       console.log("Success")
     }
   }
 
   // -----------------------------------------------------------
-  saveBlog() {
-    console.log(this.blog);
-    this. blog = {
-      "id":this.blog.id,
-      "title": this.blog.title,
-      "uploaded_by": this.blog.uploaded_by,
-      "description": this.blog.description,
-      "status": "InActive",
-      //"image": { "id": 0, "image": this.blog.image }
-    };
-    // this.file=this.blog.image
+  // saveBlog() {
+  //   console.log(this.blog);
+  //   this. blog = {
+  //     "id":this.blog.id,
+  //     "title": this.blog.title,
+  //     "uploaded_by": this.blog.uploaded_by,
+  //     "description": this.blog.description,
+  //     "status": "InActive",
+  //     //"image": { "id": 0, "image": this.blog.image }
+  //   };
+  //   // this.file=this.blog.image
 
-    console.log(this.file);
-    this.blogService.saveBlogImage(this.blog,this.file)
-  }
+  //   console.log(this.file);
+  //   this.blogService.saveBlogImage(this.blog,this.file)
+  // }
 
   onFileChange(event:any){
     this.file=event.target.files[0]
 
   }
-  openDialog() {
-    console.log("click");
-    this.show = !this.show; // Toggle the value of showForm variable
-  }
 
-  ngOnInit() {
-     this.getAllBlogs();
-     this.getImages();
-  }
-  getImages(){
-    this.images=[];
-    this.blogService.getImages().subscribe(data=>{
-this.images=this.images?.concat(data)
-console.log(data)
-    })
-  }
 
-  getAllBlogs(){
-    this.blogs=[];
-    this.blogService.getAllBlogs().subscribe(data=>{
-      this.blogs=this.blogs?.concat(data)
-      console.log(data)
-      console.log(this.blogs)
-    })
-  }
 }

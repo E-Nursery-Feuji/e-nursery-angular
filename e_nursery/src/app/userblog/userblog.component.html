@@ -28,21 +28,21 @@
     <div class="co_hs-service">
       <div class="container">
         <div class="row">
-          <div class="col-lg-6 col-md-6 col-12 mb-4" *ngFor="let item of [1,2,3,4,5,6,7]">
+          <div class="col-lg-6 col-md-6 col-12 mb-4" *ngFor="let blog of getActiveBlogs()">
             <div class="hs_inner-service">
               <div class="blog-img-head">
-                <div class="hs_icon mt-2">
-                  <img src="assets/images/customer-home-plant-2.jpg">
+                <div class="hs_icon mt-2" *ngFor="let image of getImages()">
+                  <img *ngIf="image.id==blog.image_id" src="{{image.image_url}}">
                 </div>
                 <div class="blog-head">
-                  <h2 class="mt-1">Health Check</h2>
-                  <h6>-&nbsp;Priya Patel</h6>
+                  <h2 class="mt-1">{{blog.title}}</h2>
+                  <h6>-&nbsp;{{blog.uploaded_by}}</h6>
                 </div>
               </div>
               <div class="readmorediv" [ngClass]="{'collapsed': !showReadMore}">
-                <p class="mt-4" [class.collapsed]="!showReadMore">{{ description }} </p>
+                <p class="mt-4" [class.collapsed]="!showReadMore">{{ blog.description }} </p>
               </div>
-              <span class="read-more" *ngIf="description!.length > 10">
+              <span class="read-more" *ngIf="blog.description!.length > 10">
                 <button class="readbutton" mat-button  (click)="blogModal()">
                   {{ showReadMore ? 'Read Less' : 'Read More' }}
                 </button>
@@ -71,24 +71,24 @@
       <form class="form" [formGroup]="blogForm" (ngSubmit)="submitForm()">
         <!-- -------title ------ -->
         <div class="form-outline mb-4">
-          <input type="text" id="title" class="form-control" />
-          <label class="form-label" for="title">Title&nbsp;<span style="color: red;">*</span></label>
-          <div *ngIf="submitted || (blogForm.get('title')?.touched && blogForm.get('title')?.hasError('required'))" class="error-message">
+          <input type="text" id="title" class="form-control" formControlName="title" placeholder="title"/>
+          <!-- <label  >Title</label> -->
+          <!-- <div *ngIf="submitted || (blogForm.get('title')?.touched && blogForm.get('title')?.hasError('required'))" class="error-message">
             Title is required.
-          </div>
+          </div> -->
         </div>
         <!-- ---------Image ------ -->
         <div class="form-outline mb-4">
-          <label class="form-label" for="image">Image&nbsp;<span style="color: red;">*</span></label>
-          <input type="file" class="form-control" id="image" />
+          <label class="form-label" for="image" >Image&nbsp;<span >*</span></label>
+          <input type="file" class="form-control" id="image" formControlName="image"/>
           <div *ngIf="submitted || (blogForm.get('image')?.touched && blogForm.get('image')?.hasError('required'))" class="error-message">
             Image is required.
           </div>
         </div>
         <!-- -------description ------ -->
         <div class="form-outline mb-4">
-          <textarea class="form-control" id="description" rows="3"></textarea>
-          <label class="form-label" for="description">Description&nbsp;<span style="color: red;">*</span></label>
+          <textarea class="form-control" id="description" rows="3" formControlName="description"></textarea>
+          <label class="form-label" for="description" >Description&nbsp;<span >*</span></label>
           <div *ngIf="submitted || (blogForm.get('description')?.touched && blogForm.get('description')?.hasError('required'))" class="error-message">
             Description is required.
           </div>
