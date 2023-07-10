@@ -14,8 +14,15 @@ export class OrderReposistoryService {
 constructor(private http:HttpClient) { }
 
 addToCart(cart:Cart):Observable<object>{
-  console.log(cart)
  return this.http.post<object>(this.baseUrl+"savecart/",cart);
+}
+
+getCart(id:any):Observable<object>{
+  return this.http.get<object>(this.baseUrl+"cart/"+id+"/");
+}
+
+updateToCart(cart:Cart):Observable<object>{
+ return this.http.put<object>(this.baseUrl+"savecart/",cart);
 }
 
 }
