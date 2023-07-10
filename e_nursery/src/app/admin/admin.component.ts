@@ -20,6 +20,7 @@ export class AdminComponent implements OnInit {
   editid!:number;
   heading!:string;
   hide:boolean=true;
+  nameSearch:String= ""
 
 
   constructor(private formBuilder: FormBuilder,private adminService:AdminService,router:Router)
@@ -154,9 +155,15 @@ export class AdminComponent implements OnInit {
 
 
 
-getAdmins(){
-  return this.adminService.getAdmin().reverse();
-}
+  getAdmins(){
+    if (this.nameSearch===""){
+     return this.adminService.getAdmin()
+    }
+    else{
+     let searchTerm = this.nameSearch.trim().toLowerCase();
+    return this.adminService.getAdmin().filter(a => a.first_name.toLowerCase().includes(searchTerm)||a.last_name.toLowerCase().includes(searchTerm)||a.email.toLowerCase().includes(searchTerm))
+   }
+   }
 
 
 }

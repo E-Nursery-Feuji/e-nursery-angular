@@ -5,8 +5,12 @@
   <button class="add" mat-raised-button (click)="openDialog()"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;Admin</button>
 </div>
 <!-- ------------------ Add Product Button starts --------------------- -->
+<div class="search-bar">
+  <input type="text" class="search" id="search" placeholder="Search Admin here" [(ngModel)]="nameSearch">
+</div>
 <hr>
 <!-- ------------------ Product details table starts ------------------ -->
+
 <div class="product-table">
   <table class="table align-middle mb-0 bg-white">
     <thead class="bg-light">

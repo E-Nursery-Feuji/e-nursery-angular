@@ -21,6 +21,8 @@ export class BlogComponent implements OnInit {
   openedBlogId: number | null = null;
   showReadMore = false;
 
+  blogSearch:string=""
+
   constructor(private blogService: BlogService){}
 
   saveBlog() {
@@ -114,8 +116,14 @@ export class BlogComponent implements OnInit {
   }
 
   getAllBlogs(){
-    this.blogs=this.blogService.getAllBlogs();
-    return this.blogs;
+    if (this.blogSearch===""){
+    this.blogs=[];
+   return this.blogService.getAllBlogs()
+  }
+  else{
+    let searchTerm = this.blogSearch.trim().toLowerCase();
+    return this.blogService.getAllBlogs().filter(a => a.title?.toLowerCase().includes(searchTerm)|| a.uploaded_by?.toLowerCase().includes(searchTerm))
+}
   }
   // expandedBlogs: { [key: number]: boolean } = {};
 

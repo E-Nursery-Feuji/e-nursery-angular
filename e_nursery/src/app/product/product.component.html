@@ -6,6 +6,9 @@
   <div class="add-button mt-3">
     <button class="add" mat-raised-button (click)="openDialog()"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;Product</button>
   </div>
+  <div class="search-bar">
+    <input type="text" class="search" id="search" placeholder="Search Product here" [(ngModel)]="productSearch">
+  </div>
   <!-- ------------------ Add Product Button starts --------------------- -->
   <hr>
   <!-- ------------------ Product details table starts ------------------ -->
@@ -79,6 +82,7 @@
 </div>
 
 <!-- ------------------ add Product form starts ----------------------- -->
+
 <div class="container"  *ngIf=!(show)>
   <div class="card mt-5">
     <h2 class="title mt-3 mb-2">{{heading}}</h2>
