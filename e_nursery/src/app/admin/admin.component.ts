@@ -155,7 +155,7 @@ export class AdminComponent implements OnInit {
 
 
 getAdmins(){
-  return this.adminService.getAdmin()
+  return this.adminService.getAdmin().reverse();
 }
 
 

@@ -226,7 +226,7 @@ export class CustomerService {
           //sweetalert for successful registration
           Swal.fire({
             icon: 'success',
-            title: 'Password Chnaged Successful !',
+            title: 'Password Changed Successful !',
           });
           if(this.jwttokenserivce.getRoleFromJwtToken()=='CUSTOMER')
           {

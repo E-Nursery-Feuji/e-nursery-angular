@@ -8,7 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { RegisterationComponent } from './registeration/registeration.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { UserhomeComponent } from './userhome/userhome.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminhomeComponent } from './adminhome/adminhome.component';
@@ -23,18 +23,10 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { NavbarComponent } from './navbar/navbar.component';
-
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
-
-
-import { NgxUiLoaderModule,
-  NgxUiLoaderConfig,
-  NgxUiLoaderHttpModule,
-  SPINNER,
-  POSITION,
-  PB_DIRECTION } from 'ngx-ui-loader';
+import { NgxUiLoaderModule,NgxUiLoaderConfig,NgxUiLoaderHttpModule } from 'ngx-ui-loader';
 import { PlantsComponent } from './plants/plants.component';
 import { SeedsComponent } from './seeds/seeds.component';
 import { AccessoriesComponent } from './accessories/accessories.component';
@@ -43,6 +35,11 @@ import { UserblogComponent } from './userblog/userblog.component';
 import { CustomerhomeComponent } from './customerhome/customerhome.component';
 import { FooterComponent } from './footer/footer.component';
 import { DiscountPipe } from './discount.pipe';
+
+
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { ENurseryInterceptorInterceptor } from './enursery-interceptor.interceptor';
 
   const ngxUiLoaderConfig: NgxUiLoaderConfig={
   "bgsColor": "#1fe909",
@@ -122,8 +119,15 @@ import { DiscountPipe } from './discount.pipe';
     MatCardModule,
     MatPaginatorModule,
 
+
+    MatSidenavModule,
+    MatCheckboxModule,
+
+
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: ENurseryInterceptorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
