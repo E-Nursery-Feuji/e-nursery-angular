@@ -30,6 +30,10 @@ addToCart(plant:Product){
       console.log("customer id")
       console.log(customer.id);
       this.cart.customer=customer.id;
+      console.log(this.cart)
+      this.orderReposistoryService.addToCart(this.cart).subscribe(
+        data => console.log(data)
+      );
     },
     (error) =>{
       Swal.fire({
@@ -38,10 +42,7 @@ addToCart(plant:Product){
       });
     }
   );
-  console.log(this.cart)
-  this.orderReposistoryService.addToCart(this.cart).subscribe(
-    data => console.log(data)
-  );
+
     }
 
 }
