@@ -38,6 +38,7 @@ export class ProductComponent implements OnInit {
   editImageId!:number;
 
   show: boolean = true;
+  productSearch:String= ""
 
   //constructor
   constructor(private productservice: Productservice,private formBuilder: FormBuilder) {
@@ -188,14 +189,20 @@ export class ProductComponent implements OnInit {
     }
   }
 
-   getCurrentPageProducts(): Product[] {
-    this.getProducts();
-    this.totalItems = this.products.length;
-    this.totalPages = Math.ceil(this.totalItems / this.pageSize);
-    const startIndex = (this.currentPage - 1) * this.pageSize;
-    const endIndex = startIndex + this.pageSize;
-    return this.products.slice(startIndex, endIndex);
-   }
+  getCurrentPageProducts(): Product[] {
+    if (this.productSearch===""){
+      this.getProducts();
+      this.totalItems = this.products.length;
+      this.totalPages = Math.ceil(this.totalItems / this.pageSize);
+      const startIndex = (this.currentPage - 1) * this.pageSize;
+      const endIndex = startIndex + this.pageSize;
+      return this.products.slice(startIndex, endIndex);
+    }
+   else{
+      let searchTerm = this.productSearch.trim().toLowerCase();
+      return this.productservice.getProducts().filter(a => a.name.toLowerCase().includes(searchTerm)|| a.type.name.toLowerCase().includes(searchTerm))
+  }
+}
   //for oagination method ends
 
   //getting the images

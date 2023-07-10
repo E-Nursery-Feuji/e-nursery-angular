@@ -25,7 +25,7 @@ constructor(private blogRepository:BlogRepository,private router:Router,
     this.blogs=data;
  });
 
-  this.productRepository.getImages().subscribe(data =>{this.images=data});
+  this.blogRepository.getImages().subscribe(data =>{this.images=data});
 }
 
   //for all images
@@ -51,7 +51,7 @@ constructor(private blogRepository:BlogRepository,private router:Router,
     const imageData= new FormData()
     imageData.append('image',image,image.name);
     // Implement the logic to save the blog to the API
-    
+
     return this.blogRepository.saveImage(imageData).subscribe(data=>{
       blog.image_id=data.id
 
