@@ -60,7 +60,9 @@
   width: 100%;
 }
 
-
+.active{
+  zoom: 1.5;
+}
 
 .cart-icon {
   position: relative;

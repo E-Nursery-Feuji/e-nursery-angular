@@ -3,6 +3,7 @@ import { Blog } from '../model/Blog';
 import { Image } from '../model/image';
 import { BlogService } from '../services/BlogService';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { JwttokenService } from '../services/jwttoken.service';
 
 @Component({
   selector: 'app-userblog',
@@ -26,7 +27,8 @@ export class UserblogComponent implements OnInit {
   file?:any
   picture:any
   openedBlogId: number | null = null;
-  constructor(private blogService: BlogService,private formBuilder: FormBuilder)
+  constructor(private blogService: BlogService,private formBuilder: FormBuilder,
+              private jwtTokenService:JwttokenService)
   {
     this.blogForm = this.formBuilder.group({
       title: ['', Validators.required],
@@ -44,6 +46,7 @@ export class UserblogComponent implements OnInit {
   // for open the form modal
   formModal()
   {
+    this.blog=new Blog();
     this.submitted=false;
     this.formShow=!(this.formShow);
   }
@@ -73,17 +76,22 @@ export class UserblogComponent implements OnInit {
   //for save the blog
   submitForm()
   {
-    this.submitted=true;
-    if (this.blogForm.invalid) {
-      return;
-    }
-    if(this.blogForm.valid)
-    {
-      this.blog=this.blogForm.value
-      this.blog.status="InActive"
-      this.blogService.saveBlogImage(this.blog,this.file)
+    console.log(this.blog);
+    this. blog = {
+      "id":0,
+      "title": this.blog.title,
+      "uploaded_by": this.jwtTokenService.getFirstNameFromToken()+" "+this.jwtTokenService.getLastNameFromJwtToken(),
+      "description": this.blog.description,
+      "status": "InActive",
+      //"image": { "id": 0, "image": this.blog.image }
+    };
+    // this.file=this.blog.image
 
-    }
+    console.log(this.file);
+    this.blogService.saveBlogImage(this.blog,this.file)
+    this.blog=new Blog()
+    this.file=null
+    this.formModal();
   }
 
 
