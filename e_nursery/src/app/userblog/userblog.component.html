@@ -24,36 +24,33 @@
   <hr>
   <!-- --------------------------- blog add button & search ends --------------------- -->
   <!-- ----------------------------- blog card starts ---------------------- -->
-  <div class="blog">
-    <div class="co_hs-service">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 col-md-6 col-12 mb-4" *ngFor="let blog of getActiveBlogs()">
-            <div class="hs_inner-service">
-              <div class="blog-img-head">
-                <div class="hs_icon mt-2" *ngFor="let image of getImages()">
-                  <img *ngIf="image.id==blog.image_id" src="{{image.image_url}}">
+  <!-- ----------------------------- blog card ends ---------------------- -->
+  <div class="co_service">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 pad-1" *ngFor="let blog of getActiveBlogs()">
+          <div class="item-single">
+            <div class="servi_image" *ngFor="let image of getImages()">
+              <img *ngIf="image.id==blog.image_id" src="{{image.image_url}}">
+            </div>
+            <div class="content">
+              <h4>{{blog.title}}</h4>
+              <div>
+                <div class="readmorediv" [ngClass]="{'collapsed': !showReadMore}">
+                  <p class="mt-4" [class.collapsed]="!showReadMore">{{ blog.description }} </p>
                 </div>
-                <div class="blog-head">
-                  <h2 class="mt-1">{{blog.title}}</h2>
-                  <h6>-&nbsp;{{blog.uploaded_by}}</h6>
-                </div>
+                <span class="read-more" *ngIf="blog.description!.length > 10">
+                  <button class="readbutton" mat-button  (click)="blogModal(blog)">
+                    {{ showReadMore ? 'Read Less' : 'Read More' }}
+                  </button>
+                </span>
               </div>
-              <div class="readmorediv" [ngClass]="{'collapsed': !showReadMore}">
-                <p class="mt-4" [class.collapsed]="!showReadMore">{{ blog.description }} </p>
-              </div>
-              <span class="read-more" *ngIf="blog.description!.length > 10">
-                <button class="readbutton" mat-button  (click)="blogModal(blog)">
-                  {{ showReadMore ? 'Read Less' : 'Read More' }}
-                </button>
-              </span>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- ----------------------------- blog card ends ---------------------- -->
 </div>
 <!-- ---------------------- blog card ends ------------------------------- -->
 
@@ -117,7 +114,7 @@
   <div class="form-container">
     <div class="card">
       <div class="blog-read">
-        <!-- Modal -->
+
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -130,8 +127,8 @@
                     <h3 class="modal-title">{{blog.title}}</h3>
                     <h6>- {{blog.uploaded_by}}</h6>
                   </div>
-                  <div class="blog-modal-image mt-1 ml-2 mr-2 mb-3" *ngFor="let image of getImages()">
-                    <img *ngIf="image.id==blog.image_id" src="{{image.image_url}}" alt="">
+                  <div class="blog-modal-image mt-1 ml-2 mr-2 mb-3">
+                    <img src="{{image.image_url}}" alt="">
                   </div>
                   <div class="blog-modal-body">
                     <p>{{blog.description}}</p>
@@ -144,6 +141,7 @@
       </div>
     </div>
   </div>
+
 </div>
 <!-- ------------------------ blog Read More Modal starts ---------------------- -->
 

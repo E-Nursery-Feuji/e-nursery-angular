@@ -16,7 +16,7 @@ export class UserblogComponent implements OnInit {
   blogForm: FormGroup;
   submitted:boolean=false;
   blog:Blog=new Blog();
-
+  image:Image=new Image();
   showReadMore:boolean = false;
 
   //-------------------------------------
@@ -52,6 +52,7 @@ export class UserblogComponent implements OnInit {
   blogModal(blog:Blog)
   {
     this.blog=blog;
+    this.image=this.getImages().filter(i=>i.id==blog.image_id)[0];
     this.blogShow=!(this.blogShow);
   }
 
