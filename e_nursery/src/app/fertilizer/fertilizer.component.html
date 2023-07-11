@@ -25,7 +25,19 @@
                 <span>{{ fertilizer.price | currency: 'INR' }}</span>
               </ng-template>
               <h5>
-                <button class="btn"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Add to Cart</button>
+                <button *ngIf=!(getAdd(fertilizer.id)) class="btn" (click)="addToCart(fertilizer)"><i class="fa-solid fa-cart-shopping" ></i>&nbsp;&nbsp;Add to Cart</button>
+              </h5>
+              <h5>
+                <div *ngIf=(getAdd(fertilizer.id))>
+                  <div  *ngIf="getQuantity(fertilizer.id)>0">
+                      <span (click)="removeQuantity(fertilizer.id)"><i class="fa-solid fa-minus"></i></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                      <span>{{getQuantity(fertilizer.id)}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                      <span (click)="addQuantity(fertilizer.id)"><i class="fa-solid fa-plus"></i></span>
+                  </div>
+                  <div *ngIf="getQuantity(fertilizer.id)==0">
+                    <div class="book-btn" data-toggle="modal" data-target="#myModal" (click)="addToCart(fertilizer)"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Add to Cart</div>
+                  </div>
+                </div>
               </h5>
               <p>{{fertilizer.description}}</p>
             </div>

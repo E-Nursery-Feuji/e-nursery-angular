@@ -1,13 +1,28 @@
  <div *ngIf=show>
-  <!-- ------------------- Add Blog Button starts --------------------->
-  <div class="add-button mt-3">
-    <button class="add" mat-raised-button (click)="openDialog()"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;AddBlog</button>
+  <!-- ------------------- Add Blog Button starts ------------------- -->
+   <div class="blog-heading mt-2">
+    <div class="blog-top">
+      <div class="blog-search">
+        <input type="text" name="search" class="search" placeholder="Search blog here..." [(ngModel)]="blogSearch">&nbsp;&nbsp;
+        <span class="search-icon"><i class="fa-solid fa-search"></i></span>
+      </div>
+      <div class="blog-add-btn">
+        <div class="box-button">
+          <a class="banner-btn theme-btn"  (click)="openDialog()" data-animation-in="bounceInLeft" data-animation-out="animate-out bounceOutRight">
+              <span class="btn-title"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;ADD BLOG</span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+          </a>
+      </div>
+      </div>
+    </div>
   </div>
-  <div class="search-bar">
-    <input type="text" class="search" id="searchByName" placeholder="Search Blog here" [(ngModel)]="blogSearch">
-  </div>
-  <!-- ------------------ Add Product Button starts --------------------- -->
   <hr>
+  <!-- ......................Add blog and searching end here.......................... -->
+
   <div class="container-flex">
     <div class="blog-list">
       <!-- <h2>Blogs</h2> -->

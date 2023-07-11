@@ -1,14 +1,27 @@
 <div *ngIf=show>
-
-  <!-- ------------------- Add Product Button starts ------------------- -->
-<div class="add-button mt-3">
-  <button class="add" mat-raised-button (click)="openDialog()"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;Admin</button>
-</div>
-<!-- ------------------ Add Product Button starts --------------------- -->
-<div class="search-bar">
-  <input type="text" class="search" id="search" placeholder="Search Admin here" [(ngModel)]="nameSearch">
-</div>
-<hr>
+  <!-- ------------------- Add Admin Button and searching starts ------------------- -->
+  <div class="blog-heading mt-2">
+    <div class="blog-top">
+      <div class="blog-search">
+        <input type="text" name="search" class="search" placeholder="Search admin here..." [(ngModel)]="nameSearch">&nbsp;&nbsp;
+        <span class="search-icon"><i class="fa-solid fa-search"></i></span>
+      </div>
+      <div class="blog-add-btn">
+        <div class="box-button">
+          <a class="banner-btn theme-btn"  (click)="openDialog()" data-animation-in="bounceInLeft" data-animation-out="animate-out bounceOutRight">
+              <span class="btn-title"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;ADD ADMIN</span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+          </a>
+      </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <!-- ......................Add admin and searching end here.......................... -->
 <!-- ------------------ Product details table starts ------------------ -->
 
 <div class="product-table">

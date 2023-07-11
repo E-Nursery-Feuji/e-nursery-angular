@@ -32,6 +32,14 @@ private customerRepository:CustomerRepository,private JwttokenService:JwttokenSe
 
 //add to cart implementations
 addToCart(product: Product) {
+  const role=this.JwttokenService.getRoleFromJwtToken();
+  if(role=="ADMIN"){
+    Swal.fire({
+      icon: "error",
+      text: "you are admin can not place order",
+    });
+   return
+  }
   const cart = this.carts.filter((c) => c.product == product.id)[0];
   if (cart) {
     cart.quantity = 1;
