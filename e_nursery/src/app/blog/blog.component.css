@@ -181,6 +181,126 @@ button[type="submit"]:disabled {
   /* background-colo; */
 }
 
-/* .blog-image{
-  width: 551px;
-} */
+
+.blog-image{
+  width: 550px;
+}
+/* -------------------- blog add button starts ----------------- */
+.blog-heading{
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.blog-top{
+  width: 90%;
+  height: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+.blog-search{
+  width: 50%;
+  /* background-color: red; */
+}
+.blog-add-btn{
+  width: 50%;
+  text-align: right;
+}
+/* -----------------search bar starts ------------------ */
+.blog-search input[type="text"]{
+  width: 50%;
+  height: 100%;
+  border: none;
+  border-bottom: 2px solid lightgreen;
+}
+.blog-search input[type="text"]:focus{
+  border: none;
+  outline: none;
+  border-bottom: 2px solid green;
+}
+.blog-search .search-icon{
+  font-size: 1.5rem;
+  color: green ;
+}
+/* ----------------- search bar ends ------------------- */
+/* ------------------- add button starts ------------ */
+.fa-plus{
+  font-size: 1rem;
+}
+.box-button a {
+  color: #FFF;
+  text-decoration: none;
+}
+.banner-btn{
+  position: relative;
+  font-size: 16px;
+  line-height: 30px;
+  color: #ffffff;
+  padding: 10px 30px;
+  font-weight: 600;
+  background: lightgreen;
+  overflow: hidden;
+  min-width: 150px;
+}
+.banner-btn:hover{
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.10);
+}
+.theme-btn{
+  display:inline-block;
+  text-align: center;
+  border-radius: 5px;
+  position: relative;
+  z-index: 9;
+  color: inherit;
+  transition:all 0.5s ease;
+  text-transform: capitalize;
+}
+.theme-btn span:not(.btn-title){
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 20%;
+  height: 100%;
+  border-radius: 50%;
+  transform: translateY(150%);
+  transition: all 500ms ease;
+  background-color: #ffffff;
+  z-index: 0;
+}
+.theme-btn span:nth-child(2){
+  left: 20%;
+  transition-delay: 100ms;
+}
+.theme-btn span:nth-child(3){
+  left: 40%;
+  transition-delay: 200ms;
+}
+.theme-btn span:nth-child(4){
+  left: 60%;
+  transition-delay: 300ms;
+}
+.theme-btn span:nth-child(5){
+  left: 80%;
+  transition-delay: 400ms;
+}
+.theme-btn:hover span{
+  transform: translateY(0) scale(2);
+}
+.banner-btn:hover .btn-title {
+  color: lightgreen;
+  position: relative;
+  z-index: 9;
+}
+.banner-btn:hover{
+  color: lightgray;
+  text-decoration: none;
+}
+.animate-out {
+  animation-delay : 0ms  ;
+}
+/* ------------------- add button starts ------------ */
+
+/* -------------------- blog add button ends ----------------- */
+

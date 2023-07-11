@@ -14,7 +14,6 @@
 }
 .blog-search{
   width: 50%;
-  /* background-color: red; */
 }
 .blog-add-btn{
   width: 50%;
@@ -118,22 +117,21 @@
 /* -------------------- blog add button ends ----------------- */
 
 /* ----------------- blog card css starts ----------------- */
-
-/* ------------------------------------------------------------------------------- */
-
-.co_hs-service {
-  padding: 80px 0;
-  background-color: white;
-}
-.hs_inner-service {
+/* ------------------------------------------------------------ */
+.co_service{
   position: relative;
-  padding: 20px;
-  text-align: center;
-  border-radius: 15px 15px 0 0;
-  border-bottom: 3px solid transparent;
-  transition: all 500ms ease;
+  padding: 80px 0 90px;
+}
+.co_service h3{
+ font-size: 36px;
+ font-weight: 700;
+ text-align: center;
+ color: white;
+ padding-bottom: 30px;
+}
+.item-single {
+  position: relative;
   margin-bottom: 30px;
-  background-color: beige;
 }
 .hs_icon {
   /* width: 30%; */
@@ -150,82 +148,71 @@
   /* right: 40%; */
   background-color: blue;
 }
-.hs_icon img{
-  /* width: 70%; */
-  /* margin: auto; */
-  /* position: absolute; */
-  /* top: 49.5%; */
-  /* left: 0%; */
-  /* right:100%; */
-  /* transform: translate(-50%, -50%); */
-  /* border-radius: 50%; */
-  /* border: 3px solid green; */
-  height: 50%;
-  width: 50%;
-  object-fit: fill;
+.item-single .content {
+  position: absolute;
+  bottom: -38px;
+  left: 15px;
+  background:#2d7fbb;
+  border-radius: 7px;
+  padding: 25px;
+  width: 100%;
+  max-width: calc(100% - 30px);
+  transition: .5s;
+  box-shadow: 0 0 30px 0 rgb(102 102 102 / 9%);
+  overflow: hidden;
 }
-.hs_inner-service h2{
-  font-size: 23px;
+.item-single .content p {
+  padding-top: 15px;
+  display: none;
+  font-size: 15px;
+}
+.item-single:hover .content {
+  background:green;
+  animation: fadeInUp .3s linear 1;
+}
+.item-single:hover .content p {
+  color: white;
+  display: block;
+}
+.content h4 {
+  font-size: 25px;
   font-weight: 700;
-  margin-top: 20px;
+  color:#fff;
+  margin: 0;
 }
-.hs_inner-service:hover .hs_icon {
-  border: 0;
-  /* background: rgba(0, 128, 0, 0.2); */
-  border-radius: 0;
+.content i {
+  font-size: 30px;
+  color:green;
 }
-/* for image round to square */
-.hs_inner-service:hover .hs_icon img{
-  border-radius: 0;
-  border: 3px solid green;
-  transition-duration: 1s;
-  transition-timing-function: ease;
-
+.content{
+  position: relative;
 }
-
-.hs_inner-service:hover {
-  background-color: #fff;
-  box-shadow: 0 10px 20px rgb(0 0 0 / 10%);
-  transform: translateY(-20px);
-  border-bottom: 4px solid green;
+.item-single .discount {
+  position: absolute;
+  top: -20px;
+  right: 10px;
+  border-radius: 50%;
+  padding: 30px 19px 15px;
+  background: #fff;
+  text-align: center;
 }
-
-/* ----------------------------------------------- */
-.blog{
-  width: 100%;
+.item-single:hover .discount{
+  background:white;
 }
-.blog-img-head{
-  display: flex;
-  align-items: center;
-  width: 100%;
-  background-color: aquamarine;
+.item-single:hover .discount i{
+  color: #000;
 }
-.hs_icon{
-  /* width: 70%; */
-  /* position: relative;
-  top: 0; */
-
+.item-single:hover .content h4 {
+  color: white;
 }
-.hs_inner-service p{
-  text-align: justify;
-}
-.blog-head{
-  /* text-align: left; */
-  /* width: 30%; */
-  background-color: aqua;
-}
-.blog-head h6{
-  text-align: right;
-}
-
+/* ------------------------------------------------------------ */
 /* ----for read more---- */
 .collapsed {
   text-align: justify;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  /* justify-content: flex-end; */
-  -webkit-line-clamp: 2; /* Number of lines to show before collapsing */
+  -webkit-line-clamp: 1; /* Number of lines to show before collapsing */
   -webkit-box-orient: vertical;
   margin: 0%;
   padding: 0%;
@@ -238,14 +225,12 @@
 .readbutton{
   padding: 0%;
   margin: 0%;
-  color:green;
+  color:white;
 }
-
 .readmorediv{
   margin: 0%;
   padding: 0%;
 }
-/* ---------------- */
 /* ----------------- blog card css ends ----------------- */
 
 /* -------------------- blog add blog form starts ----------------- */
