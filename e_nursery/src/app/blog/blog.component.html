@@ -14,7 +14,7 @@
       <div class="rows">
         <div class="col" *ngFor="let blog of getAllBlogs()">
           <mat-card class="main-mat-card">
-            <div  *ngFor="let image of images">
+            <div  *ngFor="let image of getImages()">
               <mat-card-header class="blog-image-header" *ngIf="blog.image_id==image.id">
                 <img class="blog-image" [src]=image.image_url alt="" >
               </mat-card-header>
