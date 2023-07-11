@@ -3,10 +3,10 @@
   <!-- --------------------------- blog add button & search starts --------------------- -->
   <div class="blog-heading mt-2">
     <div class="blog-top">
-      <div class="blog-search">
+      <!-- <div class="blog-search">
         <input type="text" name="search" class="search" placeholder="Search...">&nbsp;&nbsp;
         <span class="search-icon"><i class="fa-solid fa-search"></i></span>
-      </div>
+      </div> -->
       <div class="blog-add-btn">
         <div class="box-button" *ngIf="(!(formShow)) && (!(blogShow))" (click)="formModal()">
           <a class="banner-btn theme-btn" data-animation-in="bounceInLeft" data-animation-out="animate-out bounceOutRight">
@@ -28,7 +28,7 @@
   <div class="co_service">
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 col-md-6 pad-1" *ngFor="let blog of getActiveBlogs()">
+        <div class="col-lg-6 col-md-6 pad-1 mb-4" *ngFor="let blog of getActiveBlogs()">
           <div class="item-single">
             <div class="servi_image" *ngFor="let image of getImages()">
               <img *ngIf="image.id==blog.image_id" src="{{image.image_url}}">
@@ -65,43 +65,46 @@
       <!-- -----------form title ends------- -->
       <hr>
       <!-- ------form starts-------- -->
-      <form class="form" [formGroup]="blogForm" (ngSubmit)="submitForm()">
-        <!-- -------title ------ -->
-        <div class="form-outline mb-4">
-          <mat-form-field appearance="outline" class="filed">
-            <!-- <mat-label>Title</mat-label> -->
-            <input matInput formControlName="title">
-          </mat-form-field>
-        </div>
-        <!-- ---------Image ------ -->
-        <div class="form-outline mb-4">
-          <!-- <label class="form-label mb-1" for="customFile">Image</label> -->
-          <input type="file" class="form-control mb-1" (change)="onFileChange($event)" formControlName="image" [ngClass]="{ 'is-invalid': submitted && blogForm.controls['image'].errors }"/>
-          <div class="mt-1" *ngIf="submitted || (blogForm.controls['image'].invalid && (blogForm.controls['image'].dirty || blogForm.controls['image'].touched))">
-            <span *ngIf="blogForm.controls['image'].errors?.['required']" class="text-danger mt-1">
-              Image is required!
-            </span>
+      <form class="add-blog-form" (ngSubmit)="submitForm()" #blogForm="ngForm">
+        <div class="form-group mb-2 mt-2" style="width: 400px">
+          <label for="title" class="fw-bold">Title&nbsp;<span style="color: red;">*</span></label>
+          <input type="text" class="form-control w-100" id="title" name="title" placeholder="Title" required [(ngModel)]="blog.title" #title="ngModel" pattern="^[a-zA-Z\s]{1,50}$">
+          <div *ngIf="title.invalid && (title.dirty || title.touched)" class="text-danger">
+            <div *ngIf="title.errors?.['required']">Title is required.</div>
+            <!-- <div *ngIf="title.errors?.['pattern']">Title must be between 1 and 50 letters, and should not contain numbers or special characters.</div> -->
           </div>
-          <!-- <div *ngIf="submitted || (blogForm.get('image')?.touched && blogForm.get('image')?.hasError('required'))" class="error-message">
-            Image is required.
-          </div> -->
         </div>
-        <!-- -------description ------ -->
-        <div class="form-outline mb-4">
-          <mat-form-field appearance="outline" class="filed">
-            <!-- <mat-label>Description</mat-label> -->
-            <textarea matInput formControlName="description"></textarea>
-          </mat-form-field>
+        <!-- <div class="form-group mb-2 mt-2" style="width: 400px">
+          <label for="uploadedBy" class="fw-bold">Uploaded By&nbsp;<span style="color: red;">*</span></label>
+          <input type="text" class="form-control w-100" id="uploadedBy" name="uploadedBy" placeholder="Uploaded By" required [(ngModel)]="blog.uploaded_by" #uploadedBy="ngModel"#title="ngModel"pattern="^[a-zA-Z\s]{1,50}$">
+          <div *ngIf="uploadedBy.invalid && (uploadedBy.dirty || uploadedBy.touched)" class="text-danger">
+            <div *ngIf="uploadedBy.errors?.['required']">Uploaded By is required.</div>
+            <div *ngIf="title.errors?.['pattern']">Title must be between 1 and 50 letters, and should not contain numbers or special characters.</div>
+          </div>
+        </div> -->
+        <div class="form-group mb-2 mt-2" style="width: 400px">
+          <label for="description" class="fw-bold">Description&nbsp;<span style="color: red;">*</span></label>
+          <textarea class="form-control w-100" id="description" rows="3" name="description" placeholder="Description" required [(ngModel)]="blog.description" #description="ngModel"></textarea>
+          <div *ngIf="description.invalid && (description.dirty || description.touched)" class="text-danger">
+            <div *ngIf="description.errors?.['required']">Description is required.</div>
+
+          </div>
         </div>
-        <!-- -----------feilds ends --------- -->
+        <div class="form-group mb-2 mt-2" style="width: 400px">
+          <label for="image" class="fw-bold">Image&nbsp;<span style="color: red;">*</span></label>
+          <div class="custom-file mb-3">
+            <input type="file" (change)="onFileChange($event)" class="custom-file-input w-100" id="image" name="image" accept="image/*" required [(ngModel)]="picture" #image="ngModel">
+            <div *ngIf="image.invalid && (image.dirty || image.touched)" class="text-danger">
+              <div *ngIf="image.errors?.['required']">Image is required.</div>
+            </div>
+          </div>
+        </div>
         <hr>
-        <!-- --------buttons starts ---------- -->
-        <div class="mb-4 text-center">
-          <button type="button" class="btn btn-dark m-2" (click)="formModal()">Back</button>
-          <button type="submit" class="btn btn-success m-2">Post</button>
-          <button type="reset" class="btn btn-secondary m-2">Reset</button>
+        <div class="button m-4">
+          <button type="button" class="btn btn-secondary m-3" (click)="formModal()">Back</button>
+          <button type="submit" class="btn btn-success m-3">Save</button>
+          <button type="reset" class="btn btn-primary m-3">Reset</button>
         </div>
-        <!-- -------buttonds ends --------- -->
       </form>
       <!-- ------form ends-------- -->
     </div>
