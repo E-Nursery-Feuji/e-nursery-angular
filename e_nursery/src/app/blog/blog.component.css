@@ -1,5 +1,5 @@
 .blog-list{
-  width: 100%;
+  width: 91%;
   padding: 10px;
   height: 85vh;
   /* background-color: white; */
@@ -10,14 +10,16 @@
 }
 
 .blog-image{
-  height: auto;
-  width: 86.32%;
+  height: 70%;
+  width: 75.5%;
+
   /* border-color: aqua; */
 
 }
 
 .blog-image-header{
-  height: 20%;
+  height: 10%;
+  width: 50%;
   /* background-color: aqua; */
 }
 
@@ -47,13 +49,13 @@ h2 {
   width: 373px;
   margin-left: -48px;
   margin-top: -16px;
-  height: 250px;
+  height: 150px;
   overflow: hidden;
 
 }
-.mat-card-content{
+/* .mat-card-content{
   margin-top: 20px;
-}
+} */
 
 .add{
   width: 8rem;
@@ -65,6 +67,7 @@ h2 {
 }
 .add-button{
   width: 100%;
+  /* padding-top: 0px; */
   padding-left: 83%;
 }
 
@@ -81,48 +84,10 @@ h2 {
   padding: 0px;
   margin: 0 auto;
 }
-/* .btn{
-  background-color: #008000;
-  color: white;
-}
-
-button[type="submit"] {
-  background-color: #4CAF50;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-} */
-
-/* button[type="submit"]:hover {
-  background-color:#008000;
-}
-
- button[type="submit"]:disabled {
+button[type="submit"]:disabled {
   background-color: #ccc;
   cursor: not-allowed;
-} */
-
-
-/* .form-container{
-  background-image: url('https://cdn4.1800flowers.com/wcsstore/Flowers/images/2020/lp/virtual-backgrounds/Plants-macro-virtual-background.jpg');
-  background-position: center;
-  color:black;
-  padding: 50px;
-  padding-left: 200px;
-  width: 50%;
-  background-color: blue;
-} */
-/* .right{
-  float:right;
 }
-
-#len{
-  border: none;
-  background-color: white;
-} */
-
 
 /* ---------------------Form css --------------------- */
 .blog-form{
@@ -173,10 +138,10 @@ button[type="submit"] {
   height: 500px;
   width: 340px;
 }
-
+/*
 .right{
   margin-top: 10px;
-}
+} */
 
 .blog-button{
   border: none;
@@ -210,10 +175,12 @@ button[type="submit"] {
 }
 
 .main-mat-card{
-  height:auto;
+  height: auto;
   border: 2px solid green;
+  /* width: 300px; */
   /* background-colo; */
 }
+
 
 .blog-image{
   width: 550px;
@@ -336,3 +303,4 @@ button[type="submit"] {
 /* ------------------- add button starts ------------ */
 
 /* -------------------- blog add button ends ----------------- */
+

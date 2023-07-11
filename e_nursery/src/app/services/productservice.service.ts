@@ -97,7 +97,7 @@ export class Productservice {
       // image.image=jsonResponse[0].fields.image
       product.image_id=data.id
       this.updateProduct(product)
-    });
+      });
     }
 
     //upade product
@@ -117,7 +117,7 @@ export class Productservice {
         }
           if(typeof(data)=='object')
           {
-
+              this.products.splice(this.products.findIndex(p=>p.id==data.id),1,data);
               Swal.fire({
                 icon: 'success',
                 title: 'Product Updated Successfully !',

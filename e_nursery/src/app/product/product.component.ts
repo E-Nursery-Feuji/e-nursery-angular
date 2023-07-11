@@ -131,6 +131,7 @@ export class ProductComponent implements OnInit {
             this.productservice.updateProductImage(this.file, this.product);
             this.editProductId = 0;
             this.show = !this.show;
+            
         }
         else{    //updating product only
 
