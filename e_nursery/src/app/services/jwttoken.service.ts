@@ -69,4 +69,38 @@ export class JwttokenService {
 
     return null; // Return null if the token is null or the role property is not found
   }
+
+    // to get the last_name from token
+    getLastNameFromJwtToken()
+    {
+      const token = localStorage.getItem('token'); // Get the JWT token from local storage
+  
+      if (token) {
+        const helper = new JwtHelperService(); // Create an instance of JwtHelperService
+        const decodedToken = helper.decodeToken(token); // Decode the JWT token
+  
+        if (decodedToken && decodedToken.role) {
+          return decodedToken.last_name; // Return the value of the last_name property
+        }
+      }
+  
+      return null; // Return null if the token is null or the last_name property is not found
+    }
+
+      // to get the id from token
+  getIdFromJwtToken()
+  {
+    const token = localStorage.getItem('token'); // Get the JWT token from local storage
+
+    if (token) {
+      const helper = new JwtHelperService(); // Create an instance of JwtHelperService
+      const decodedToken = helper.decodeToken(token); // Decode the JWT token
+
+      if (decodedToken && decodedToken.id) {
+        return decodedToken.id; // Return the value of the id property
+      }
+    }
+
+    return null; // Return null if the token is null or the id property is not found
+  }
 }
