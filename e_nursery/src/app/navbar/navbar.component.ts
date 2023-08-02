@@ -36,6 +36,8 @@ export class NavbarComponent implements OnInit {
     private activatedRoute:ActivatedRoute,private orderService : OrderService)
   {
     this.urlRole=this.activatedRoute.snapshot.url[0].path;
+    console.log("cart");
+    console.log(this.orderService.getCart());
     this.quantity = this.orderService.getCart().reduce((total, cart) => total + Number(cart.quantity), 0);
     console.log(this.quantity)
 

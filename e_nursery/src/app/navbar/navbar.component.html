@@ -41,7 +41,7 @@
     <!-- Menu for user ends  -->
     <!-- cart start -->
 
-    <a *ngIf="role=='CUSTOMER'" class="cart-icon mr-6">
+    <a *ngIf="role=='CUSTOMER'" class="cart-icon mr-6" [routerLink]="['cart']">
       <i class="fa-solid fa-cart-shopping fa-bounce"></i>
       <span class="quantity-circle">{{totalQuantity()}}</span>
     </a>
@@ -64,7 +64,7 @@
 
 
         <!-- --------- User Icon ---------------- -->
-        <a class="user" style="text-decoration: none;"><b class="text-light"><i class="fa-solid fa-user"></i></b></a>
+        <a *ngIf="(urlRole=='admin') || (urlRole=='customer')" class="user" style="text-decoration: none;"><b class="text-light"><i class="fa-solid fa-user"></i></b></a>
         </a>
         <ul
           class="dropdown-menu dropdown-menu-end"
@@ -91,6 +91,7 @@
           <li>
             <a class="dropdown-item navbar-dropdown-item" (click)="logout()"><i class="fa-solid fa-power-off fa-flip"></i>&nbsp;Logout</a>
           </li>
+
         </ul>
       </div>
     </div>
