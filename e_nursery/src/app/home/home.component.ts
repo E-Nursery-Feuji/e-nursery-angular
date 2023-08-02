@@ -30,4 +30,11 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  isRegister:boolean=false;
+  toggleRegister(){
+    if(!this.isRegister){
+      this.router.navigateByUrl("register");
+    }
+  }
+
 }

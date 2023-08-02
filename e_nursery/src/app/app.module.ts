@@ -40,6 +40,7 @@ import { DiscountPipe } from './discount.pipe';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { ENurseryInterceptorInterceptor } from './enursery-interceptor.interceptor';
+import { CartComponent } from './cart/cart.component';
 
   const ngxUiLoaderConfig: NgxUiLoaderConfig={
   "bgsColor": "#1fe909",
@@ -76,7 +77,7 @@ import { ENurseryInterceptorInterceptor } from './enursery-interceptor.intercept
 
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     HomeComponent,
     LoginComponent,
@@ -97,7 +98,8 @@ import { ENurseryInterceptorInterceptor } from './enursery-interceptor.intercept
       UserblogComponent,
       CustomerhomeComponent,
       FooterComponent,
-      DiscountPipe
+      DiscountPipe,
+      CartComponent
    ],
   imports: [
     BrowserModule,

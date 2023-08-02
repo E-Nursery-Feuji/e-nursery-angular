@@ -1,3 +1,4 @@
+import { CartComponent } from './cart/cart.component';
 import { IsAuthenticatedGuard } from './is-authenticated.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -43,6 +44,7 @@ const routes: Routes = [
       {path:'seeds',component:SeedsComponent},
       {path:'accessories',component:AccessoriesComponent},
       {path:'blog',component:UserblogComponent},
+      {path:'cart',component:CartComponent},
       {path:'**',redirectTo:'home'}
     ]
   },

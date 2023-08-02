@@ -74,15 +74,20 @@ addToCart(product: Product) {
 
 
   //fetch the cart from db
-  getCart(){
-   return this.carts;
+  getCart() {
+    console.log("order serive")
+    console.log(this.carts)
+    return this.carts
   }
+
 
 
   //for update the cart quantity
   updateCartQuantity(cart:Cart){
     this.orderReposistoryService.updateToCart(cart).subscribe()
   }
+
+
 
 }
 

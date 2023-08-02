@@ -1,0 +1,35 @@
+<!-- cart-item.component.html -->
+<!-- cart.component.html -->
+
+<div class="cart-empty" *ngIf="getCart().length === 0">
+  <p>Cart is empty</p>
+</div>
+<div class="cart" *ngIf="getCart().length !== 0">
+  <p>E-NURSERY CART</p>
+</div>
+
+<div class="cart-item" *ngFor="let cartitem of getCart()">
+  <div *ngIf="cartitem.quantity > 0">
+    <div *ngFor="let image of getImages()">
+      <img *ngIf="getProduct(cartitem.product).image_id === image.id" class="product-image" [src]="image.image_url" alt="Product Image">
+    </div>
+    <div class="product-details">
+      <h3 class="product-name">{{ getProduct(cartitem.product).name }}</h3>
+      <p class="product-price">Price: {{ getProduct(cartitem.product).price | currency:'INR' }}</p>
+      <p *ngIf="getProduct(cartitem.product).discount>0">Discount: {{ getProduct(cartitem.product).discount | currency: 'INR' }}</p>
+      <div class="quantity-controls">
+        <button (click)="decreaseQuantity(cartitem.id)" class="quantity-btn" style="background-color: red;" >-</button>
+        <span class="product-quantity">{{ cartitem.quantity }}</span>
+        <button (click)="increaseQuantity(cartitem.id)" class="quantity-btn" style="background-color: green;">+</button>
+      </div>
+      <p class="total-price">Total Price: {{ (getProduct(cartitem.product).price-getProduct(cartitem.product).discount) * cartitem.quantity | currency:'INR' }}</p>
+      <button (click)="removeItem(cartitem.id)" class="remove-btn">Remove</button>
+    </div>
+  </div>
+</div>
+
+<div class="checkout" *ngIf="getCart().length !== 0">
+  <p>Proceed to Buy ({{getCart().length}} item)</p>
+</div>
+
+
